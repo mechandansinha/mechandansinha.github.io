@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/pygments/emacs.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+    <link rel="shortcut icon" href="http://mechanicalcoder.github.io/images/logo.png" type="image/x-icon">
+    <link rel="icon" href="http://mechanicalcoder.github.io/images/logo.png" type="image/x-icon">
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#4285f4">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#4285f4">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="author" content="Chandan Sinha" />
+<meta name="description" content="How to trigger dialog box when someone right clicks on your copyrighted image and tries to save it." />
+<meta name="keywords" content="settings, javascript, web">
+<meta property="og:site_name" content="Chandan Sinha | Techblog"/>
+<meta property="og:title" content="Ask Permission To Save Image | Javascript"/>
+<meta property="og:description" content="How to trigger dialog box when someone right clicks on your copyrighted image and tries to save it."/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/ask-permission-to-save-image-javascript.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2016-10-07 22:00:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="/author/chandan-sinha.html">
+<meta property="article:section" content="random"/>
+<meta property="article:tag" content="settings"/>
+<meta property="article:tag" content="javascript"/>
+<meta property="article:tag" content="web"/>
+<meta property="og:image" content="">
+  <title>Chandan Sinha | Techblog &ndash; Ask Permission To Save Image | Javascript</title>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="">
+        <img src="/theme/img/avatar.png" alt="Of The Things I Do" title="Of The Things I Do">
+      </a>
+      <h1><a href="https://mechandansinha.github.io">Of The Things I Do</a></h1>
+<p>Building my own HogwartsTech</p>      <nav>
+        <ul class="list">
+          <li><a href="/pages/about.html#about">About me</a></li>
+          <li><a href="/pages/contact.html#contact">Contact</a></li>
+          <li><a href="/pages/My projects.html#My projects">Portfolio</a></li>
+          <li><a href="https://mechanicalcoder.github.io/" target="_blank">Website</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-envelope-o" href="mailto:me13b1009@iith.ac.in" target="_blank"><i class="fa fa-envelope-o"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/mechandansinha" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://in.linkedin.com/in/chandansinha1" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-wordpress" href="https://thevindicatedaxiom.wordpress.com/" target="_blank"><i class="fa fa-wordpress"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/quora_addict" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="https://mechandansinha.github.io">Home</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="ask-permission-to-save-image-javascript">Ask Permission To Save Image | Javascript</h1>
+    <p>Posted on Fri 07 October 2016 in <a href="/category/random.html">random</a></p>
+  </header>
+  <div>
+    <p>Recently while visiting a <a href="http://www.blissfulsnapshots.com/p/blog-page_2.html">photography blog</a>, I came across an
+animated picture and tried to save it. But when I right-clicked on that image, instead of the usual context menu, a dialog box 
+popped up which said this -</p>
+<p><center><img src="images/dialog1.png"></img><br></center></p>
+<p>Here's the picture -</p>
+<p><center><img src="https://4.bp.blogspot.com/-ZOGmadkxQbM/VtQGcyfXP1I/AAAAAAAAE9I/S-3rnporv0E/s200/camera1.png"></img><br></center></p>
+<p>I was intrigued by it as I had never come across this feature in my 2 years of web-development experience. I tried to find out how
+is it being done by going through the code -</p>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">div</span> <span class="na">class</span><span class="o">=</span><span class="s">&quot;separator&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;clear: both; text-align: center;&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;</span><span class="nt">a</span> <span class="na">href</span><span class="o">=</span><span class="s">&quot;https://4.bp.blogspot.com/-ZOGmadkxQbM/VtQGcyfXP1I/AAAAAAAAE9I/S-3rnporv0E/s1600/camera1.png&quot;</span> <span class="na">imageanchor</span><span class="o">=</span><span class="s">&quot;1&quot;</span> <span class="na">style</span><span class="o">=</span><span class="s">&quot;margin-left: 1em; margin-right: 1em;&quot;</span><span class="p">&gt;</span>
+        <span class="p">&lt;</span><span class="nt">img</span> <span class="na">border</span><span class="o">=</span><span class="s">&quot;0&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;200&quot;</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://4.bp.blogspot.com/-ZOGmadkxQbM/VtQGcyfXP1I/AAAAAAAAE9I/S-3rnporv0E/s200/camera1.png&quot;</span> <span class="na">width</span><span class="o">=</span><span class="s">&quot;200&quot;</span><span class="p">&gt;</span>
+    <span class="p">&lt;/</span><span class="nt">a</span><span class="p">&gt;</span>
+<span class="p">&lt;/</span><span class="nt">div</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<p>But as you can see, there wasn't any apparent javascript code associated with it that might have triggered that. Anyway I was
+able to get the image by copying the URL (as you can see above) but I probed in little further.</p>
+<p>As you can see there isn't any special class associated with <code>&lt;div&gt;, &lt;a&gt; or &lt;img&gt;</code> tags except '.separator' which is there with every element in the hierarchy (not shown here). It isn't doing anything specific here. Since the case is only with the images, there must be something with <code>&lt;img&gt;</code> itself.</p>
+<p>Initially I searched about it on Google but I could find relevant stuffs given the ambigous formulation of the query. Anyway I carefully went through the javascript code one by one. It's error-prone to do right in <i> Element </i> section -</p>
+<div class="highlight"><pre><span></span>      <span class="c1">//&lt;![CDATA[</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#LinkList60&quot;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;main-menu&#39;</span><span class="p">);</span><span class="kd">var</span> <span class="nx">e</span><span class="o">=</span><span class="s2">&quot;&lt;ul id=&#39;nav&#39;&gt;&lt;li&gt;&lt;ul class=&#39;sub-menu&#39;&gt;&quot;</span><span class="p">;</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#LinkList60 li&quot;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span><span class="kd">var</span> <span class="nx">t</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">text</span><span class="p">(),</span><span class="nx">n</span><span class="o">=</span><span class="nx">t</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span><span class="nx">r</span><span class="o">=</span><span class="nx">t</span><span class="p">.</span><span class="nx">substr</span><span class="p">(</span><span class="mi">1</span><span class="p">);</span><span class="s2">&quot;_&quot;</span><span class="o">==</span><span class="nx">n</span><span class="o">?</span><span class="p">(</span><span class="nx">n</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">),</span><span class="nx">e</span><span class="o">+=</span><span class="s1">&#39;&lt;li&gt;&lt;a href=&quot;&#39;</span><span class="o">+</span><span class="nx">n</span><span class="o">+</span><span class="s1">&#39;&quot;&gt;&#39;</span><span class="o">+</span><span class="nx">r</span><span class="o">+</span><span class="s2">&quot;&lt;/a&gt;&lt;/li&gt;&quot;</span><span class="p">)</span><span class="o">:</span><span class="p">(</span><span class="nx">n</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">find</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s2">&quot;href&quot;</span><span class="p">),</span><span class="nx">e</span><span class="o">+=</span><span class="s1">&#39;&lt;/ul&gt;&lt;/li&gt;&lt;li&gt;&lt;a href=&quot;&#39;</span><span class="o">+</span><span class="nx">n</span><span class="o">+</span><span class="s1">&#39;&quot;&gt;&#39;</span><span class="o">+</span><span class="nx">t</span><span class="o">+</span><span class="s2">&quot;&lt;/a&gt;&lt;ul class=&#39;sub-menu&#39;&gt;&quot;</span><span class="p">)});</span><span class="nx">e</span><span class="o">+=</span><span class="s2">&quot;&lt;/ul&gt;&lt;/li&gt;&lt;/ul&gt;&quot;</span><span class="p">;</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">html</span><span class="p">(</span><span class="nx">e</span><span class="p">);</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#LinkList60 ul&quot;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span><span class="kd">var</span> <span class="nx">e</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="k">if</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">html</span><span class="p">().</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\s|&amp;nbsp;/g</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">).</span><span class="nx">length</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="nx">e</span><span class="p">.</span><span class="nx">remove</span><span class="p">()});</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s2">&quot;#LinkList60 li&quot;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span><span class="kd">var</span> <span class="nx">e</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="k">if</span><span class="p">(</span><span class="nx">e</span><span class="p">.</span><span class="nx">html</span><span class="p">().</span><span class="nx">replace</span><span class="p">(</span><span class="sr">/\s|&amp;nbsp;/g</span><span class="p">,</span><span class="s2">&quot;&quot;</span><span class="p">).</span><span class="nx">length</span><span class="o">==</span><span class="mi">0</span><span class="p">)</span><span class="nx">e</span><span class="p">.</span><span class="nx">remove</span><span class="p">()});</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;#LinkList60 a&#39;</span><span class="p">).</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span><span class="kd">var</span> <span class="nx">page_url</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="nx">location</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">),</span><span class="nx">link</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;href&#39;</span><span class="p">);</span><span class="k">if</span><span class="p">(</span><span class="nx">link</span><span class="o">===</span><span class="nx">page_url</span><span class="p">){</span><span class="kd">var</span> <span class="nx">id</span><span class="o">=</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">parents</span><span class="p">(</span><span class="s1">&#39;:eq(1)&#39;</span><span class="p">).</span><span class="nx">attr</span><span class="p">(</span><span class="s1">&#39;id&#39;</span><span class="p">);</span><span class="k">if</span><span class="p">(</span><span class="nx">id</span><span class="o">===</span><span class="s1">&#39;nav&#39;</span><span class="p">){</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">parent</span><span class="p">(</span><span class="s1">&#39;li&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;current&#39;</span><span class="p">)}</span><span class="k">else</span><span class="p">{</span><span class="nx">$</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">parents</span><span class="p">(</span><span class="s1">&#39;:eq(2)&#39;</span><span class="p">).</span><span class="nx">addClass</span><span class="p">(</span><span class="s1">&#39;current&#39;</span><span class="p">)}}});</span>
+        <span class="nx">$</span><span class="p">(</span><span class="s1">&#39;.sub-menu&#39;</span><span class="p">).</span><span class="nx">prev</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">).</span><span class="nx">append</span><span class="p">(</span><span class="s2">&quot;&lt;i class=&#39;fa fa-angle-down&#39;/&gt;&quot;</span><span class="p">);</span><span class="nx">selectnav</span><span class="p">(</span><span class="s1">&#39;nav&#39;</span><span class="p">)});</span>
+          <span class="c1">//]]&gt;  </span>
+</pre></div>
+
+
+<p>There I found that this site uses lot of custom javasript -</p>
+<div class="highlight"><pre><span></span>  <span class="c1">//&lt;![CDATA[</span>
+  <span class="cm">/*</span>
+<span class="cm">By Osvaldas Valutis, www.osvaldas.info</span>
+<span class="cm">Available for use under the MIT License</span>
+<span class="cm">*/</span>
+  <span class="p">(</span><span class="kd">function</span><span class="p">(</span><span class="nx">e</span><span class="p">,</span><span class="nx">t</span><span class="p">,</span><span class="nx">n</span><span class="p">,</span><span class="nx">r</span><span class="p">){</span><span class="nx">e</span><span class="p">.</span><span class="nx">fn</span><span class="p">.</span><span class="nx">doubleTapToGo</span><span class="o">=</span><span class="kd">function</span><span class="p">(</span><span class="nx">r</span><span class="p">){</span><span class="k">if</span><span class="p">(</span><span class="o">!</span><span class="p">(</span><span class="s2">&quot;ontouchstart&quot;</span><span class="k">in</span> <span class="nx">t</span><span class="p">)</span><span class="o">&amp;&amp;!</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">msMaxTouchPoints</span><span class="o">&amp;&amp;!</span><span class="nx">navigator</span><span class="p">.</span><span class="nx">userAgent</span><span class="p">.</span><span class="nx">toLowerCase</span><span class="p">().</span><span class="nx">match</span><span class="p">(</span><span class="sr">/windows phone os 7/i</span><span class="p">))</span><span class="k">return</span> <span class="kc">false</span><span class="p">;</span><span class="k">this</span><span class="p">.</span><span class="nx">each</span><span class="p">(</span><span class="kd">function</span><span class="p">(){</span><span class="kd">var</span> <span class="nx">t</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span><span class="nx">e</span><span class="p">(</span><span class="k">this</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;click&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">){</span><span class="kd">var</span> <span class="nx">r</span><span class="o">=</span><span class="nx">e</span><span class="p">(</span><span class="k">this</span><span class="p">);</span><span class="k">if</span><span class="p">(</span><span class="nx">r</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">!=</span><span class="nx">t</span><span class="p">[</span><span class="mi">0</span><span class="p">]){</span><span class="nx">n</span><span class="p">.</span><span class="nx">preventDefault</span><span class="p">();</span><span class="nx">t</span><span class="o">=</span><span class="nx">r</span><span class="p">}});</span><span class="nx">e</span><span class="p">(</span><span class="nx">n</span><span class="p">).</span><span class="nx">on</span><span class="p">(</span><span class="s2">&quot;click touchstart MSPointerDown&quot;</span><span class="p">,</span><span class="kd">function</span><span class="p">(</span><span class="nx">n</span><span class="p">){</span><span class="kd">var</span> <span class="nx">r</span><span class="o">=</span><span class="kc">true</span><span class="p">,</span><span class="nx">i</span><span class="o">=</span><span class="nx">e</span><span class="p">(</span><span class="nx">n</span><span class="p">.</span><span class="nx">target</span><span class="p">).</span><span class="nx">parents</span><span class="p">();</span><span class="k">for</span><span class="p">(</span><span class="kd">var</span> <span class="nx">s</span><span class="o">=</span><span class="mi">0</span><span class="p">;</span><span class="nx">s</span><span class="o">&lt;</span><span class="nx">i</span><span class="p">.</span><span class="nx">length</span><span class="p">;</span><span class="nx">s</span><span class="o">++</span><span class="p">)</span><span class="k">if</span><span class="p">(</span><span class="nx">i</span><span class="p">[</span><span class="nx">s</span><span class="p">]</span><span class="o">==</span><span class="nx">t</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="nx">r</span><span class="o">=</span><span class="kc">false</span><span class="p">;</span><span class="k">if</span><span class="p">(</span><span class="nx">r</span><span class="p">)</span><span class="nx">t</span><span class="o">=</span><span class="kc">false</span><span class="p">})});</span><span class="k">return</span> <span class="k">this</span><span class="p">}})(</span><span class="nx">jQuery</span><span class="p">,</span><span class="nb">window</span><span class="p">,</span><span class="nb">document</span><span class="p">);</span>
+  <span class="c1">//]]&gt; </span>
+</pre></div>
+
+
+<p>After fumbling a bit more, I found this in <i> Application </i> section of the debugger (under <strong>Frames</strong>) -</p>
+<div class="highlight"><pre><span></span>    <span class="c1">//&lt;![CDATA[</span>
+    <span class="cm">/* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^</span>
+<span class="cm">Disable context menu on images by GreenLava (BloggerSentral.com)</span>
+<span class="cm">Version 1.0</span>
+<span class="cm">You are free to copy and share this code but please do not remove this credit notice.</span>
+<span class="cm">^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */</span>
+    <span class="kd">function</span> <span class="nx">nocontext</span><span class="p">(</span><span class="nx">e</span><span class="p">)</span> <span class="p">{</span>
+      <span class="kd">var</span> <span class="nx">clickedTag</span> <span class="o">=</span> <span class="p">(</span><span class="nx">e</span><span class="o">==</span><span class="kc">null</span><span class="p">)</span> <span class="o">?</span> <span class="nx">event</span><span class="p">.</span><span class="nx">srcElement</span><span class="p">.</span><span class="nx">tagName</span> <span class="o">:</span> <span class="nx">e</span><span class="p">.</span><span class="nx">target</span><span class="p">.</span><span class="nx">tagName</span><span class="p">;</span>
+      <span class="k">if</span> <span class="p">(</span><span class="nx">clickedTag</span> <span class="o">==</span> <span class="s2">&quot;IMG&quot;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="nx">alert</span><span class="p">(</span><span class="nx">alertMsg</span><span class="p">);</span>
+        <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+    <span class="kd">var</span> <span class="nx">alertMsg</span> <span class="o">=</span> <span class="s2">&quot;Please ask permission if you want to use my photos. Thank you! :)&quot;</span><span class="p">;</span>
+    <span class="nb">document</span><span class="p">.</span><span class="nx">oncontextmenu</span> <span class="o">=</span> <span class="nx">nocontext</span><span class="p">;</span>
+    <span class="c1">//]]&gt;</span>
+</pre></div>
+
+
+<p>This script was triggering the dialog-box. It disables the context menu specifically on images. it uses <code>.oncontextmenu</code> method of <code>document</code> object and sets it to <code>nocontext</code>. </p>
+<p>It's a nice way to protect your images on the website (atleast one layer of friction). Also the person would be notified that you need to seek permission. </p>
+<p>Hope you learnt something new today. Keep experimenting. Peace out ✌</p>
+<script type="text/javascript">
+
+ //<![CDATA[
+    /* ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+Disable context menu on images by GreenLava (BloggerSentral.com)
+Version 1.0
+You are free to copy and share this code but please do not remove this credit notice.
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ */
+    function nocontext(e) {
+      var clickedTag = (e==null) ? event.srcElement.tagName : e.target.tagName;
+      if (clickedTag == "IMG") {
+        alert(alertMsg);
+        return false;
+      }
+    }
+    var alertMsg = "Please ask permission if you want to use my photos. Thank you! :)";
+    document.oncontextmenu = nocontext;
+    //]]>
+
+</script>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/settings.html">settings</a>
+      <a href="/tag/javascript.html">javascript</a>
+      <a href="/tag/web.html">web</a>
+    </p>
+  </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'mechanicalcodertechblog';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</article>
+
+    <footer>
+        <p>&copy; Chandan Sinha | 2016</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme    </footer>
+  </main>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-80245224-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Chandan Sinha | Techblog ",
+  "url" : "",
+  "image": "",
+  "description": ""
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "Ask Permission To Save Image | Javascript",
+  "headline": "Ask Permission To Save Image | Javascript",
+  "datePublished": "2016-10-07 22:00:00+05:30",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "Chandan Sinha",
+    "url": "/author/chandan-sinha.html"
+  },
+  "image": "{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/profile.png",
+  "url": "/ask-permission-to-save-image-javascript.html",
+  "description": "How to trigger dialog box when someone right clicks on your copyrighted image and tries to save it."
+}
+</script></body>
+</html>
