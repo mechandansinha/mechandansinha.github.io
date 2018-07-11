@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/pygments/emacs.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+    <link rel="shortcut icon" href="http://mechanicalcoder.github.io/images/logo.png" type="image/x-icon">
+    <link rel="icon" href="http://mechanicalcoder.github.io/images/logo.png" type="image/x-icon">
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#4285f4">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#4285f4">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="author" content="Chandan Sinha" />
+<meta name="description" content="Solution for pelican MathJax issue for version 3.6.3 and earlier" />
+<meta name="keywords" content="github, features, markdown, pelican">
+<meta property="og:site_name" content="Chandan Sinha | Techblog"/>
+<meta property="og:title" content="Pelican MathJax Issue"/>
+<meta property="og:description" content="Solution for pelican MathJax issue for version 3.6.3 and earlier"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/pelican-mathjax-issue.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-07-17 23:26:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="/author/chandan-sinha.html">
+<meta property="article:section" content="github"/>
+<meta property="article:tag" content="github"/>
+<meta property="article:tag" content="features"/>
+<meta property="article:tag" content="markdown"/>
+<meta property="article:tag" content="pelican"/>
+<meta property="og:image" content="">
+  <title>Chandan Sinha | Techblog &ndash; Pelican MathJax Issue</title>
+  <style>
+  *{
+    font-family:Roboto;
+  }
+  </style>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="">
+        <img src="/theme/img/avatar.png" alt="Rustic Engineer" title="Rustic Engineer">
+      </a>
+      <h1 style="font-size:2.2em"><a href="https://mechandansinha.github.io">Rustic Engineer</a></h1>
+<p>Building my own HogwartsTech</p>      <nav>
+        <ul class="list">
+          <li><a href="/pages/about.html#about">About me</a></li>
+          <li><a href="/pages/contact.html#contact">Contact</a></li>
+          <li><a href="/pages/My projects.html#My projects">Portfolio</a></li>
+          <li><a href="https://mechanicalcoder.github.io/" target="_blank">Website</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-envelope-o" href="mailto:me13b1009@iith.ac.in" target="_blank"><i class="fa fa-envelope-o"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/mechandansinha" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://in.linkedin.com/in/chandansinha1" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-wordpress" href="https://thevindicatedaxiom.wordpress.com/" target="_blank"><i class="fa fa-wordpress"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/quora_addict" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="https://mechandansinha.github.io">Home</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="pelican-mathjax-issue">Pelican MathJax Issue</h1>
+    <p>Posted on Tue 17 July 2018 in <a href="/category/github.html">github</a></p>
+  </header>
+  <div>
+    <p>I updated pelican recently because I had upgraded to <code>python 3.x</code>. When I tried to execute <code>pelican content</code> command, it threw an error saying <code>no valid contents were found</code>. After some searching, I found out that I hadn't re-installed <code>markdown</code> (the earlier version was completely undetectable). </p>
+<p>After installing markdown by <code>pip install markdown</code>, I re-ran the earlier command but this time I got this warning -</p>
+<div class="highlight"><pre><span></span>$ pelican content
+Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
+  File <span class="s2">&quot;C:\Users\CHANDAN\Techblog\pelican-plugins\render_math\math.py&quot;</span>, line <span class="m">272</span>, in mathjax_for_markdown
+    pelicanobj.settings<span class="o">[</span><span class="s1">&#39;MD_EXTENSIONS&#39;</span><span class="o">]</span>.append<span class="o">(</span>PelicanMathJaxExtension<span class="o">(</span>config<span class="o">))</span>
+KeyError: <span class="s1">&#39;MD_EXTENSIONS&#39;</span>
+
+Error - the pelican mathjax markdown extension failed to configure. MathJax is non-functional.
+</pre></div>
+
+
+<p>Apparantly, my MathJax plugin wasn't working properly. I searched for this error on Google which led me to this <a href="https://github.com/getpelican/pelican-plugins/issues/815">Github issue #815</a>. On further reading, I found out this issue was merged with <a href="https://github.com/getpelican/pelican-plugins/pull/787">an earlier one #787</a>. On this link, I found a commit made to <code>math.py</code> file. Here's the change at line 271.</p>
+<p>Instead of this -</p>
+<div class="highlight"><pre><span></span>    <span class="k">try</span><span class="p">:</span>
+        <span class="n">pelicanobj</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;MD_EXTENSIONS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PelicanMathJaxExtension</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">excepthook</span><span class="p">(</span><span class="o">*</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">())</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Error - the pelican mathjax markdown extension failed to configure. MathJax is non-functional.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+</pre></div>
+
+
+<p>Write this -</p>
+<div class="highlight"><pre><span></span>    <span class="k">try</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pelicanobj</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MD_EXTENSIONS&#39;</span><span class="p">),</span> <span class="nb">list</span><span class="p">):</span> <span class="c1"># pelican 3.6.3 and earlier</span>
+            <span class="n">pelicanobj</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;MD_EXTENSIONS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PelicanMathJaxExtension</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">pelicanobj</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;MARKDOWN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;extensions&#39;</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PelicanMathJaxExtension</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">excepthook</span><span class="p">(</span><span class="o">*</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">())</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Error - the pelican mathjax markdown extension failed to configure. MathJax is non-functional.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
+</pre></div>
+
+
+<p>And it worked like a charm. Now you know what to do when you encounter this error. See you in next post :)</p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/github.html">github</a>
+      <a href="/tag/features.html">features</a>
+      <a href="/tag/markdown.html">markdown</a>
+      <a href="/tag/pelican.html">pelican</a>
+    </p>
+  </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'mechanicalcodertechblog';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</article>
+
+    <footer>
+        <p>&copy; Chandan Sinha | 2018</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme    </footer>
+  </main>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-80245224-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Chandan Sinha | Techblog ",
+  "url" : "",
+  "image": "",
+  "description": ""
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "Pelican MathJax Issue",
+  "headline": "Pelican MathJax Issue",
+  "datePublished": "2018-07-17 23:26:00+05:30",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "Chandan Sinha",
+    "url": "/author/chandan-sinha.html"
+  },
+  "image": "{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/profile.png",
+  "url": "/pelican-mathjax-issue.html",
+  "description": "Solution for pelican MathJax issue for version 3.6.3 and earlier"
+}
+</script></body>
+</html>
