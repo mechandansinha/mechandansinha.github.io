@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/pygments/emacs.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/css/font-awesome.min.css">
+
+
+
+
+    <link rel="shortcut icon" href="https://mechanicalcoder.github.io/images/logo.png" type="image/x-icon">
+    <link rel="icon" href="https://mechanicalcoder.github.io/images/logo.png" type="image/x-icon">
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#4285f4">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#4285f4">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="author" content="Chandan Sinha" />
+<meta name="description" content="Wishing merry christmas through morse code" />
+<meta name="keywords" content="">
+<meta property="og:site_name" content="Chandan Sinha | Techblog"/>
+<meta property="og:title" content="Merry Christmas From HogwartsTech"/>
+<meta property="og:description" content="Wishing merry christmas through morse code"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/merry-christmas-from-hogwartstech.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2018-12-25 19:00:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="/author/chandan-sinha.html">
+<meta property="article:section" content="misc"/>
+<meta property="og:image" content="">
+  <title>Chandan Sinha | Techblog &ndash; Merry Christmas From HogwartsTech</title>
+  <style>
+  *{
+    font-family:Roboto;
+  }
+  </style>
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="">
+        <img src="/theme/img/avatar.png" alt="Rustic Engineer" title="Rustic Engineer">
+      </a>
+      <h1 style="font-size:2.2em"><a href="https://mechandansinha.github.io">Rustic Engineer</a></h1>
+<p>Building my own HogwartsTech</p>      <nav>
+        <ul class="list">
+          <li><a href="/pages/about.html#about">About me</a></li>
+          <li><a href="/pages/contact.html#contact">Contact</a></li>
+          <li><a href="/pages/My projects.html#My projects">Portfolio</a></li>
+          <li><a href="https://mechanicalcoder.github.io/" target="_blank">Website</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-envelope-o" href="mailto:me13b1009@iith.ac.in" target="_blank"><i class="fa fa-envelope-o"></i></a></li>
+        <li><a class="sc-github" href="https://github.com/mechandansinha" target="_blank"><i class="fa fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://in.linkedin.com/in/chandansinha1" target="_blank"><i class="fa fa-linkedin"></i></a></li>
+        <li><a class="sc-wordpress" href="https://thevindicatedaxiom.wordpress.com/" target="_blank"><i class="fa fa-wordpress"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/quora_addict" target="_blank"><i class="fa fa-twitter"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="https://mechandansinha.github.io">Home</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="merry-christmas-from-hogwartstech">Merry Christmas From HogwartsTech</h1>
+    <p>Posted on Tue 25 December 2018 in <a href="/category/misc.html">misc</a></p>
+  </header>
+  <div>
+    <p>The clock was about to strike 12 and I found myself pondering over this question on the christmas eve - </p>
+<div class="highlight"><pre><span></span>what is the geekiest way I could wish christmas, right now? 
+</pre></div>
+
+
+<p>Well, I was too lazy to get up and walk around in this freezing cold (even if I had to get anything). So it has to be here, sitting on my chair. </p>
+<p>Hmm...let's see what I have around here within my reach - a book, few notebooks, HP Probook 4540s laptop, LG 22MP68VQ IPS display monitor, a JBL Go Speaker, Redmi Note 5 smartphone, pencils, pen, an eraser, extension chord, stationary holder, a cello-tape dispenser, stapler, poster colors, earphone, glue, paperweight, dismantled washing-machine timer, table drawer filled with spare parts, calculator, 1TB Seagate external hard drive, few blank papers, bread board and Arduino Mega 2560 board. </p>
+<div class="highlight"><pre><span></span>See <span class="k">if</span> you can churn out a different way to wish using these combination before me. 
+</pre></div>
+
+
+<p>For me, the easiest thing was to do something with my Arduino board. But what? I don't have any sensor, actuator or end effector. All I have is the default LED ligth on the board at PIN 13. It has to be light. </p>
+<p>How do I convert my text into light? <strong>Morse code</strong> was the first thing that came in my mind. I searched for the Arduino library that converts text into Morse code and there I found this <a href="https://github.com/markfickett/arduinomorsearduinomorse">arduinomorse repository</a> by Mark Fickett. It consisted of a header file and one cpp file along with read instructions. There was a little example mentioned at the bottom which was just perfect for my job. All I had to do was to replace the text.</p>
+<div class="highlight"><pre><span></span><span class="cp">#define PIN_STATUS  13</span>
+<span class="cp">#include</span> <span class="cpf">&quot;morse.h&quot;</span><span class="cp"></span>
+
+<span class="n">LEDMorseSender</span> <span class="nf">sender</span><span class="p">(</span><span class="n">PIN_STATUS</span><span class="p">);</span>
+
+<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="n">sender</span><span class="p">.</span><span class="n">setup</span><span class="p">();</span>
+  <span class="n">sender</span><span class="p">.</span><span class="n">setMessage</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;merry christmas!&quot;</span><span class="p">));</span>
+  <span class="n">pinMode</span><span class="p">(</span><span class="n">PIN_SENSOR</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span>
+<span class="p">}</span>
+
+<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span>
+<span class="p">{</span>
+  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">sender</span><span class="p">.</span><span class="n">continueSending</span><span class="p">())</span>
+  <span class="p">{</span>
+    <span class="n">delay</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
+    <span class="n">sender</span><span class="p">.</span><span class="n">startSending</span><span class="p">();</span> 
+  <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>I had converted my text to all lowercase as it was instructed. But, as it goes with programming (especially when you are in hurry), I encountered a compilation error. I checked the code. 
+- All files placed properly - checked
+- Header file angular brackets changed to double inverted comma (to refer to internal file) - checked
+- Code - checked. No undeclared variable error</p>
+<p>I skimmed through the console again and again. Everytime, I just saw that there was referencing error for the header file. I checked it. Modified. Checked again. Searched for the problem, landed at Stackoverflow but to no avail. </p>
+<p>It's so damn simple! where am I going wrong? - I thought to myself.</p>
+<p>I was getting restless (remember how it had to be a quick spinoff out of laziness?). Then suddenly, I glanced over the console once again and read the entire error. Problem in .cpp file. <code>Morse.h</code>not found. So, I checked the cpp file and there it was - angular bracket for the internal header file. I changed it to double inverted comma and voila! It compiled. I think the author should have put this into instructions or not use angular brackets. It isn't the default library after all. Anyway, this made it a bit more interesting.</p>
+<p>Later, when I was making its video, I realized, it was blinking way too fast for me to decode. Also, there wasn't any delay for the start of the next sequence to indicate that the entire text has been relayed. Since loop has been programmed to run infinitely, it's almost impossible to spot the beginning of next turn through naked eye. So I added a 5 second delay and uploaded it to the board. Here's the tiny little video wishing you merry christmas. Have a geeky one! </p>
+<p><center>
+    <video width="889" height="500" controls>
+      <source src="images/christmas.mp4" type="video/mp4">
+    </video>
+</center></p>
+  </div>
+  <div class="tag-cloud">
+    <p>
+    </p>
+  </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'mechanicalcodertechblog';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</article>
+
+    <footer>
+        <p>&copy; Chandan Sinha | 2018</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme    </footer>
+  </main>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-80245224-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Chandan Sinha | Techblog ",
+  "url" : "",
+  "image": "",
+  "description": ""
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "Merry Christmas From HogwartsTech",
+  "headline": "Merry Christmas From HogwartsTech",
+  "datePublished": "2018-12-25 19:00:00+05:30",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "Chandan Sinha",
+    "url": "/author/chandan-sinha.html"
+  },
+  "image": "{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/profile.png",
+  "url": "/merry-christmas-from-hogwartstech.html",
+  "description": "Wishing merry christmas through morse code"
+}
+</script></body>
+</html>
