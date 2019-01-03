@@ -100,12 +100,15 @@
 <p><center><img src="images/3d1.jpg" height="500px" width="500px"></center></p>
 <p>We started with reading the documentation of various 3D printers available in the market. </p>
 <p><embed src="Documentation.pdf" width="100%" height="700px" /></p>
-<p>At that time, the majority of 3D printers available were based on FDM technique which is still the case but we wanted to work on UV-DLP technique for several reasons - 
-- We wanted a cheaper, affordable 3D printing service for mass market
-- Our initial target audience were those of ornament shops, shoe design companies, etc. We wanted to give that soft material material.
+<p>At that time, the majority of 3D printers available were based on FDM technique which is still the case but we wanted to work on UV-DLP technique for several reasons - </p>
+<div class="highlight"><pre><span></span>- We wanted a cheaper, affordable 3D printing service for mass market
+- Our initial target audience were those of ornament shops, shoe design companies, etc. We wanted to give that soft material material feel.
 - No hassle of base plates 
 - fast printing time and the ease of print
-- Using open-source 3D slicer that read STL files</p>
+- Using open-source 3D slicer that read STL files
+</pre></div>
+
+
 <p>First of all, we had to get the basic ingredients right and find out if we can actually make the 3D printing work. We had some basic <a href="https://www.flipkart.com/pinchdart-2020-aluminium-profile-extrusion-length-1-meter-automotive-electronic-hobby-kit/p/itmfbbk4uvszktvy?">T-slot aluminium extrusion frames</a>, L-clamps, <a href="https://www.accu.co.uk/en/nema-17-stepper-motors/394332-NEMA17-34-0-95-1-8?google_shopping=1&amp;c=5&amp;mkwid=_dc&amp;pcrid=317111227122&amp;kword=&amp;match=&amp;plid=&amp;gclid=Cj0KCQiA37HhBRC8ARIsAPWoO0wf45LgxhSzxQ3NopoYf9KiS7OH_m4bL1_D_TZ9-zlumcm0WmOACY4aAq8MEALw_wcB">unipolar stepper motor</a>, lead screw, general projector (for projecting 2D slices intermittently) and a crudely welded base plate, plastic container, <a href="https://www.google.com/url?sa=i&amp;source=images&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwiNgdel6c_fAhURfCsKHRSCBGgQjhx6BAgBEAM&amp;url=https%3A%2F%2Fwww.amazon.com%2FMonoprice-Rapid-Printer-Resin-250ml%2Fdp%2FB07BGRSD1X&amp;psig=AOvVaw1aXvJv8cM6kl6XdIMngDgP&amp;ust=1546528933256484">photochemical resin</a>, resin hardener OPV 7102 and a UV light source to harden the model after printing.</p>
 <p>We quickly started putting up a crude model together. We downloaded <a href="https://www.instructables.com/id/How-to-Use-Creation-Workshop-V10075-for-DLP-Printe/">'Creation Workshop'</a> software, which is basically a slicer program for DLP 3D-printing, built up the circuit on a bread-board using following components -</p>
 <div class="highlight"><pre><span></span>* Board - Arduino Micro
@@ -121,15 +124,15 @@
 <p><center><img src="images/3d2.jpg" height="500px" width="500px">&nbsp; <img src="images/3d3.jpg" height="500px" width="500px"></center></p>
 <p>Hmm...not quite what we want. </p>
 <h1>The Battle</h1>
-<p>Ok, let's take it bird by bird. So what are the variables here?
-- Projector
+<p>Ok, let's take it bird by bird. So what are the variables here?</p>
+<div class="highlight"><pre><span></span>- Projector
 - Resin
-- Priting variables</p>
-<div class="highlight"><pre><span></span>- Slice thickness
-- Exposure time
-- No. of bottom layer
-- Retract speed
-- Lift speed
+- Priting variables
+    - Slice thickness
+    - Exposure time
+    - No. of bottom layer
+    - Retract speed
+    - Lift speed
 </pre></div>
 
 
@@ -152,40 +155,46 @@
 <p>After tackling these problems, we started getting some pretty good print qualities -</p>
 <p><center><img src="images/3d6.jpg" height="500px" width="500px"></center>
 <center><p><i> We printed a lot of these models. I mean a lot. </i></p></center></p>
-<p>It was time to give it an aesthetic form which meant going back to the drawing board and redo everything from scratch (now that we have figured out the functionality). I have broken down the next phase into four different parts -
-- Mechanical Design (<em>crude</em> sketching, CAD modeling, drafting) 
+<p>It was time to give it an aesthetic form which meant going back to the drawing board and redo everything from scratch (now that we have figured out the functionality). I have broken down the next phase into four different parts -</p>
+<div class="highlight"><pre><span></span>- Mechanical Design (*crude* sketching, CAD modeling, drafting) 
 - Manufacturing &amp; Assembly (parts procurement, vendor identification, shop visits)
 - System Design (basically electronics and other electrical hardware components)
-- Code (customizing 'Creation Workshop', writing our own arduino code for motor movement) </p>
-<p>Before we move ahead with the topics, here are some of the design features we finalized for v1.0 -
-<em> Flexible vat size
-</em> Cover lifting mechanism
-<em> Projector to be kept horizontal to reduce vertical height (use mirror)
-</em> LCD Screen
-<em> On-off button (zero position setting)
-</em> Alternate mechanism for resin to settle in bottom-up approach
-<em> Sensors to trigger when the vat reaches extremes
-</em> Alignment balancing
-<em> LED indicator
-</em> Resin filling (Automatic &amp; graduate)
-<em> Overall cover
-</em> Material selection (resin can be reused after melting)
-<em> Color injection
-</em> Immiscible (heavier density) fluid to reduce resin requirement in top-down approach
-<em> Reverse movement of the base to maintain liquid flow
-</em> Feedback control 
-<em> Base position marking (static base positioning to avoid fluid sloshing)
-</em> Opening for venting smoke
-<em> G-code &amp; M-code interpreter
-</em> Adapters for motor, arduino board, etc.
-<em> Speed variation with changing slope
-</em> Increase time exposure for smaller or finer area
-* Third-party feature integration to let users browse 3D models online</p>
+- Code (customizing &#39;Creation Workshop&#39;, writing our own arduino code for motor movement) 
+</pre></div>
+
+
+<p>Before we move ahead with the topics, here are some of the design features we finalized for v1.0 -</p>
+<div class="highlight"><pre><span></span>* Flexible vat size
+* Cover lifting mechanism
+* Projector to be kept horizontal to reduce vertical height (use mirror)
+* LCD Screen
+* On-off button (zero position setting)
+* Alternate mechanism for resin to settle in bottom-up approach
+* Sensors to trigger when the vat reaches extremes
+* Alignment balancing
+* LED indicator
+* Resin filling (Automatic &amp; graduate)
+* Overall cover
+* Material selection (resin can be reused after melting)
+* Color injection
+* Immiscible (heavier density) fluid to reduce resin requirement in top-down approach
+* Reverse movement of the base to maintain liquid flow
+* Feedback control 
+* Base position marking (static base positioning to avoid fluid sloshing)
+* Opening for venting smoke
+* G-code &amp; M-code interpreter
+* Adapters for motor, arduino board, etc.
+* Speed variation with changing slope
+* Increase time exposure for smaller or finer area
+* Third-party feature integration to let users browse 3D models online
+</pre></div>
+
+
 <h2>Mechanical Design</h2>
 <p>Based on our requirements, we decided the dimensions and made the 3D models in Solidworks for both top-down and bottom-up approach separately. Individual components can be found <a href="https://drive.google.com/open?id=0B5ONt2rDwKNVUkhDdV95b0NpZmM">here</a>. For sketches, please refer to the notebook at the end.</p>
 <p><embed src="printfiles.pdf" width="100%" height="700px" /></p>
 <p>We exported the .dwg files for laser cutting. </p>
-<p><center><img src="images/render3.jpg" height="500px" width="500px"></center>
+<p><center><img src="images/render3.JPG" height="500px" width="500px"></center>
 <center><p><i> Initial render with all the component placed. </i></p></center></p>
 <h2>Manufacturing &amp; Assembly</h2>
 <p>We did a tedious market research to find vendors for every component. We maintained their credentials and the cost of manufacturing in a sheet. </p>
