@@ -29,20 +29,20 @@
     <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
 
 <meta name="author" content="Chandan Sinha" />
-<meta name="description" content="I did my sophomore year summer internship at one of the budding Delhi-based startup named 'DreamsInfinity'. It was a product development internship meaning I was hired to build a commerical 3D printer based on UV-DLP (Ultraviolet Direct Light Processing) technique which was a new concept introduced in the world of …" />
+<meta name="description" content="Disclaimer - I'm writing this blog post about an year later after the internship, so I might have missed few things. Kindly contact me if you need further information. This post, in no way, gives the full information for building a 3D printer yourself. It is just for documenting my internship …" />
 <meta name="keywords" content="">
 <meta property="og:site_name" content="Chandan Sinha | Techblog"/>
-<meta property="og:title" content="Building an UV-DLP based 3D Printer"/>
-<meta property="og:description" content="I did my sophomore year summer internship at one of the budding Delhi-based startup named 'DreamsInfinity'. It was a product development internship meaning I was hired to build a commerical 3D printer based on UV-DLP (Ultraviolet Direct Light Processing) technique which was a new concept introduced in the world of …"/>
+<meta property="og:title" content="Building a UV-DLP based 3D Printer"/>
+<meta property="og:description" content="Disclaimer - I'm writing this blog post about an year later after the internship, so I might have missed few things. Kindly contact me if you need further information. This post, in no way, gives the full information for building a 3D printer yourself. It is just for documenting my internship …"/>
 <meta property="og:locale" content="en_US"/>
 <meta property="og:url" content="/My sophomore internship experience and what I learnt from it..html"/>
 <meta property="og:type" content="article"/>
-<meta property="article:published_time" content="2015-07-10 23:00:00+05:30"/>
+<meta property="article:published_time" content="2016-07-10 23:00:00+05:30"/>
 <meta property="article:modified_time" content=""/>
 <meta property="article:author" content="/author/chandan-sinha.html">
 <meta property="article:section" content="misc"/>
 <meta property="og:image" content="">
-  <title>Chandan Sinha | Techblog &ndash; Building an UV-DLP based 3D Printer</title>
+  <title>Chandan Sinha | Techblog &ndash; Building a UV-DLP based 3D Printer</title>
   <style>
   *{
     font-family:Roboto;
@@ -83,11 +83,155 @@
 
 <article>
   <header>
-    <h1 id="My sophomore internship experience and what I learnt from it.">Building an UV-DLP based 3D Printer</h1>
-    <p>Posted on Fri 10 July 2015 in <a href="/category/misc.html">misc</a></p>
+    <h1 id="My sophomore internship experience and what I learnt from it.">Building a UV-DLP based 3D Printer</h1>
+    <p>Posted on Sun 10 July 2016 in <a href="/category/misc.html">misc</a></p>
   </header>
   <div>
-    <p>I did my sophomore year summer internship at one of the budding Delhi-based startup named 'DreamsInfinity'. It was a product development internship meaning I was hired to build a commerical 3D printer based on UV-DLP (Ultraviolet Direct Light Processing) technique which was a new concept introduced in the world of additive manufacturing at that time. This post aims to describe what we did and what we came up in the end.</p>
+    <p><strong>Disclaimer</strong> - I'm writing this blog post about an year later after the internship, so I might have missed few things. Kindly contact me if you need further information. This post, in no way, gives the full information for building a 3D printer yourself. It is just for documenting my internship experience. If you do not wish to read the entire post, you can look through <a href=
+"#scribbles"> my notebook </a> which should give you a fair idea about we did.</p>
+<h1>Prelude</h1>
+<p>I did my sophomore year summer internship at one of the budding Delhi-based startup named 'DreamsInfinity'. It was a product development internship meaning I was hired to build a commerical 3D printer based on UV-DLP (Ultraviolet Direct Light Processing) technique which was a new concept introduced in the world of additive manufacturing at that time. This post aims to describe what we did and what we came up in the end.</p>
+<h1>Selection Process</h1>
+<p>I applied for the internship on Internshala somewhere around May. I had another internship planned initially but it was related to web development. I had to work on WebRTC and it could have been exciting too but I was always inclined towards industrial design and getting a chance to build 3D printer in sophomore year was just too good a chance to pass. By the time, I appeared for the telephonic interview after the initial screening (based on general questions and resume), there were already around 250 applicants.</p>
+<p>I think my E-cell &amp; robotics club experience came in handy here. In internship description, it was explicitly said that the interns should be able to work with minimal guidance. My mentor, Mr. Anubhav Bansal, worked in his family business as a business development head and this was his side project. So, you can say that the startup was in its infancy.</p>
+<p>Anyway, 2 people were selected for the internship - me and one guy from NIT Allahabad from Electrical &amp; Electronics department. He was in 2nd year of study as well.</p>
+<h1>The Beginning</h1>
+<p>On our first day, we were taken to the basement of a building which was going to be our maker room. My mentor had been working on the basic skeleton as a proof of concept for 3D printing. It looked something like -</p>
+<p><center><img src="images/3d1.jpg" height="500px" width="500px"></center></p>
+<p>We started with reading the documentation of various 3D printers available in the market. </p>
+<p><embed src="Documentation.pdf" width="100%" height="700px" /></p>
+<p>At that time, the majority of 3D printers available were based on FDM technique which is still the case but we wanted to work on UV-DLP technique for several reasons - 
+- We wanted a cheaper, affordable 3D printing service for mass market
+- Our initial target audience were those of ornament shops, shoe design companies, etc. We wanted to give that soft material material.
+- No hassle of base plates 
+- fast printing time and the ease of print
+- Using open-source 3D slicer that read STL files</p>
+<p>First of all, we had to get the basic ingredients right and find out if we can actually make the 3D printing work. We had some basic <a href="https://www.flipkart.com/pinchdart-2020-aluminium-profile-extrusion-length-1-meter-automotive-electronic-hobby-kit/p/itmfbbk4uvszktvy?">T-slot aluminium extrusion frames</a>, L-clamps, <a href="https://www.accu.co.uk/en/nema-17-stepper-motors/394332-NEMA17-34-0-95-1-8?google_shopping=1&amp;c=5&amp;mkwid=_dc&amp;pcrid=317111227122&amp;kword=&amp;match=&amp;plid=&amp;gclid=Cj0KCQiA37HhBRC8ARIsAPWoO0wf45LgxhSzxQ3NopoYf9KiS7OH_m4bL1_D_TZ9-zlumcm0WmOACY4aAq8MEALw_wcB">unipolar stepper motor</a>, lead screw, general projector (for projecting 2D slices intermittently) and a crudely welded base plate, plastic container, <a href="https://www.google.com/url?sa=i&amp;source=images&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwiNgdel6c_fAhURfCsKHRSCBGgQjhx6BAgBEAM&amp;url=https%3A%2F%2Fwww.amazon.com%2FMonoprice-Rapid-Printer-Resin-250ml%2Fdp%2FB07BGRSD1X&amp;psig=AOvVaw1aXvJv8cM6kl6XdIMngDgP&amp;ust=1546528933256484">photochemical resin</a>, resin hardener OPV 7102 and a UV light source to harden the model after printing.</p>
+<p>We quickly started putting up a crude model together. We downloaded <a href="https://www.instructables.com/id/How-to-Use-Creation-Workshop-V10075-for-DLP-Printe/">'Creation Workshop'</a> software, which is basically a slicer program for DLP 3D-printing, built up the circuit on a bread-board using following components -</p>
+<div class="highlight"><pre><span></span>* Board - Arduino Micro
+* LCD - 16x2 4-bit Mode
+* Motor Driver - A4988
+* Potentiometer (to set the contrast ratio of LCD)
+* Capacitor (used with motor driver)
+* Jumper wires for the connections.
+</pre></div>
+
+
+<p>The basic skeleton was ready and we were set to print our first models. Contrary to our surprise, our first few models looked like this -</p>
+<p><center><img src="images/3d2.jpg" height="500px" width="500px">&nbsp; <img src="images/3d3.jpg" height="500px" width="500px"></center></p>
+<p>Hmm...not quite what we want. </p>
+<h1>The Battle</h1>
+<p>Ok, let's take it bird by bird. So what are the variables here?
+- Projector
+- Resin
+- Priting variables</p>
+<div class="highlight"><pre><span></span>- Slice thickness
+- Exposure time
+- No. of bottom layer
+- Retract speed
+- Lift speed
+</pre></div>
+
+
+<p><strong>Projector specifications</strong> - We kept the luminosity of the projector at 3200 lumins and resolution at 800x600. The only variable here was the distance of the base from the lens for optimal printing quality. Since, we didn't have any other projector at disposal, we had to work with what we had. Later on, we searched for the best projector for the purpose and settled on <a href="https://www.projectorcentral.com/InFocus-IN8606HD.htm">InFocus IN8606 HD projector</a>.</p>
+<div class="highlight"><pre><span></span>Trivia You Should Know
+
+- With DLP projection, printing speed is not affected by the object complexity or the number of parts to be printed on the same base.
+- Wall-thickness(the minimum thickness that your model should have for any given material or technology) should be increased as the design becomes larger :
+    if (∑(x,y,z dimensions) <span class="err">&lt;</span>= 200mm) wall_thickness = 1mm;
+    else if (∑(x,y,z dimensions) ϵ (200 400]) wall_thickness = 2mm;
+    else wall_thickness = 3mm;
+- Orientation of the design while printing influences the surface quality and strength
+- Model needs to be supported externally to keep it in place <span class="err">&amp;</span> prevent from collapsing while being printed if it is narrower than 30 deg.
+</pre></div>
+
+
+<p><strong>Resin</strong> - This is where we spent most of our pre-fabrication time. It was absolutely essential to get the resin quality right (composition of resin &amp; hardner). We also injected color for different model varities. The transparency of the resin is also something we had to take into consideration. Since it is photo-sensitive, greater transparency meant the light from the projector would affect the liquid beyond the active layer.</p>
+<p><center><img src="images/3d4.jpg" height="500px" width="500px">&nbsp; <img src="images/3d5.jpg" height="500px" width="500px"></center></p>
+<p><strong>Printing variables</strong> - As is evident from the notes, we did a ton of experimentation on each of the aforementioned parameters, both in top-down and bottom-up approach (more on it later). We finally arrived at the numbers which would give the best printing quality and modified the open-source code accordingly. </p>
+<p>After tackling these problems, we started getting some pretty good print qualities -</p>
+<p><center><img src="images/3d6.jpg" height="500px" width="500px"></center>
+<center><p><i> We printed a lot of these models. I mean a lot. </i></p></center></p>
+<p>It was time to give it an aesthetic form which meant going back to the drawing board and redo everything from scratch (now that we have figured out the functionality). I have broken down the next phase into four different parts -
+- Mechanical Design (<em>crude</em> sketching, CAD modeling, drafting) 
+- Manufacturing &amp; Assembly (parts procurement, vendor identification, shop visits)
+- System Design (basically electronics and other electrical hardware components)
+- Code (customizing 'Creation Workshop', writing our own arduino code for motor movement) </p>
+<p>Before we move ahead with the topics, here are some of the design features we finalized for v1.0 -
+<em> Flexible vat size
+</em> Cover lifting mechanism
+<em> Projector to be kept horizontal to reduce vertical height (use mirror)
+</em> LCD Screen
+<em> On-off button (zero position setting)
+</em> Alternate mechanism for resin to settle in bottom-up approach
+<em> Sensors to trigger when the vat reaches extremes
+</em> Alignment balancing
+<em> LED indicator
+</em> Resin filling (Automatic &amp; graduate)
+<em> Overall cover
+</em> Material selection (resin can be reused after melting)
+<em> Color injection
+</em> Immiscible (heavier density) fluid to reduce resin requirement in top-down approach
+<em> Reverse movement of the base to maintain liquid flow
+</em> Feedback control 
+<em> Base position marking (static base positioning to avoid fluid sloshing)
+</em> Opening for venting smoke
+<em> G-code &amp; M-code interpreter
+</em> Adapters for motor, arduino board, etc.
+<em> Speed variation with changing slope
+</em> Increase time exposure for smaller or finer area
+* Third-party feature integration to let users browse 3D models online</p>
+<h2>Mechanical Design</h2>
+<p>Based on our requirements, we decided the dimensions and made the 3D models in Solidworks for both top-down and bottom-up approach separately. Individual components can be found <a href="https://drive.google.com/open?id=0B5ONt2rDwKNVUkhDdV95b0NpZmM">here</a>. For sketches, please refer to the notebook at the end.</p>
+<p><embed src="printfiles.pdf" width="100%" height="700px" /></p>
+<p>We exported the .dwg files for laser cutting. </p>
+<p><center><img src="images/render3.jpg" height="500px" width="500px"></center>
+<center><p><i> Initial render with all the component placed. </i></p></center></p>
+<h2>Manufacturing &amp; Assembly</h2>
+<p>We did a tedious market research to find vendors for every component. We maintained their credentials and the cost of manufacturing in a sheet. </p>
+<p><center><img src="images/3d7.jpg" height="500px" width="500px">&nbsp; <img src="images/3d8.jpg" height="500px" width="500px"></center></p>
+<p><center><img src="images/3d12.jpg" height="500px" width="500px"></center>
+<center><p><i> Here's us, discussing design modifications on a tissue paper in a restaurant when we went around market, searching for components. </i></p></center></p>
+<h2>System Design</h2>
+<p>We would ultimately build our own PCB but for the general idea, here's how it looked on the breadboard -</p>
+<p><center><img src="images/3d9.jpg" height="500px" width="500px"></center></p>
+<h2>Code</h2>
+<p>As said earlier, we wrote our entire arduino code from scratch based on the specifications given above. It is in private domain so I can disclose the code according to the agreement.</p>
+<p><center><img src="images/3d10.jpg" height="500px" width="500px">&nbsp; <img src="images/3d11.jpg" height="500px" width="500px"></center>
+<center><p><i> Here's me hacking that code :) </i></p></center></p>
+<p>We encountered numerous problems along the way and I kept noting them in my diary. Here are some of the excerpts -</p>
+<div class="highlight"><pre><span></span>&gt; Lack of hardener
+&gt; Liquid amount is crucial- when we&#39;re putting much liquid, the model is not getting formed while if we&#39;re putting less, then the base support is not getting enough liquid to print taking into
+account the liquid suction due to vacuum formation.
+Sheet transparency is also a probable problem. While going through some articles, we found that people were suggesting the change of sheets after 100000 or so layer prints. We can easily clear the glass but sheet cleaning might be tedious.
+
+&gt; Over-tightening may give rise of greater vacuum formation.
+We increased the exposure time to 2s and moved it.
+
+&gt; Now we got the hardener OPV 7102. We started with mixing 5ml of it but to our utter surprise, the model was worse that the former with no hardener. In fact, the model didn&#39;t even complete because of the softness.
+
+&gt; Vacuum formation under the model - After switching to glass container, we faced a challenge of broken parts being printed out. It left us perplexed for a while. We looked for the cause by
+eliminating the variable. After extensive research online, we finally identified the problem. It was the vacuum being formed at the base when hardened resin was being pulled out during
+printing. Liquid resin couldn&#39;t fill it in time due to large adhesion with glass base. We tried differnt solution like coating the base with PDMS (polydimethylsiloxane) but the resin started
+having whitish appearance at the bottom when heated. We had two other options - Sylgard 184 silicones or FEP sheets. Ultimately we decided to go with the later based on what people had
+suggested. We designed the tension riser for the FEP sheets and we were able to print fine models afterwards.
+</pre></div>
+
+
+<p><center><img src="images/3d22.jpg" height="500px" width="500px"></center></p>
+<h1>The Glory</h1>
+<p>Finally, our 3D started coming together. We were also getting print of superior quality.</p>
+<p><center><img src="images/3d13.jpg" height="500px" width="600px">&nbsp; <img src="images/3d14.jpg" height="500px" width="600px"></center></p>
+<h2>Miscellaneous Photos</h2>
+<p><center><img src="images/3d17.jpg" height="500px" width="600px">&nbsp; <img src="images/3d18.jpg" height="500px" width="600px"></center><br>
+<center><img src="images/3d19.jpg" height="500px" width="600px">&nbsp; <img src="images/3d20.jpg" height="500px" width="600px"></center><br>
+<center><img src="images/3d21.jpg" height="500px" width="600px">&nbsp; <img src="images/3d23.jpg" height="500px" width="600px"></center></p>
+<p>All in all, it was a highly fulfilling experience. The learning I had in those one and half months far exceed one and half years of classroom education. We had our fair bit of fun in the process. Unfortunately, I had to leave before I completely assembled the product because of college. Besides work, an internship is also an excellent way to form a good friendship. Till the next time! Peace ✌</p>
+<p><center><img src="images/3d15.jpg" height="500px" width="600px">&nbsp; <img src="images/3d16.jpg" height="500px" width="600px"></center></p>
+<h1>Internship Notebook</h1>
+<p><section id="scribbles">
+    <embed src="Scribbles.pdf" width="100%" height="700px" />
+</section></p>
   </div>
   <div class="tag-cloud">
     <p>
@@ -138,9 +282,9 @@
 {
   "@context": "http://schema.org",
   "@type": "BlogPosting",
-  "name": "Building an UV-DLP based 3D Printer",
-  "headline": "Building an UV-DLP based 3D Printer",
-  "datePublished": "2015-07-10 23:00:00+05:30",
+  "name": "Building a UV-DLP based 3D Printer",
+  "headline": "Building a UV-DLP based 3D Printer",
+  "datePublished": "2016-07-10 23:00:00+05:30",
   "dateModified": "",
   "author": {
     "@type": "Person",
@@ -149,7 +293,7 @@
   },
   "image": "{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/profile.png",
   "url": "/My sophomore internship experience and what I learnt from it..html",
-  "description": "I did my sophomore year summer internship at one of the budding Delhi-based startup named 'DreamsInfinity'. It was a product development internship meaning I was hired to build a commerical 3D printer based on UV-DLP (Ultraviolet Direct Light Processing) technique which was a new concept introduced in the world of …"
+  "description": "Disclaimer - I'm writing this blog post about an year later after the internship, so I might have missed few things. Kindly contact me if you need further information. This post, in no way, gives the full information for building a 3D printer yourself. It is just for documenting my internship …"
 }
 </script></body>
 </html>
