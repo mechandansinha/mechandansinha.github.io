@@ -278,7 +278,7 @@ ul.social a.sc-pinterest {
     background-color: #c92619
 }
 ul.social a.sc-linkedin {
-    background-color: #3371b7
+    background-color: none;
 }
 ul.social a.sc-rss {
     background-color: #f26109
@@ -287,17 +287,17 @@ ul.social a.sc-stack-overflow {
     background-color: #f90
 }
 ul.social a.sc-twitter {
-    background-color: #4da7de
+    background-color: none;
 }
 ul.social a.sc-youtube {
-    background-color: #e02a20
+    background-color: none;
 }
 ul.social a.sc-github,
 ul.social a.sc-github-alt {
-    background-color: #111010
+    background-color: none;
 }
 ul.social a.sc-envelope-o {
-    background-color: #578ad6
+    background-color: none;
 }
 ul.social a.sc-reddit {
     background-color: #ff4500
