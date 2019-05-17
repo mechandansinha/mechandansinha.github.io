@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <link href='//fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,700,400italic' rel='stylesheet' type='text/css'>
+
+    <link rel="stylesheet" type="text/css" href="/theme/stylesheet/style.min.css">
+
+  <link rel="stylesheet" type="text/css" href="/theme/pygments/emacs.min.css">
+  <link rel="stylesheet" type="text/css" href="/theme/font-awesome/fontawesome-new/css/all.css">
+
+
+
+
+    <link rel="shortcut icon" href="https://mechanicalcoder.github.io/images/logo.png" type="image/x-icon">
+    <link rel="icon" href="https://mechanicalcoder.github.io/images/logo.png" type="image/x-icon">
+
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <meta name="HandheldFriendly" content="True" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="" />
+
+    <!-- Chrome, Firefox OS and Opera -->
+    <meta name="theme-color" content="#4285f4">
+    <!-- Windows Phone -->
+    <meta name="msapplication-navbutton-color" content="#4285f4">
+    <!-- iOS Safari -->
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<meta name="author" content="Chandan Sinha" />
+<meta name="description" content="Quick python revision notes for beginners" />
+<meta name="keywords" content="programming, python">
+<meta property="og:site_name" content="Chandan Sinha | Techblog"/>
+<meta property="og:title" content="Python Notes"/>
+<meta property="og:description" content="Quick python revision notes for beginners"/>
+<meta property="og:locale" content="en_US"/>
+<meta property="og:url" content="/python-notes.html"/>
+<meta property="og:type" content="article"/>
+<meta property="article:published_time" content="2019-05-17 15:30:00+05:30"/>
+<meta property="article:modified_time" content=""/>
+<meta property="article:author" content="/author/chandan-sinha.html">
+<meta property="article:section" content="Tech"/>
+<meta property="article:tag" content="programming"/>
+<meta property="article:tag" content="python"/>
+<meta property="og:image" content="">
+  <title>Chandan Sinha | Techblog &ndash; Python Notes</title>
+
+  <!-- For customs stylesheet in articles -->
+  <style>
+  *{
+    font-family:Roboto;
+  }
+  </style>
+
+  <!-- For customs stylesheet in pages -->
+
+  <!-- For customs JS in articles -->
+
+  <!-- For customs JS in pages -->
+</head>
+<body>
+  <aside>
+    <div>
+      <a href="">
+        <img src="/theme/img/avatar.png" alt="Rustic Engineer" title="Rustic Engineer">
+      </a>
+      <h1 style="font-size:2.2em"><a href="https://mechandansinha.github.io">Rustic Engineer</a></h1>
+<p>Building my own HogwartsTech</p>      <nav>
+        <ul class="list">
+          <li><a href="/pages/about.html#about">About me</a></li>
+          <li><a href="/pages/contact.html#contact">Contact</a></li>
+          <li><a href="/pages/My projects.html#My projects">Portfolio</a></li>
+          <li><a href="http://chandansinha.me/" target="_blank">Website</a></li>
+        </ul>
+      </nav>
+      <ul class="social">
+        <li><a class="sc-github" href="https://github.com/mechandansinha" target="_blank"><i class="fab fa-github"></i></a></li>
+        <li><a class="sc-linkedin" href="https://in.linkedin.com/in/chandansinha1" target="_blank"><i class="fab fa-linkedin"></i></a></li>
+        <li><a class="sc-wordpress" href="https://thevindicatedaxiom.wordpress.com/" target="_blank"><i class="fab fa-wordpress"></i></a></li>
+        <li><a class="sc-twitter" href="https://twitter.com/OrangeDurito" target="_blank"><i class="fab fa-twitter"></i></a></li>
+        <li><a class="sc-youtube" href="https://www.youtube.com/channel/UC-9V3F-jbe9Kq4sN_NJYakw" target="_blank"><i class="fab fa-youtube"></i></a></li>
+      </ul>
+    </div>
+  </aside>
+  <main>
+    <nav>
+      <a href="https://mechandansinha.github.io">Home</a>
+      <a href="/archives.html">Archives</a>
+      <a href="/categories.html">Categories</a>
+      <a href="/tags.html">Tags</a>
+    </nav>
+
+<article>
+  <header>
+    <h1 id="python-notes">Python Notes</h1>
+    <p>Posted on Fri 17 May 2019 in <a href="/category/tech.html">Tech</a></p>
+  </header>
+  <div>
+    <h2>Introduction</h2>
+<p>Python is a high-level programming language.</p>
+<h2>Miscellaneous</h2>
+<ul>
+<li>
+<p>Suppose you've got a module "binky.py" which contains a "def foo()". The fully qualified name of that foo function is "binky.foo". In this way, various Python modules can name their functions and variables whatever they want, and the variable names won't conflict — module1.foo is different from module2.foo. In the Python vocabulary, we'd say that binky, module1, and module2 each have their own "namespaces," which as you can guess are variable name-to-object bindings.</p>
+</li>
+<li>
+<p>input() function always returns a string, even if the user enters a number. </p>
+</li>
+</ul>
+<h2>Strings</h2>
+<p>Different methods available for str object - </p>
+<ul>
+<li>
+<p><code>s.lower(), s.upper()</code> -- returns the lowercase or uppercase version of the string</p>
+</li>
+<li>
+<p><code>s.strip()</code>-- returns a string with whitespace removed from the start and end</p>
+</li>
+<li>
+<p><code>s.isalpha()/s.isdigit()/s.isspace()...</code> -- tests if all the string chars are in the various character classes</p>
+</li>
+<li>
+<p><code>s.startswith('other'), s.endswith('other')</code> -- tests if the string starts or ends with the given other string</p>
+</li>
+<li>
+<p><code>s.find('other')</code> -- searches for the given other string (not a regular expression) within s, and returns the first index where it begins or -1 if not found</p>
+</li>
+<li>
+<p><code>s.replace('old', 'new')</code> -- returns a string where all occurrences of 'old' have been replaced by 'new'</p>
+</li>
+<li>
+<p><code>s.split('delim')</code> -- returns a list of substrings separated by the given delimiter. The delimiter is not a regular expression, it's just text. 'aaa,bbb,ccc'.split(',') -&gt; ['aaa', 'bbb', 'ccc']. As a convenient special case s.split() (with no arguments) splits on all whitespace chars.</p>
+</li>
+<li>
+<p><code>s.join(list)</code> -- opposite of split(), joins the elements in the given list together using the string as the delimiter. e.g. '---'.join(['aaa', 'bbb', 'ccc']) -&gt; aaa---bbb---ccc</p>
+</li>
+<li>
+<p>Python uses negative numbers to give easy access to the chars at the end of the string: <code>s[-1]</code> is the last char 'o', <code>s[-2]</code> is 'l' the next-to-last char, and so on. Negative index numbers count back from the end of the string</p>
+</li>
+<li>
+<p>Since python code does not have other syntax to remind you of types, your variable names are a key way for you to keep straight what is going on.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>  <span class="c1"># % operator</span>
+  <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> little pigs come out, or I&#39;ll </span><span class="si">%s</span><span class="s2">, and I&#39;ll </span><span class="si">%s</span><span class="s2">, and I&#39;ll blow your </span><span class="si">%s</span><span class="s2"> down.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;huff&#39;</span><span class="p">,</span> <span class="s1">&#39;puff&#39;</span><span class="p">,</span> <span class="s1">&#39;house&#39;</span><span class="p">)</span>
+</pre></div>
+
+
+<ul>
+<li>Character encoding -</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">## (ustring from above contains a unicode string)</span>
+<span class="o">&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">ustring</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="o">&gt;</span> <span class="n">s</span>
+<span class="s1">&#39;A unicode </span><span class="se">\xc6\x8e</span><span class="s1"> string </span><span class="se">\xc3\xb1</span><span class="s1">&#39;</span>  <span class="c1">## bytes of utf-8 encoding</span>
+<span class="o">&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="nb">unicode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>             <span class="c1">## Convert bytes back to a unicode string</span>
+<span class="o">&gt;</span> <span class="n">t</span> <span class="o">==</span> <span class="n">ustring</span>                      <span class="c1">## It&#39;s the same as the original, yay!</span>
+<span class="bp">True</span>
+</pre></div>
+
+
+<h2>List</h2>
+<ul>
+<li><code>for</code> and <code>in</code> constructors:</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">]</span>
+<span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">squares</span><span class="p">:</span>
+    <span class="nb">sum</span> <span class="o">+=</span> <span class="n">num</span>
+<span class="k">print</span> <span class="nb">sum</span>  <span class="c1">#30</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;larry&#39;</span><span class="p">,</span><span class="s1">&#39;curly&#39;</span><span class="p">,</span><span class="s1">&#39;moe&#39;</span><span class="p">]</span>
+<span class="k">if</span> <span class="s1">&#39;curly&#39;</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;yay&#39;</span>   <span class="c1">#yay</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p><code>range(n)</code> function yields the number 0,1,...n-1 and <code>range(a,b)</code> returns a, a+1, a+2, .....,b-1</p>
+</li>
+<li>
+<p>The combination of the for-loop and the range(n) function allow us to build a traditional numeric for loop:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">i</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>While Loop - Standard <code>while</code> loop like C++. <code>break</code> and <code>continue</code> statements works the same. </p>
+</li>
+<li>
+<p>while loop gives total control over the index numbers.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
+    <span class="k">print</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">3</span>
+</pre></div>
+
+
+<ul>
+<li>List methods:</li>
+</ul>
+<div class="highlight"><pre><span></span>  <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;larry&#39;</span><span class="p">,</span> <span class="s1">&#39;curly&#39;</span><span class="p">,</span> <span class="s1">&#39;moe&#39;</span><span class="p">]</span>
+  <span class="nb">list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;shemp&#39;</span><span class="p">)</span>         <span class="c1">## append elem at end</span>
+  <span class="nb">list</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;xxx&#39;</span><span class="p">)</span>        <span class="c1">## insert elem at index 0</span>
+  <span class="nb">list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s1">&#39;yyy&#39;</span><span class="p">,</span> <span class="s1">&#39;zzz&#39;</span><span class="p">])</span>  <span class="c1">## add list of elems at end</span>
+  <span class="k">print</span> <span class="nb">list</span>  <span class="c1">## [&#39;xxx&#39;, &#39;larry&#39;, &#39;curly&#39;, &#39;moe&#39;, &#39;shemp&#39;, &#39;yyy&#39;, &#39;zzz&#39;]</span>
+  <span class="k">print</span> <span class="nb">list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;curly&#39;</span><span class="p">)</span>    <span class="c1">## 2</span>
+
+  <span class="nb">list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;curly&#39;</span><span class="p">)</span>         <span class="c1">## search and remove that element</span>
+  <span class="nb">list</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                  <span class="c1">## removes and returns &#39;larry&#39;</span>
+  <span class="k">print</span> <span class="nb">list</span>  <span class="c1">## [&#39;xxx&#39;, &#39;moe&#39;, &#39;shemp&#39;, &#39;yyy&#39;, &#39;zzz&#39;]</span>
+</pre></div>
+
+
+<ul>
+<li>List Slices - works just like in strings</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">]</span>
+<span class="k">print</span> <span class="nb">list</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>   <span class="c1">## [&#39;b&#39;, &#39;c&#39;]</span>
+<span class="nb">list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span>    <span class="c1">## replace [&#39;a&#39;, &#39;b&#39;] with [&#39;z&#39;]</span>
+<span class="k">print</span> <span class="nb">list</span>         <span class="c1">## [&#39;z&#39;, &#39;c&#39;, &#39;d&#39;]</span>
+</pre></div>
+
+
+<h2>Sorting</h2>
+<ul>
+<li><code>sorted</code> function sort the elements and returns a new list. The original list remains unchanged.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="k">print</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1">## [1, 3, 4, 5]</span>
+<span class="k">print</span> <span class="n">a</span>  <span class="c1">## [5, 1, 4, 3]</span>
+</pre></div>
+
+
+<p>It is also customizable with optional arguments like <code>key</code> and <code>reverse=True</code></p>
+<div class="highlight"><pre><span></span><span class="n">strs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;aa&#39;</span><span class="p">,</span> <span class="s1">&#39;BB&#39;</span><span class="p">,</span> <span class="s1">&#39;zz&#39;</span><span class="p">,</span> <span class="s1">&#39;CC&#39;</span><span class="p">]</span>
+<span class="k">print</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">strs</span><span class="p">)</span>  <span class="c1">## [&#39;BB&#39;, &#39;CC&#39;, &#39;aa&#39;, &#39;zz&#39;] (case sensitive)</span>
+<span class="k">print</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">strs</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>   <span class="c1">## [&#39;zz&#39;, &#39;aa&#39;, &#39;CC&#39;, &#39;BB&#39;]</span>
+</pre></div>
+
+
+<ul>
+<li>More examples on <code>key</code> argument</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">strs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;aa&#39;</span><span class="p">,</span> <span class="s1">&#39;BB&#39;</span><span class="p">,</span> <span class="s1">&#39;zz&#39;</span><span class="p">,</span> <span class="s1">&#39;CC&#39;</span><span class="p">]</span>
+
+<span class="c1">## &quot;key&quot; argument specifying str.lower function to use for sorting</span>
+<span class="k">print</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">strs</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">)</span>  <span class="c1">## [&#39;aa&#39;, &#39;BB&#39;, &#39;CC&#39;, &#39;zz&#39;]</span>
+
+<span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;xc&#39;</span><span class="p">,</span> <span class="s1">&#39;zb&#39;</span><span class="p">,</span> <span class="s1">&#39;yd&#39;</span> <span class="p">,</span><span class="s1">&#39;wa&#39;</span><span class="p">]</span>
+
+<span class="c1">## Write a little function that takes a string, and returns its last letter.</span>
+<span class="c1">## This will be the key function (takes in 1 value, returns 1 value).</span>
+<span class="k">def</span> <span class="nf">MyFn</span><span class="p">(</span><span class="n">s</span><span class="p">):</span>
+<span class="k">return</span> <span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+
+<span class="c1">## Now pass key=MyFn to sorted() to sort by the last letter:</span>
+<span class="k">print</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">strs</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">MyFn</span><span class="p">)</span>  <span class="c1">## [&#39;wa&#39;, &#39;zb&#39;, &#39;xc&#39;, &#39;yd&#39;]</span>
+</pre></div>
+
+
+<ul>
+<li>Working with <code>tuple</code></li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nb">tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;hi&#39;</span><span class="p">)</span>
+<span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="nb">tuple</span><span class="p">)</span>  <span class="c1">## 3</span>
+<span class="k">print</span> <span class="nb">tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>    <span class="c1">## hi</span>
+<span class="nb">tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bye&#39;</span>  <span class="c1">## NO, tuples cannot be changed</span>
+<span class="nb">tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;bye&#39;</span><span class="p">)</span>  <span class="c1">## this works</span>
+
+<span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="s2">&quot;hike&quot;</span><span class="p">)</span>
+<span class="k">print</span> <span class="n">z</span>  <span class="c1">## hike</span>
+<span class="p">(</span><span class="n">err_string</span><span class="p">,</span> <span class="n">err_code</span><span class="p">)</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">()</span>  <span class="c1">## Foo() returns a length-2 tuple</span>
+</pre></div>
+
+
+<ul>
+<li>List Comprehension</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">squares</span> <span class="o">=</span> <span class="p">[</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nums</span> <span class="p">]</span>   <span class="c1">## [1, 4, 9, 16]</span>
+</pre></div>
+
+
+<p>Common syntax - <code>[expr for var in list]</code></p>
+<div class="highlight"><pre><span></span><span class="n">strs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span><span class="s1">&#39;and&#39;</span><span class="p">,</span><span class="s1">&#39;goodbye&#39;</span><span class="p">]</span>
+<span class="n">shouting</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">+</span><span class="s1">&#39;!!!&#39;</span> <span class="k">for</span> <span class="n">words</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">strs</span><span class="p">]</span>
+<span class="c1">## [&#39;HELLO!!!&#39;, &#39;AND!!!&#39;, &#39;GOODBYE!!!&#39;]</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="c1">## Select values &lt;= 2</span>
+<span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
+<span class="n">small</span> <span class="o">=</span> <span class="p">[</span> <span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nums</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="p">]</span>  <span class="c1">## [2, 1]</span>
+
+<span class="c1">## Select fruits containing &#39;a&#39;, change to upper case</span>
+<span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;cherry&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;lemon&#39;</span><span class="p">]</span>
+<span class="n">afruits</span> <span class="o">=</span> <span class="p">[</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">fruits</span> <span class="k">if</span> <span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="n">s</span> <span class="p">]</span>
+<span class="c1">## [&#39;APPLE&#39;, &#39;BANANA&#39;]</span>
+</pre></div>
+
+
+<h2>Dict Hash Table</h2>
+<p>Python's efficient key/value hash table structure is called a "dict". The contents of a dict can be written as a series of key:value pairs within braces { }, e.g. dict = {key1:value1, key2:value2, ... }. </p>
+<div class="highlight"><pre><span></span><span class="c1">## Can build up a dict by starting with the the empty dict {}</span>
+<span class="c1">## and storing key/value pairs into the dict like this:</span>
+<span class="c1">## dict[key] = value-for-that-key</span>
+<span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;alpha&#39;</span>
+<span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;g&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;gamma&#39;</span>
+<span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;o&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;omega&#39;</span>
+
+<span class="k">print</span> <span class="nb">dict</span>  <span class="c1">## {&#39;a&#39;: &#39;alpha&#39;, &#39;o&#39;: &#39;omega&#39;, &#39;g&#39;: &#39;gamma&#39;}</span>
+
+<span class="k">print</span> <span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span>     <span class="c1">## Simple lookup, returns &#39;alpha&#39;</span>
+<span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>       <span class="c1">## Put new key/value into dict</span>
+<span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="nb">dict</span>         <span class="c1">## True</span>
+<span class="c1">## print dict[&#39;z&#39;]                  ## Throws KeyError</span>
+<span class="k">if</span> <span class="s1">&#39;z&#39;</span> <span class="ow">in</span> <span class="nb">dict</span><span class="p">:</span> <span class="k">print</span> <span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>     <span class="c1">## Avoid KeyError</span>
+<span class="k">print</span> <span class="nb">dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>  <span class="c1">## None (instead of KeyError)</span>
+</pre></div>
+
+
+<ul>
+<li>Traversing <code>dict</code></li>
+</ul>
+<div class="highlight"><pre><span></span><span class="c1">## By default, iterating over a dict iterates over its keys.</span>
+<span class="c1">## Note that the keys are in a random order.</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">dict</span><span class="p">:</span> <span class="k">print</span> <span class="n">key</span>
+<span class="c1">## prints a g o</span>
+
+<span class="c1">## Exactly the same as above</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span> <span class="k">print</span> <span class="n">key</span>
+
+<span class="c1">## Get the .keys() list:</span>
+<span class="k">print</span> <span class="nb">dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>  <span class="c1">## [&#39;a&#39;, &#39;o&#39;, &#39;g&#39;]</span>
+
+<span class="c1">## Likewise, there&#39;s a .values() list of values</span>
+<span class="k">print</span> <span class="nb">dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>  <span class="c1">## [&#39;alpha&#39;, &#39;omega&#39;, &#39;gamma&#39;]</span>
+
+<span class="c1">## Common case -- loop over the keys in sorted order,</span>
+<span class="c1">## accessing each key/value</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
+<span class="k">print</span> <span class="n">key</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>    <span class="c1">## My comment: didn&#39;t work. &#39;dict&#39; object has no attribute &#39;key&#39;</span>
+
+<span class="c1">## .items() is the dict expressed as (key, value) tuples</span>
+<span class="k">print</span> <span class="nb">dict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>  <span class="c1">##  [(&#39;a&#39;, &#39;alpha&#39;), (&#39;o&#39;, &#39;omega&#39;), (&#39;g&#39;, &#39;gamma&#39;)]</span>
+
+<span class="c1">## This loop syntax accesses the whole dict by looping</span>
+<span class="c1">## over the .items() tuple list, accessing one (key, value)</span>
+<span class="c1">## pair on each iteration.</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span> <span class="k">print</span> <span class="n">k</span><span class="p">,</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">,</span> <span class="n">v</span>
+<span class="c1">## a &gt; alpha    o &gt; omega     g &gt; gamma</span>
+</pre></div>
+
+
+<ul>
+<li>Dict Formatting</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="nb">hash</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="nb">hash</span><span class="p">[</span><span class="s1">&#39;word&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;garfield&#39;</span>
+<span class="nb">hash</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;I want </span><span class="si">%(count)d</span><span class="s1"> copies of </span><span class="si">%(word)s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">hash</span>  <span class="c1"># %d for int, %s for string</span>
+<span class="c1"># &#39;I want 42 copies of garfield&#39;</span>
+</pre></div>
+
+
+<ul>
+<li><code>del</code> operator</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="n">var</span> <span class="o">=</span> <span class="mi">6</span>
+<span class="k">del</span> <span class="n">var</span>  <span class="c1"># var no more!</span>
+
+<span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">]</span>
+<span class="k">del</span> <span class="nb">list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>     <span class="c1">## Delete first element</span>
+<span class="k">del</span> <span class="nb">list</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>   <span class="c1">## Delete last two elements</span>
+<span class="k">print</span> <span class="nb">list</span>      <span class="c1">## [&#39;b&#39;]</span>
+
+<span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">}</span>
+<span class="k">del</span> <span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>   <span class="c1">## Delete &#39;b&#39; entry</span>
+<span class="k">print</span> <span class="nb">dict</span>      <span class="c1">## {&#39;a&#39;:1, &#39;c&#39;:3}</span>
+</pre></div>
+
+
+<h2>Files</h2>
+<ul>
+<li>
+<p>The <code>open()</code> function opens and returns a file handle that can be used to read or write a file in the usual way. The code <code>f = open('name', 'r')</code> opens the file into the variable f, ready for reading operations, and use <code>f.close()</code> when finished. Instead of 'r', use 'w' for writing, and 'a' for append. </p>
+</li>
+<li>
+<p>The special mode 'rU' is the "Universal" option for text files where it's smart about converting different line-endings so they always come through as a simple '\n'. The standard for-loop works for text files, iterating through the lines of the file (this works only for text files, not binary files). The for-loop technique is a simple and efficient way to look at all the lines in a text file:</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span> <span class="c1"># Echo the contents of a file</span>
+<span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;foo.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;rU&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>   <span class="c1">## iterates over the lines of the file</span>
+<span class="k">print</span> <span class="n">line</span><span class="p">,</span>    <span class="c1">## trailing , so print does not add an end-of-line char</span>
+        <span class="c1">## since &#39;line&#39; already includes the end-of line.</span>
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>For writing, <code>f.write(string)</code> method is the easiest way to write data to an open output file</p>
+</li>
+<li>
+<p><code>f.readlines()</code> method reads the whole file into memory and returns its contents as a list of its lines. The <code>f.read()</code> method reads the whole file into a single string</p>
+</li>
+<li>
+<p>Files Unicode - The "codecs" module provides support for reading a unicode file.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">codecs</span>
+
+<span class="n">f</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;foo.txt&#39;</span><span class="p">,</span><span class="s1">&#39;rU&#39;</span><span class="p">,</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">print</span> <span class="n">line</span><span class="p">,</span>
+
+<span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+</pre></div>
+
+
+<h2>Regular Expressions</h2>
+<p>Python "re" module provides regular expression support.</p>
+<div class="highlight"><pre><span></span><span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span><span class="nb">str</span><span class="p">)</span> <span class="c1">#returns match object or None otherwise</span>
+</pre></div>
+
+
+<p>Example:</p>
+<div class="highlight"><pre><span></span><span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;an example word:cat!!&#39;</span>
+<span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;word:\w\w\w&#39;</span><span class="p">,</span><span class="nb">str</span><span class="p">)</span>
+<span class="c1"># If-statement after search() tests if it succeeded</span>
+<span class="k">if</span> <span class="n">match</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;found&#39;</span><span class="p">,</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">()</span> <span class="c1">## &#39;found word:cat&#39;</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">print</span> <span class="s1">&#39;did not find&#39;</span>
+</pre></div>
+
+
+<p><code>match.group()</code> is the matching text.</p>
+<ul>
+<li>The 'r' at the start of the pattern string designates a python "raw" string which passes through backslashes without change which is very handy for regular expressions</li>
+</ul>
+  </div>
+  <div class="tag-cloud">
+    <p>
+      <a href="/tag/programming.html">programming</a>
+      <a href="/tag/python.html">python</a>
+    </p>
+  </div>
+<div id="disqus_thread"></div>
+<script type="text/javascript">
+    var disqus_shortname = 'mechanicalcodertechblog';
+    (function() {
+        var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+        dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+        (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+    })();
+</script>
+<noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</article>
+
+    <footer>
+        <p>&copy; Chandan Sinha | 2019</p>
+<p>Built using <a href="http://getpelican.com" target="_blank">Pelican</a> - <a href="https://github.com/alexandrevicenzi/flex" target="_blank">Flex</a> theme    </footer>
+  </main>
+
+<!-- Google Analytics -->
+<script type="text/javascript">
+  (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+  })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+  ga('create', 'UA-80245224-1', 'auto');
+  ga('send', 'pageview');
+</script>
+<!-- End Google Analytics -->
+
+
+
+<script type="application/ld+json">
+{
+  "@context" : "http://schema.org",
+  "@type" : "Blog",
+  "name": " Chandan Sinha | Techblog ",
+  "url" : "",
+  "image": "",
+  "description": ""
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "http://schema.org",
+  "@type": "BlogPosting",
+  "name": "Python Notes",
+  "headline": "Python Notes",
+  "datePublished": "2019-05-17 15:30:00+05:30",
+  "dateModified": "",
+  "author": {
+    "@type": "Person",
+    "name": "Chandan Sinha",
+    "url": "/author/chandan-sinha.html"
+  },
+  "image": "{{ SITEURL }}/{{ THEME_STATIC_DIR }}/img/profile.png",
+  "url": "/python-notes.html",
+  "description": "Quick python revision notes for beginners"
+}
+</script>
+  <!-- For customs JS in articles -->
+
+  <!-- For custom JS in pages -->
+</body>
+</html>
