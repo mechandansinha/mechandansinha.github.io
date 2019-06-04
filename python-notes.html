@@ -105,7 +105,30 @@
 <p>Suppose you've got a module "binky.py" which contains a "def foo()". The fully qualified name of that foo function is "binky.foo". In this way, various Python modules can name their functions and variables whatever they want, and the variable names won't conflict — module1.foo is different from module2.foo. In the Python vocabulary, we'd say that binky, module1, and module2 each have their own "namespaces," which as you can guess are variable name-to-object bindings.</p>
 </li>
 <li>
-<p>input() function always returns a string, even if the user enters a number. </p>
+<p><code>input()</code> function always returns a string, even if the user enters a number. </p>
+</li>
+<li>
+<p>Precedence order of Boolean Operators - <code>not</code>,<code>and</code>,<code>or</code></p>
+</li>
+<li>
+<p>An integer can be equal to a floating point.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">42</span> <span class="o">==</span> <span class="s1">&#39;42&#39;</span>
+<span class="bp">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mi">42</span> <span class="o">==</span> <span class="mf">42.0</span>
+<span class="bp">True</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="mf">42.0</span> <span class="o">==</span> <span class="mf">0042.000</span>
+<span class="bp">True</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>At most only one of the clauses (in flow-control statement) will be executed, and for <code>elif</code> statements, the order matters!</p>
+</li>
+<li>
+<p>When the program execution reaches a <code>continue</code> statement, the program execution immediately jumps back to the start of the loop and reevaluates the loop’s condition.</p>
 </li>
 </ul>
 <h2>Strings</h2>
@@ -162,13 +185,26 @@
 
 <h2>List</h2>
 <ul>
-<li><code>for</code> and <code>in</code> constructors:</li>
+<li>
+<p>The <code>del</code> statement will delete values at an index in a lsit</p>
+</li>
+<li>
+<p><code>for</code>, <code>not</code> and <code>in</code> constructors:</p>
+</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">]</span>
 <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">squares</span><span class="p">:</span>
     <span class="nb">sum</span> <span class="o">+=</span> <span class="n">num</span>
 <span class="k">print</span> <span class="nb">sum</span>  <span class="c1">#30</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;hi&#39;</span><span class="p">,</span> <span class="s1">&#39;howdy&#39;</span><span class="p">,</span> <span class="s1">&#39;heyas&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;cat&#39;</span> <span class="ow">in</span> <span class="n">spam</span>
+<span class="bp">False</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;howdy&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">spam</span>
+<span class="bp">False</span>
 </pre></div>
 
 
@@ -179,15 +215,68 @@
 
 
 <ul>
-<li>
-<p><code>range(n)</code> function yields the number 0,1,...n-1 and <code>range(a,b)</code> returns a, a+1, a+2, .....,b-1</p>
-</li>
-<li>
-<p>The combination of the for-loop and the range(n) function allow us to build a traditional numeric for loop:</p>
-</li>
+<li>Multiple assignment trick -</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">):</span>
-    <span class="k">print</span> <span class="n">i</span>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">cat</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fat&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;loud&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">disposition</span> <span class="o">=</span> <span class="n">cat</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">size</span>
+<span class="s1">&#39;fat&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">color</span>
+<span class="s1">&#39;orange&#39;</span>
+</pre></div>
+
+
+<ul>
+<li>Augmented assignment - </li>
+</ul>
+<table>
+<thead>
+<tr>
+<th>Augmented Assignment Statement</th>
+<th>Equivalent Assignment Statement</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>spam += 1</td>
+<td>spam = spam + 1</td>
+</tr>
+<tr>
+<td>spam -= 1</td>
+<td>spam = spam - 1</td>
+</tr>
+<tr>
+<td>spam *= 1</td>
+<td>spam = spam * 1</td>
+</tr>
+<tr>
+<td>spam /= 1</td>
+<td>spam = spam / 1</td>
+</tr>
+<tr>
+<td>spam %= 1</td>
+<td>spam = spam % 1</td>
+</tr>
+</tbody>
+</table>
+<ul>
+<li>Swapping values -</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="s1">&#39;Bob&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="s1">&#39;Alice&#39;</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>* ```range(n)``` function yields the number 0,1,...n-1 and ```range(a,b)``` returns a, a+1, a+2, .....,b-1
+
+* The combination of the for-loop and the range(n) function allow us to build a traditional numeric for loop:
+```python
+for i in range(100):
+    print i
 </pre></div>
 
 
@@ -224,6 +313,15 @@
 
 
 <ul>
+<li>Where there are duplicated of the value in the list, the index of its first appearance is returned. </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Zophie&#39;</span><span class="p">,</span> <span class="s1">&#39;Pooka&#39;</span><span class="p">,</span> <span class="s1">&#39;Fat-tail&#39;</span><span class="p">,</span> <span class="s1">&#39;Pooka&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;Pooka&#39;</span><span class="p">)</span>
+<span class="mi">1</span>
+</pre></div>
+
+
+<ul>
 <li>List Slices - works just like in strings</li>
 </ul>
 <div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">]</span>
@@ -233,7 +331,120 @@
 </pre></div>
 
 
-<h2>Sorting</h2>
+<ul>
+<li>A string is also kind of a list of single text character</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Zophie&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="s1">&#39;Z&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
+<span class="s1">&#39;Zoph&#39;</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p>Lists and strings are different in a way that list is a mutable data type. It can have values added, removed or changed. A string is immutable.</p>
+</li>
+<li>
+<p>Unlike strings, when you assign a list to a variable, you are actually assigning a list reference to the variable. A reference is a value that points to some bit of data, and a list reference is a value that points to a list.</p>
+</li>
+</ul>
+<p><img alt="alt text" src="https://automatetheboringstuff.com/images/000081.jpg" title="Reference figure"></p>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">4.5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cheese</span> <span class="o">=</span> <span class="n">spam</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cheese</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hello!&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Hello!&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cheese</span>
+<span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Hello!&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+</pre></div>
+
+
+<p><strong>Python uses references whenever variables must store values of mutable data types, such as lists or dictionaries. For values of immutable data types such as strings, integers, or tuples, Python variables will store the value itself.</strong></p>
+<h3><code>copy()</code> and <code>deepcopy()</code> functions under <code>copy</code> module -</h3>
+<ul>
+<li>If we don't want to change the original list or dictionary - </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">copy</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cheese</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">spam</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cheese</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span>
+<span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">cheese</span>
+<span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<ul>
+<li>If the list you need to copy contains list, then use <code>copy.deepcopy()</code> function instead of <code>copy.copy()</code>. The <code>deepcopy()</code> function will copy these inner lists as well.</li>
+</ul>
+<h3>Tuples</h3>
+<ul>
+<li>Just like list but immutable. Declared by () brackets.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">eggs</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">eggs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="s1">&#39;hello&#39;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">eggs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="n">Traceback</span> <span class="p">(</span><span class="n">most</span> <span class="n">recent</span> <span class="n">call</span> <span class="n">last</span><span class="p">):</span>
+  <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+    <span class="n">eggs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
+<span class="ne">TypeError</span><span class="p">:</span> <span class="s1">&#39;tuple&#39;</span> <span class="nb">object</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">item</span> <span class="n">assignment</span>
+</pre></div>
+
+
+<ul>
+<li>If the tuple has only one value, it can be indicated by placing a trailing comma after the value inside the parenthesis. </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">((</span><span class="s1">&#39;hello&#39;</span><span class="p">,))</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">tuple</span><span class="s1">&#39;&gt;</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">((</span><span class="s1">&#39;hello&#39;</span><span class="p">))</span>
+<span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">str</span><span class="s1">&#39;&gt;</span>
+</pre></div>
+
+
+<ul>
+<li>Converting types with <code>list()</code> and <code>tuple()</code> functions -</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nb">tuple</span><span class="p">([</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">((</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+<span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
+<span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">]</span>
+<span class="sb">````</span>
+<span class="o">**</span><span class="n">Converting</span> <span class="n">a</span> <span class="nb">tuple</span> <span class="n">to</span> <span class="n">a</span> <span class="nb">list</span> <span class="ow">is</span> <span class="n">handy</span> <span class="k">if</span> <span class="n">you</span> <span class="n">need</span> <span class="n">a</span> <span class="n">mutable</span> <span class="n">version</span> <span class="n">of</span> <span class="n">a</span> <span class="nb">tuple</span> <span class="n">value</span><span class="o">.**</span>
+
+<span class="c1">## Sorting</span>
+
+<span class="o">*</span> <span class="sb">```sort()```</span> <span class="n">method</span> <span class="o">-</span>
+<span class="sb">``</span><span class="err">`</span><span class="n">python</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span>
+<span class="p">[</span><span class="o">-</span><span class="mi">7</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;ants&#39;</span><span class="p">,</span> <span class="s1">&#39;cats&#39;</span><span class="p">,</span> <span class="s1">&#39;dogs&#39;</span><span class="p">,</span> <span class="s1">&#39;badgers&#39;</span><span class="p">,</span> <span class="s1">&#39;elephants&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span>
+<span class="p">[</span><span class="s1">&#39;ants&#39;</span><span class="p">,</span> <span class="s1">&#39;badgers&#39;</span><span class="p">,</span> <span class="s1">&#39;cats&#39;</span><span class="p">,</span> <span class="s1">&#39;dogs&#39;</span><span class="p">,</span> <span class="s1">&#39;elephants&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span>
+<span class="p">[</span><span class="s1">&#39;elephants&#39;</span><span class="p">,</span> <span class="s1">&#39;dogs&#39;</span><span class="p">,</span> <span class="s1">&#39;cats&#39;</span><span class="p">,</span> <span class="s1">&#39;badgers&#39;</span><span class="p">,</span> <span class="s1">&#39;ants&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<ul>
+<li>To sort the values in regular alphabetical order, pass <code>str.lower</code> for the <code>key</code> keyword argument in the <code>sort()</code> method call.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;Z&#39;</span><span class="p">]</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span>
+<span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;Z&#39;</span><span class="p">]</span>
+</pre></div>
+
+
 <ul>
 <li><code>sorted</code> function sort the elements and returns a new list. The original list remains unchanged.</li>
 </ul>
