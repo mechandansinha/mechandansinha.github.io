@@ -7,11 +7,11 @@ aside.sidebar a{
 }
 
 body>header{
-	background-color:#050752!important;
+	background-color:#080816!important;
 }
 
 html{
-	background-color:#a7cef087!important;
+	background-color:#000000e6!important;
 }
 
 .highlight, .gist-highlight{
@@ -26,4 +26,8 @@ html{
 	background:#171b1d!important;
 	border:1px solid #171b1d !important;
 	font-size:0.9rem;
+}
+
+body>header h1 a, body>header h1 a:visited, body>header h1 a:hover{
+	font-family:Roboto!important;
 }
