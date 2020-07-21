@@ -1,0 +1,29 @@
+aside.sidebar a{
+	text-decoration:none!important;
+}
+
+.fab{
+	padding: 10px!important;
+}
+
+body>header{
+	background-color:#050752!important;
+}
+
+html{
+	background-color:#a7cef087!important;
+}
+
+.highlight, .gist-highlight{
+	background:#171b1d!important;
+}
+
+.highlight, html .gist .gist-file .gist-syntax .gist-highlight{
+	border:1px solid #171b1d !important;
+}
+
+.pre-code, html .gist .gist-file .gist-syntax .gist-highlight pre, .highlight pre, .gist-highlight pre, .highlight code{
+	background:#171b1d!important;
+	border:1px solid #171b1d !important;
+	font-size:0.9rem;
+}
