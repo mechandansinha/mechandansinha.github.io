@@ -1,0 +1,358 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Building a UV-DLP based 3D Printer &mdash; OrangeDurito.blog</title>
+  <meta name="author" content="Chandan Sinha">
+
+
+
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link href="/images/logo.png" rel="icon">
+
+  <link href="/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="/theme/css/font-awesome/fontawesome-new/css/all.css">
+  <link rel="stylesheet" type="text/css" href="/theme/css/custom.css">
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#080816">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#080816">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <!-- <h1><a href="/">OrangeDurito.blog</a></h1> -->
+  <h1><a href="/"><span style="color:orange">Orange</span>Durito.blog</a></h1>
+    <h2>An Amalgamation of Engineering and Artistry</h2>
+</hgroup></header>
+  <nav role="navigation"><ul class="subscription" data-subscription="rss">
+</ul>
+
+
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+    <li><a href="/pages/about.html">About</a></li>
+    <li><a href="/pages/contact.html">Contact</a></li>
+    <li><a href="/pages/portfolio.html">Portfolio</a></li>
+    <li><a href="/archives.html">Archive</a></li>
+  <li><a href="http://chandansinha.me" target="_blank">Personal Website</a></li>
+</ul></nav>
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">Building a UV-DLP based 3D Printer</h1>
+    <p class="meta">
+<time datetime="2016-07-10T23:00:00+05:30" pubdate>Sun 10 July 2016</time>    </p>
+</header>
+
+  <div class="entry-content"><p><strong>Disclaimer</strong> - I'm writing this blog post about an year later after the internship, so I might have missed few things. Kindly contact me if you need further information. This post, in no way, gives the full information for building a 3D printer yourself. It is just for documenting my internship experience. If you do not wish to read the entire post, you can look through <a href=
+"#scribbles"> my notebook </a> which should give you a fair idea about we did.</p>
+<h1>Prelude</h1>
+<p>I did my sophomore year summer internship at one of the budding Delhi-based startup named 'DreamsInfinity'. It was a product development internship meaning I was hired to build a commerical 3D printer based on UV-DLP (Ultraviolet Direct Light Processing) technique which was a new concept introduced in the world of additive manufacturing at that time. This post aims to describe what we did and what we came up in the end.</p>
+<h1>Selection Process</h1>
+<p>I applied for the internship on Internshala somewhere around May. I had another internship planned initially but it was related to web development. I had to work on WebRTC and it could have been exciting too but I was always inclined towards industrial design and getting a chance to build 3D printer in sophomore year was just too good a chance to pass. By the time, I appeared for the telephonic interview after the initial screening (based on general questions and resume), there were already around 250 applicants.</p>
+<p>I think my E-cell &amp; robotics club experience came in handy here. In internship description, it was explicitly said that the interns should be able to work with minimal guidance. My mentor, Mr. Anubhav Bansal, worked in his family business as a business development head and this was his side project. So, you can say that the startup was in its infancy.</p>
+<p>Anyway, 2 people were selected for the internship - me and one guy from NIT Allahabad from Electrical &amp; Electronics department. He was in 2nd year of study as well.</p>
+<h1>The Beginning</h1>
+<p>On our first day, we were taken to the basement of a building which was going to be our maker room. My mentor had been working on the basic skeleton as a proof of concept for 3D printing. It looked something like -</p>
+<p><center><img src="images/3d1.jpg" height="500px" width="500px"></center></p>
+<p>We started with reading the documentation of various 3D printers available in the market. </p>
+<p><center><iframe src="https://drive.google.com/file/d/10QiTNZ1LzB5M_-H-_oSK8-th1vHW5g9B/preview" width="640" height="700"></iframe></center></p>
+<p>At that time, the majority of 3D printers available were based on FDM technique which is still the case but we wanted to work on UV-DLP technique for several reasons - </p>
+<div class="highlight"><pre><span></span>- We wanted a cheaper, affordable 3D printing service for mass market
+- Our initial target audience were those of ornament shops, shoe design companies, etc. We wanted to give that soft material material feel.
+- No hassle of base plates 
+- fast printing time and the ease of print
+- Using open-source 3D slicer that read STL files
+</pre></div>
+
+
+<p>First of all, we had to get the basic ingredients right and find out if we can actually make the 3D printing work. We had some basic <a href="https://www.flipkart.com/pinchdart-2020-aluminium-profile-extrusion-length-1-meter-automotive-electronic-hobby-kit/p/itmfbbk4uvszktvy?">T-slot aluminium extrusion frames</a>, L-clamps, <a href="https://www.accu.co.uk/en/nema-17-stepper-motors/394332-NEMA17-34-0-95-1-8?google_shopping=1&amp;c=5&amp;mkwid=_dc&amp;pcrid=317111227122&amp;kword=&amp;match=&amp;plid=&amp;gclid=Cj0KCQiA37HhBRC8ARIsAPWoO0wf45LgxhSzxQ3NopoYf9KiS7OH_m4bL1_D_TZ9-zlumcm0WmOACY4aAq8MEALw_wcB">unipolar stepper motor</a>, lead screw, general projector (for projecting 2D slices intermittently) and a crudely welded base plate, plastic container, <a href="https://www.google.com/url?sa=i&amp;source=images&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwiNgdel6c_fAhURfCsKHRSCBGgQjhx6BAgBEAM&amp;url=https%3A%2F%2Fwww.amazon.com%2FMonoprice-Rapid-Printer-Resin-250ml%2Fdp%2FB07BGRSD1X&amp;psig=AOvVaw1aXvJv8cM6kl6XdIMngDgP&amp;ust=1546528933256484">photochemical resin</a>, resin hardener OPV 7102 and a UV light source to harden the model after printing.</p>
+<p>We quickly started putting up a crude model together. We downloaded <a href="https://www.instructables.com/id/How-to-Use-Creation-Workshop-V10075-for-DLP-Printe/">'Creation Workshop'</a> software, which is basically a slicer program for DLP 3D-printing, built up the circuit on a bread-board using following components -</p>
+<div class="highlight"><pre><span></span>* Board - Arduino Micro
+* LCD - 16x2 4-bit Mode
+* Motor Driver - A4988
+* Potentiometer (to set the contrast ratio of LCD)
+* Capacitor (used with motor driver)
+* Jumper wires for the connections.
+</pre></div>
+
+
+<p>The basic skeleton was ready and we were set to print our first models. Contrary to our surprise, our first few models looked like this -</p>
+<p><center><img src="images/3d2.jpg" height="500px" width="500px">&nbsp; <img src="images/3d3.jpg" height="500px" width="500px"></center></p>
+<p>Hmm...not quite what we want. </p>
+<h1>The Battle</h1>
+<p>Ok, let's take it bird by bird. So what are the variables here?</p>
+<div class="highlight"><pre><span></span>- Projector
+- Resin
+- Priting variables
+    - Slice thickness
+    - Exposure time
+    - No. of bottom layer
+    - Retract speed
+    - Lift speed
+</pre></div>
+
+
+<p><strong>Projector specifications</strong> - We kept the luminosity of the projector at 3200 lumins and resolution at 800x600. The only variable here was the distance of the base from the lens for optimal printing quality. Since, we didn't have any other projector at disposal, we had to work with what we had. Later on, we searched for the best projector for the purpose and settled on <a href="https://www.projectorcentral.com/InFocus-IN8606HD.htm">InFocus IN8606 HD projector</a>.</p>
+<div class="highlight"><pre><span></span>Trivia You Should Know
+
+- With DLP projection, printing speed is not affected by the object complexity or the number of parts to be printed on the same base.
+- Wall-thickness(the minimum thickness that your model should have for any given material or technology) should be increased as the design becomes larger :
+    if (∑(x,y,z dimensions) <span class="err">&lt;</span>= 200mm) wall_thickness = 1mm;
+    else if (∑(x,y,z dimensions) ϵ (200 400]) wall_thickness = 2mm;
+    else wall_thickness = 3mm;
+- Orientation of the design while printing influences the surface quality and strength
+- Model needs to be supported externally to keep it in place <span class="err">&amp;</span> prevent from collapsing while being printed if it is narrower than 30 deg.
+</pre></div>
+
+
+<p><strong>Resin</strong> - This is where we spent most of our pre-fabrication time. It was absolutely essential to get the resin quality right (composition of resin &amp; hardner). We also injected color for different model varities. The transparency of the resin is also something we had to take into consideration. Since it is photo-sensitive, greater transparency meant the light from the projector would affect the liquid beyond the active layer.</p>
+<p><center><img src="images/3d4.jpg" height="500px" width="500px">&nbsp; <img src="images/3d5.jpg" height="500px" width="500px"></center></p>
+<p><strong>Printing variables</strong> - As is evident from the notes, we did a ton of experimentation on each of the aforementioned parameters, both in top-down and bottom-up approach (more on it later). We finally arrived at the numbers which would give the best printing quality and modified the open-source code accordingly. </p>
+<p>After tackling these problems, we started getting some pretty good print qualities -</p>
+<p><center><img src="images/3d6.jpg" height="500px" width="500px"></center>
+<center><p><i> We printed a lot of these models. I mean a lot. </i></p></center></p>
+<p>It was time to give it an aesthetic form which meant going back to the drawing board and redo everything from scratch (now that we have figured out the functionality). I have broken down the next phase into four different parts -</p>
+<div class="highlight"><pre><span></span>- Mechanical Design (*crude* sketching, CAD modeling, drafting) 
+- Manufacturing &amp; Assembly (parts procurement, vendor identification, shop visits)
+- System Design (basically electronics and other electrical hardware components)
+- Code (customizing &#39;Creation Workshop&#39;, writing our own arduino code for motor movement) 
+</pre></div>
+
+
+<p>Before we move ahead with the topics, here are some of the design features we finalized for v1.0 -</p>
+<div class="highlight"><pre><span></span>* Flexible vat size
+* Cover lifting mechanism
+* Projector to be kept horizontal to reduce vertical height (use mirror)
+* LCD Screen
+* On-off button (zero position setting)
+* Alternate mechanism for resin to settle in bottom-up approach
+* Sensors to trigger when the vat reaches extremes
+* Alignment balancing
+* LED indicator
+* Resin filling (Automatic &amp; graduate)
+* Overall cover
+* Material selection (resin can be reused after melting)
+* Color injection
+* Immiscible (heavier density) fluid to reduce resin requirement in top-down approach
+* Reverse movement of the base to maintain liquid flow
+* Feedback control 
+* Base position marking (static base positioning to avoid fluid sloshing)
+* Opening for venting smoke
+* G-code &amp; M-code interpreter
+* Adapters for motor, arduino board, etc.
+* Speed variation with changing slope
+* Increase time exposure for smaller or finer area
+* Third-party feature integration to let users browse 3D models online
+</pre></div>
+
+
+<h2>Mechanical Design</h2>
+<p>Based on our requirements, we decided the dimensions and made the 3D models in Solidworks for both top-down and bottom-up approach separately. Individual components can be found <a href="https://drive.google.com/open?id=0B5ONt2rDwKNVUkhDdV95b0NpZmM">here</a>. For sketches, please refer to the notebook at the end.</p>
+<p><center><iframe src="https://drive.google.com/file/d/10aL3GkovpCZYxxLqUN7gi8Bief7S2Rir/preview" width="640" height="700"></iframe></center></p>
+<p>We exported the .dwg files for laser cutting. </p>
+<p><center><img src="images/render3.JPG" height="500px" width="500px"></center>
+<center><p><i> Initial render with all the component placed. </i></p></center></p>
+<h2>Manufacturing &amp; Assembly</h2>
+<p>We did a tedious market research to find vendors for every component. We maintained their credentials and the cost of manufacturing in a sheet. </p>
+<p><center><img src="images/3d7.jpg" height="500px" width="500px">&nbsp; <img src="images/3d8.jpg" height="500px" width="500px"></center></p>
+<p><center><img src="images/3d12.jpg" height="500px" width="500px"></center>
+<center><p><i> Here's us, discussing design modifications on a tissue paper in a restaurant when we went around market, searching for components. </i></p></center></p>
+<h2>System Design</h2>
+<p>We would ultimately build our own PCB but for the general idea, here's how it looked on the breadboard -</p>
+<p><center><img src="images/3d9.jpg" height="500px" width="500px"></center></p>
+<h2>Code</h2>
+<p>As said earlier, we wrote our own arduino code from scratch based on the specifications given above. For the logic, we determine the extreme positions with the help of limit switches. First, the base position is caliberated and then motor is sent the command after parsing <a href="https://drive.google.com/open?id=0B5ONt2rDwKNVdHctVjh6NFViWjg">G-code</a> generated by Creation Workshop. The corresponding print time, remaining time and completion status are displayed on the LCD fitted outside. The entire code is in private domain, so I can't disclose the code according to the agreement.</p>
+<p><center><img src="images/3d10.jpg" height="500px" width="500px">&nbsp; <img src="images/3d11.jpg" height="500px" width="500px"></center>
+<center><p><i> Here's me hacking that code :) </i></p></center></p>
+<p>We encountered numerous problems along the way and I kept noting them in my diary. Here are some of the excerpts -</p>
+<div class="highlight"><pre><span></span>&gt; Lack of hardener
+&gt; Liquid amount is crucial- when we&#39;re putting much liquid, the model is not getting formed while if we&#39;re putting less, then the base support is not getting enough liquid to print taking into
+account the liquid suction due to vacuum formation.
+Sheet transparency is also a probable problem. While going through some articles, we found that people were suggesting the change of sheets after 100000 or so layer prints. We can easily clear the glass but sheet cleaning might be tedious.
+
+&gt; Over-tightening may give rise of greater vacuum formation.
+We increased the exposure time to 2s and moved it.
+
+&gt; Now we got the hardener OPV 7102. We started with mixing 5ml of it but to our utter surprise, the model was worse that the former with no hardener. In fact, the model didn&#39;t even complete because of the softness.
+
+&gt; Vacuum formation under the model - After switching to glass container, we faced a challenge of broken parts being printed out. It left us perplexed for a while. We looked for the cause by
+eliminating the variable. After extensive research online, we finally identified the problem. It was the vacuum being formed at the base when hardened resin was being pulled out during
+printing. Liquid resin couldn&#39;t fill it in time due to large adhesion with glass base. We tried differnt solution like coating the base with PDMS (polydimethylsiloxane) but the resin started
+having whitish appearance at the bottom when heated. We had two other options - Sylgard 184 silicones or FEP sheets. Ultimately we decided to go with the later based on what people had
+suggested. We designed the tension riser for the FEP sheets and we were able to print fine models afterwards.
+</pre></div>
+
+
+<p><center><img src="images/3d22.jpg" height="500px" width="500px"></center></p>
+<h1>The Glory</h1>
+<p>Finally, our 3D started coming together. We were also getting print of superior quality.</p>
+<p><center><img src="images/3d13.jpg" height="500px" width="600px">&nbsp; <img src="images/3d14.jpg" height="500px" width="600px"></center></p>
+<h2>Miscellaneous Photos</h2>
+<p><center><img src="images/3d17.jpg" height="500px" width="600px">&nbsp; <img src="images/3d18.jpg" height="500px" width="600px"></center><br>
+<center><img src="images/3d19.jpg" height="500px" width="600px">&nbsp; <img src="images/3d20.jpg" height="500px" width="600px"></center><br>
+<center><img src="images/3d21.jpg" height="500px" width="600px">&nbsp; <img src="images/3d23.jpg" height="500px" width="600px"></center></p>
+<p>All in all, it was a highly fulfilling experience. The learning I had in those one and half months far exceed one and half years of classroom education. We had our fair bit of fun in the process. Unfortunately, I had to leave before I completely assembled the product because of college. Besides work, an internship is also an excellent way to form a good friendship. Till the next time! Peace ✌</p>
+<p><center><img src="images/3d15.jpg" height="500px" width="600px">&nbsp; <img src="images/3d16.jpg" height="500px" width="600px"></center></p>
+<h1>Internship Notebook</h1>
+<p><section id="scribbles">
+    <center><iframe src="https://drive.google.com/file/d/0B5ONt2rDwKNVdVh4dFpRZzJhTFE/preview" width="640" height="700"></iframe></center>
+</section></p></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">
+        Chandan Sinha
+    </span>
+  </span>
+<time datetime="2016-07-10T23:00:00+05:30" pubdate>Sun 10 July 2016</time>  <span class="categories">
+    <a class='category' href='/category/technology.html'>Technology</a>
+  </span>
+  <span class="categories">
+    <a class="category" href="/tag/engineering.html">engineering</a>,    <a class="category" href="/tag/learning.html">learning</a>,    <a class="category" href="/tag/internship.html">internship</a>,    <a class="category" href="/tag/blogging.html">blogging</a>,    <a class="category" href="/tag/product-design.html">product-design</a>  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite">  <script type="text/javascript">
+    var disqus_shortname = 'mechanicalcodertechblog';
+
+    //     // var disqus_identifier = '/building-a-uv-dlp-based-3d-printer.html';
+    // var disqus_url = '/building-a-uv-dlp-based-3d-printer.html';
+    // var disqus_title = 'Building a UV-DLP based 3D Printer';
+    //     
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+  <!--  -->
+</div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="/techrantsrandom.html">Techrants.Random</a>
+      </li>
+      <li class="post">
+          <a href="/beauty-of-mathematics.html">Beauty Of Mathematics</a>
+      </li>
+      <li class="post">
+          <a href="/learning-reactjs-in-lockdown.html">Learning ReactJS In Lockdown</a>
+      </li>
+      <li class="post">
+          <a href="/into-the-real-world.html">Into The Real World</a>
+      </li>
+      <li class="post">
+          <a href="/validating-matlab-code-analytically.html">Validating MATLAB Code Analytically</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="/category/aerospace.html">Aerospace</a> (2)</li>
+        <li><a href="/category/design.html">Design</a> (4)</li>
+        <li><a href="/category/filmmaking.html">Filmmaking</a> (2)</li>
+        <li><a href="/category/life.html">Life</a> (5)</li>
+        <li><a href="/category/programming.html">Programming</a> (5)</li>
+        <li><a href="/category/research.html">Research</a> (2)</li>
+        <li><a href="/category/technology.html">Technology</a> (6)</li>
+    </ul>
+  </section>
+ 
+
+<!--   <section>
+  <h1>Tags</h1>
+    <a href="/tag/science.html">science</a>,    <a href="/tag/mathematics.html">mathematics</a>,    <a href="/tag/creativity.html">creativity</a>,    <a href="/tag/exploration.html">exploration</a>,    <a href="/tag/fun.html">fun</a>,    <a href="/tag/javascript.html">javascript</a>,    <a href="/tag/learning.html">learning</a>,    <a href="/tag/notes.html">notes</a>,    <a href="/tag/web-development.html">web-development</a>,    <a href="/tag/events.html">events</a>,    <a href="/tag/letter.html">letter</a>,    <a href="/tag/advice.html">advice</a>,    <a href="/tag/aerospace.html">aerospace</a>,    <a href="/tag/iisc.html">IISc</a>,    <a href="/tag/combustion.html">combustion</a>,    <a href="/tag/blogging.html">blogging</a>,    <a href="/tag/technology.html">technology</a>,    <a href="/tag/art.html">art</a>,    <a href="/tag/design.html">design</a>,    <a href="/tag/test.html">test</a>,    <a href="/tag/product-design.html">product-design</a>,    <a href="/tag/engineering.html">engineering</a>,    <a href="/tag/programming.html">programming</a>,    <a href="/tag/research.html">research</a>,    <a href="/tag/space.html">space</a>,    <a href="/tag/features.html">features</a>,    <a href="/tag/markdown.html">markdown</a>,    <a href="/tag/pelican.html">pelican</a>,    <a href="/tag/troubleshooting.html">troubleshooting</a>,    <a href="/tag/automation.html">automation</a>,    <a href="/tag/editing.html">editing</a>,    <a href="/tag/software.html">software</a>,    <a href="/tag/feature.html">feature</a>,    <a href="/tag/internship.html">internship</a>  </section> -->
+
+
+    <section>
+        <h1>Internet Coordinates</h1>
+        <ul>
+            <li><a href="https://github.com/mechandansinha" target="_blank"><i class="fab fa-github"></i>GitHub</a></li>
+            <li><a href="https://www.goodreads.com/user/show/37670581-chandan-sinha" target="_blank"><i class="fab fa-goodreads"></i>Goodreads</a></li>
+            <li><a href="https://in.linkedin.com/in/chandansinha1" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a></li>
+            <li><a href="https://space.stackexchange.com/users/28487/orangedurito" target="_blank"><i class="fab fa-stack-exchange"></i>Stack Exchange</a></li>
+            <li><a href="https://twitter.com/OrangeDurito" target="_blank"><i class="fab fa-twitter"></i>Twitter</a></li>
+            <li><a href="https://thevindicatedaxiom.wordpress.com/" target="_blank"><i class="fab fa-wordpress"></i>WordPress</a></li>
+            <li><a href="https://www.youtube.com/channel/UC-9V3F-jbe9Kq4sN_NJYakw" target="_blank"><i class="fab fa-youtube"></i>YouTube</a></li>
+        </ul>
+    </section>
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+    Copyright &copy;  2016&ndash;2020  Chandan Sinha &mdash;
+  <span class="credit">Powered by <a href="http://getpelican.com">Pelican</a> | </span>
+  <span class= credit"> Blog name credit - My Dearest Pikku </span>
+</p></footer>
+  <script src="/theme/js/modernizr-2.0.js"></script>
+  <script src="/theme/js/ender.js"></script>
+  <script src="/theme/js/octopress.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-80245224-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-80245224-1');
+    ga('send', 'pageview');
+</script>
+<!--   <script type="text/javascript">
+    var disqus_shortname = 'mechanicalcodertechblog';
+
+    //     // var disqus_identifier = '/building-a-uv-dlp-based-3d-printer.html';
+    // var disqus_url = '/building-a-uv-dlp-based-3d-printer.html';
+    // var disqus_title = 'Building a UV-DLP based 3D Printer';
+    //     
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+ -->
+</body>
+</html>

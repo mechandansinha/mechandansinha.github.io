@@ -31,3 +31,21 @@ html{
 body>header h1 a, body>header h1 a:visited, body>header h1 a:hover{
 	font-family:Roboto!important;
 }
+
+#content .blog-index article h1 a:hover{
+	text-decoration:none;
+	color: #FF8C00!important;
+}
+
+#content .blog-index a[rel=full-article]:hover{
+	background:#080816!important;
+}
+
+aside.sidebar:hover a{
+	color:#FF8C00!important;
+}
+
+a{
+	color:#FF8C00!important;
+	text-decoration:none;
+}
