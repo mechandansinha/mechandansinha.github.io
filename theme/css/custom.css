@@ -10,6 +10,10 @@ body>header{
 	background-color:#080816!important;
 }
 
+#content .blog-index article h1 a, #blog-archives h1 a{
+	color:#080816!important;
+}
+
 html{
 	background-color:#000000e6!important;
 }
@@ -39,13 +43,38 @@ body>header h1 a, body>header h1 a:visited, body>header h1 a:hover{
 
 #content .blog-index a[rel=full-article]:hover{
 	background:#080816!important;
+	color:#f2f2f2!important;
 }
 
 aside.sidebar:hover a{
 	color:#FF8C00!important;
+	text-decoration: none!important;
 }
 
-a{
+.categories a{
+	text-decoration: none;
+	color:#FF8C00;
+}
+
+#content .blog-index article h1 a:hover, #content div.pagination a:hover, #blog-archives h1 a:hover, #blog-archives a:hover, #blog-archives .entry-content a:hover{
 	color:#FF8C00!important;
 	text-decoration:none;
+}
+
+a:visited{
+	color:none!important;
+}
+
+article p a:hover, article ul a:hover, aside.sidebar:hover a:hover{
+	color:#1863a1!important;
+}
+
+#content .blog-index a[rel=full-article], body>footer a{
+	color:#6b6b6b!important;
+	text-decoration: none;
+}
+
+article p a, article ul a{
+	color:#FF8C00!important;
+	text-decoration: none;
 }
