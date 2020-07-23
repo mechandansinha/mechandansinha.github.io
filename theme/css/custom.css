@@ -12,6 +12,11 @@ body>header{
 
 #content .blog-index article h1 a, #blog-archives h1 a{
 	color:#080816!important;
+	font-family:"PT Sans","Helvetica Neue",Arial,sans-serif;
+}
+
+body>header h2, article header h1{
+	font-family:"PT Sans","Helvetica Neue",Arial,sans-serif;
 }
 
 html{
@@ -33,7 +38,7 @@ html{
 }
 
 body>header h1 a, body>header h1 a:visited, body>header h1 a:hover{
-	font-family:Roboto!important;
+	font-family:"PT Sans";
 }
 
 #content .blog-index article h1 a:hover{
@@ -77,4 +82,97 @@ article p a:hover, article ul a:hover, aside.sidebar:hover a:hover{
 article p a, article ul a{
 	color:#FF8C00!important;
 	text-decoration: none;
+}
+
+
+/*For menu responsiveness by Tania Rascia*/
+
+.nav-mobile {
+	display: none;
+	position: relative;
+	background: none;
+	height: 70px;
+	width: 70px;
+}
+
+@media only screen and (max-width: 549px) {
+  .nav-mobile {
+    display: block;
+  }
+
+  nav {
+    width: 100%;
+    padding: 70px 0 15px;
+  }
+
+  nav ul {
+    display: none;
+    list-style-type:none;
+  }
+
+  nav ul li {
+    float: none;
+  }
+
+  nav ul li a {
+    padding: 15px;
+    line-height: 20px;
+    text-decoration:none;
+    color:#6b6b6b;
+  }
+
+  nav ul li a:hover{
+  	color:#3d3d3d;
+  }
+
+@media only screen and (min-width: 550px) {
+  .main-navigation {
+    display: block !important;
+  }
+}
+
+#nav-toggle {
+  position: absolute;
+  left: 18px;
+  top: 22px;
+  cursor: pointer;
+  padding: 10px 35px 16px 0px;
+}
+
+#nav-toggle span,
+#nav-toggle span:before,
+#nav-toggle span:after {
+  cursor: pointer;
+  border-radius: 1px;
+  height: 5px;
+  width: 35px;
+  background: #6b6b6b;
+  position: absolute;
+  display: block;
+  content: '';
+  transition: all 300ms ease-in-out;
+}
+
+#nav-toggle span:before {
+  top: -10px;
+}
+
+#nav-toggle span:after {
+  bottom: -10px;
+}
+
+#nav-toggle.active span {
+  background-color: transparent;
+}
+
+#nav-toggle.active span:before, #nav-toggle.active span:after {
+  top: 0;
+}
+
+#nav-toggle.active span:before {
+  transform: rotate(45deg);
+}
+
+#nav-toggle.active span:after {
+  transform: rotate(-45deg);
 }
