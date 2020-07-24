@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Learning NextJS In Lockdown &mdash; OrangeDurito.blog</title>
+  <meta name="author" content="Chandan Sinha">
+
+
+
+
+
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+
+    <link href="/images/logo.png" rel="icon">
+
+  <link href="/theme/css/main.css" media="screen, projection"
+        rel="stylesheet" type="text/css">
+  <link rel="stylesheet" type="text/css" href="/theme/css/font-awesome/fontawesome-new/css/all.css">
+  <link rel="stylesheet" type="text/css" href="/theme/css/custom.css">
+
+  <link href="//fonts.googleapis.com/css?family=PT+Serif:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+  <link href="//fonts.googleapis.com/css?family=PT+Sans:regular,italic,bold,bolditalic"
+        rel="stylesheet" type="text/css">
+
+  <!-- Chrome, Firefox OS and Opera -->
+  <meta name="theme-color" content="#080816">
+  <!-- Windows Phone -->
+  <meta name="msapplication-navbutton-color" content="#080816">
+  <!-- iOS Safari -->
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+</head>
+
+<body>
+  <header role="banner"><hgroup>
+  <!-- <h1><a href="/">OrangeDurito.blog</a></h1> -->
+  <h1><a href="/"><span style="color:orange">Orange</span>Durito.blog</a></h1>
+    <h2>An amalgamation of engineering and artistry</h2>
+</hgroup></header>
+
+  <nav role="navigation">
+    <div class="nav-mobile"><a id="nav-toggle" href="#!"><span></span></a></div>
+<ul class="subscription" data-subscription="rss">
+</ul>
+
+
+<ul class="main-navigation">
+  <li><a href="/">Home</a></li>
+    <li><a href="/pages/about.html">About</a></li>
+    <li><a href="/pages/contact.html">Contact</a></li>
+    <li><a href="/pages/portfolio.html">Portfolio</a></li>
+    <li><a href="/archives.html">Archive</a></li>
+  <li><a href="http://chandansinha.me" target="_blank">Personal Website</a></li>
+</ul>  </nav>
+
+  <div id="main">
+    <div id="content">
+<div>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">Learning NextJS In Lockdown</h1>
+    <p class="meta">
+<time datetime="2020-07-12T23:15:00+05:30" pubdate>Sun 12 July 2020</time>    </p>
+</header>
+
+  <div class="entry-content"><h2>Introduction</h2>
+<p>While React is awesome as such, there are obvious shortcomings when it comes to speed, routing, scaling, etc. <a href="https://nextjs.org/"><strong>NextJS</strong></a> was the answer. This is the latest framework that is used by world's leading companies, thus as a natural extension to learning basic working of React, I gave NextJS a try. While going through their docs, I kept making this note for the reference. You can visit the blog I built, here - <a href="https://nextjs-blog.mechanicalcoder.vercel.app/">Sample Blog</a></p>
+<p>Let's start with the benefits that NextJS framework provides over simple ReactJS application. </p>
+<h2>Built-in Features</h2>
+<ul>
+<li>An intuitive page-based routing system (with support for dynamic routes)</li>
+<li>Pre-rendering, both static generation (SSG) and server-side rendering (SSR) are supported on a per-page basis</li>
+<li>Automatic code splitting for faster page loads</li>
+<li>Client-side routing with optimizes prefetching</li>
+<li>Built-in CSS and Sass support, and support for any CSS-in-JS library</li>
+<li>Development environment which supports Hot Module Replacement</li>
+<li>API routes to build API endpoints with Serverless Functions</li>
+<li>Fully extendable</li>
+</ul>
+<h2>Starter</h2>
+<ul>
+<li><code>npx create-next-app</code></li>
+<li>Template could be downloaded using <code>--example</code> flag 
+<code>npm init next-app nextjs-blog --example "https://github.com/vercel/next-learn-starter/tree/master/learn-starter"</code> </li>
+</ul>
+<h2>Routing - Navigate Between Pages</h2>
+<ul>
+<li>Create a new page using the file system routing feature</li>
+<li>Learn how to use the <code>Link</code> component to enable client-side navigation between pages</li>
+<li>Learn about built-in support for code splitting and prefetching</li>
+<li>In Next.js, we use the <code>&lt;Link&gt;</code> React Component that wraps the <code>&lt;a&gt;</code> tag. <code>&lt;Link&gt;</code> allows you to do client-side navigation to a different page in the application.</li>
+<li>Client-side navigation means that the page transition happens using JavaScript, which is faster than the default navigation done by the browser.</li>
+</ul>
+<blockquote>
+<p>If we change any CSS property like <code>background-color</code> of <code>&lt;html&gt;</code> and click on the links to navigate between pages, we see that the change persists between page transitions. This shows that the browser does NOT load the full page and client-side navigation is working. </p>
+<p>If we had use <code>&lt;a href="..."&gt;</code> instead of <code>&lt;Link href="..."&gt;</code> and did this, the change (<code>background-color</code> here) will be cleared on link clicks because the browser does the full refresh. </p>
+</blockquote>
+<h3>Code splitting and prefetching</h3>
+<ul>
+<li>
+<p>Next.js does 'code-splitting' automatically, so each page only loads what's necessary for that page. That means when the homepage is rendered, the code for other pages is not served initially. This ensures that the homepage loads quickly even if you add hundreds of pages.</p>
+</li>
+<li>
+<p>Only loading the code for the page you request also means that pages becomes isolated. If a certain page throws an error, the rest of the application would still work.</p>
+</li>
+<li>
+<p>In a production build of Next.js, whenever <code>Link</code> components appear in the browser's viewport, Next.js automatically <strong>prefetches</strong> the code for the linked page in the background. By the time you click the link, the code for the destination page will already be loaded in the background, and the page transition will be near-instant.</p>
+</li>
+<li>
+<p>If you need to link to an external page outside the Next.js app, just use an <code>&lt;a&gt;</code> tag without <code>Link</code>.</p>
+</li>
+<li>
+<p>If you need to add attributes like, for example, <code>className</code>, add it to the <code>a</code> tag, not the <code>Link</code> tag.</p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Link</span> <span class="nx">from</span> <span class="s1">&#39;next/link&#39;</span>
+
+<span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">LinkClassnameExample</span><span class="p">(){</span>
+    <span class="k">return</span><span class="p">(</span>
+        <span class="o">&lt;</span><span class="nx">Link</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="o">&gt;</span>
+            <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span> <span class="nx">target</span><span class="o">=</span><span class="s2">&quot;_blank&quot;</span> <span class="nx">rel</span><span class="o">=</span><span class="s2">&quot;noopener noreferrer&quot;</span><span class="o">&gt;</span>
+                <span class="nx">Hello</span> <span class="nx">World</span>
+            <span class="o">&lt;</span><span class="err">/a&gt;</span>
+        <span class="o">&lt;</span><span class="err">/Link&gt;</span>
+    <span class="p">)</span>
+<span class="p">}</span> 
+</pre></div>
+
+
+<h2>Assets, Metadata, and CSS</h2>
+<ul>
+<li>Next.js can serve static assets, like images, under <strong>the top-level</strong> <code>public</code> directory. Files inside <code>public</code> can be referenced from the root of the application similar to <code>pages</code>. </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/vercel.svg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Vercel Logo&quot;</span> <span class="na">className</span><span class="o">=</span><span class="s">&quot;logo&quot;</span> <span class="p">/&gt;</span>
+</pre></div>
+
+
+<ul>
+<li>The <code>public</code> directory is also useful for <code>robots.txt</code>, Google Site Verification, and any other static assets. </li>
+</ul>
+<h2>CSS Styling</h2>
+<ul>
+<li><code>styled-jsx</code> library (a "CSS-in-JS" library that lets you write CSS within a React component, and the CSS styles will be scoped, meaning other components won't be affected.)</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">style</span> <span class="na">jsx</span><span class="p">&gt;{</span><span class="err">&#39;</span>
+    <span class="err">...</span>
+<span class="err">&#39;</span><span class="p">}&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
+</pre></div>
+
+
+<ul>
+<li><a href="https://github.com/css-modules/css-modules">CSS Modules</a> lets us import CSS files in a React component.</li>
+<li>To use CSS Modules, the CSS file name must end with <code>.module.css</code></li>
+</ul>
+<p><img alt="unique class name" src="https://nextjs.org/static/images/learn/assets-metadata-css/devtools.png"></p>
+<blockquote>
+<p>CSS Module automatically generates unique class names.</p>
+</blockquote>
+<ul>
+<li>CSS Modules are extracted from the JavaScript bundles at the build time and generate <code>.css</code> files that are loaded automatically by Next.js</li>
+</ul>
+<h3>Global Styles</h3>
+<ul>
+<li>To load global CSS files, create a file called <code>_app.js</code> under <code>pages</code> with following code -</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">App</span><span class="p">({</span><span class="nx">Component</span><span class="p">,</span> <span class="nx">pageProps</span><span class="p">}){</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Component</span> <span class="p">{...</span><span class="nx">pageProps</span><span class="p">}</span> <span class="o">/&gt;</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>
+<p><code>App</code> component is the top-level component which will be common across all the different pages. You can use this <code>App</code> component to keep state when navigating between pages.</p>
+</li>
+<li>
+<p>Development server needs to be restarted after adding <code>_app.js</code></p>
+</li>
+</ul>
+<div class="highlight"><pre><span></span>npm run dev
+</pre></div>
+
+
+<ul>
+<li>In Next.js, we can add global CSS files by importing them from <code>_app.js</code>. We cannot import global CSS anywhere else.</li>
+</ul>
+<p><strong>Summary</strong></p>
+<blockquote>
+<p>To use CSS Modules, import a CSS file named <code>*.module.css</code> from any component</p>
+<p>To use global CSS, import a CSS file in <code>pages/_app.js</code></p>
+</blockquote>
+<h2>Pre-rendering</h2>
+<ul>
+<li>
+<p>By default, Next.js pre-renders every page. It generates HTML for each page in advance, instead of having it all done by client-side JavaScript. </p>
+</li>
+<li>
+<p>Each generated HTML is associated with minimal JavaScript code necessary for that page. When a page is loaded is loaded by the browser, its JavaScript code runs and makes the page full interactive. This process is called <strong>hydration</strong>.</p>
+</li>
+</ul>
+<blockquote>
+<p>Pre-rendering can result in better performance and SEO.</p>
+</blockquote>
+<ul>
+<li><strong>Pre-rendering Vs. No Pre-rendering Comparison</strong> -</li>
+</ul>
+<p><img alt="Pre-rendering" src="https://nextjs.org/static/images/learn/data-fetching/pre-rendering.png"></p>
+<p><img alt="No Pre-rendering" src="https://nextjs.org/static/images/learn/data-fetching/no-pre-rendering.png"></p>
+<h3>Two Forms of Pre-rendering</h3>
+<ul>
+<li>
+<p>Next.js has two forms of pre-rendering: <strong>Static Generation</strong> and <strong>Server-side Rendering</strong>. The difference is in <strong>when</strong> it generates the HTML for a page.</p>
+</li>
+<li>
+<p><strong>Static Generation</strong> is the pre-rendering method that generates the HTML at <strong>build time</strong>. The pre-rendered HTML is then <em>reused</em> on each request.</p>
+</li>
+<li>
+<p><strong>Server-side Rendering</strong> is the pre-rendering method that generates the HTML on <strong>each request</strong>.</p>
+</li>
+</ul>
+<p><img alt="Static Generation" src="https://nextjs.org/static/images/learn/data-fetching/static-generation.png"></p>
+<p><img alt="Server-side Rendering" src="https://nextjs.org/static/images/learn/data-fetching/server-side-rendering.png"></p>
+<blockquote>
+<p>In development mode (when we run <code>npm run dev</code> or <code>yarn dev</code>), every page is pre-rendered on each request - even for pages that use Static Generation. </p>
+</blockquote>
+<ul>
+<li>
+<p><strong>Per-page Basis</strong> - Next.js lets you <strong>choose</strong> which pre-rendering form to use for each page. You can create a "hybrid" Next.js app by using <em>Static Generation</em> for most pages and using <em>Server-side Rendering</em> for others.</p>
+</li>
+<li>
+<p>Use <strong>Static Generation</strong> (with and without data) whenever possible because the page can be built once and served by CDN, making it faster than having a server render a page on every request.</p>
+</li>
+<li>
+<p>If we cannot pre-render a page ahead of a user's request, then only we should go for <strong>Server-side rendering</strong>. It maybe because our page shows frequently updated data, and the page content changes on every request. </p>
+</li>
+<li>
+<p>Albeit slow, pre-rendered page will always be up-to-date. Or we can skip pre-rendering and use <strong>client-side JavaScript</strong> to populate data. </p>
+</li>
+</ul>
+<h3>Static Generation with and without Data</h3>
+<ul>
+<li>For pages which do not require fetching external data, Next.js automatically generates them statically when the app is built for production. </li>
+</ul>
+<p><img alt="Static Generation without Data" src="https://nextjs.org/static/images/learn/data-fetching/static-generation-without-data.png"></p>
+<ul>
+<li>In case, some pages need to access the file system, fetch external API, or query your database at build time, even then Next.js might be able to render the HTML without first fetching some external data. Next.js supports <strong>Static Generation with Data</strong> out of the box.</li>
+</ul>
+<p><img alt="Static Generation with Data" src="https://nextjs.org/static/images/learn/data-fetching/static-generation-with-data.png"> </p>
+<h3>Static Generation with Data using <code>getStaticProps</code></h3>
+<ul>
+<li>When we export a page component, we can also export an <code>async</code> function called <code>getStaticProps</code>. </li>
+</ul>
+<blockquote>
+<p><code>getStaticProps</code> runs at build time in production and inside the function, you can fetch external data and pass that as the props of the page.</p>
+</blockquote>
+<div class="highlight"><pre><span></span><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Home</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span> <span class="p">...</span> <span class="p">}</span>
+
+<span class="kr">export</span> <span class="nx">async</span> <span class="kd">function</span> <span class="nx">getStaticProps</span><span class="p">(){</span>
+    <span class="c1">//Get external data from the file system/API/DB, etc.</span>
+
+    <span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">...</span>
+
+    <span class="c1">//The value of the `props` key will be passed to the `Home` component</span>
+
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">props</span><span class="o">:</span> <span class="p">...</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>Essentially, <code>getStaticProps</code> allows you to tell Next.js: <em>\"Hey, this page has some data dependencies - so when you pre-render this page at build time, make sure to resolve them first!"</em></li>
+</ul>
+<h2>Blog Data</h2>
+<p><code>pre-rendering.md</code> file created in top-level 'posts' directory.</p>
+<div class="highlight"><pre><span></span>---
+title: &#39;Two Forms of Pre-rendering&#39;
+date: &#39;11-07-2020&#39;
+---
+
+Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.
+
+- **Static Generation** is the pre-rendering method that generates the HTML at **build time**. The pre-rendered HTML is then _reused_ on each request.
+- **Server-side Rendering** is the pre-rendering method that generates the HTML on **each request**.
+
+Importantly, Next.js lets you **choose** which pre-rendering form to use for each page. You can create a &quot;hybrid&quot; Next.js app by using Static Generation for most pages and using Server-side Rendering for others.
+</pre></div>
+
+
+<blockquote>
+<p>Notice that each markdown file has a metadata section at the top containing <code>title</code> and <code>date</code>. This is called <strong>YAML Front Matter</strong>, which can be parsed using a library called <a href="https://github.com/jonschlinkert/gray-matter">gray-matter</a>.</p>
+</blockquote>
+<h3>Parsing Blog Data on <code>getStaticProps</code></h3>
+<ul>
+<li>To parse each markdown file and get <code>title</code>, <code>date</code>, file name (which will be used as <code>id</code> for the post URL), and list the data on the index page (sorted by date), we need to implement <code>getStaticProps</code> by updating our index page (<code>pages/index.js</code>) using the above data. </li>
+</ul>
+<p><img alt="Parsing Blog Data using getStaticProps" src="https://nextjs.org/static/images/learn/data-fetching/index-page.png"></p>
+<h3>Pre-rendering and Data Fetching</h3>
+<ul>
+<li>After installing <code>gray-matter</code> we parse the markdown posts by creating <code>lib/posts.js</code> file in the top domain. Then we import the function in <code>pages/index.js</code> as </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">getSortedPostsData</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;../lib/posts&#39;</span>
+</pre></div>
+
+
+<p>Then we call this function in <code>getStaticProps</code> and return the result inside the <code>props</code> key as</p>
+<div class="highlight"><pre><span></span><span class="kr">export</span> <span class="nx">async</span> <span class="kd">function</span> <span class="nx">getStaticProps</span><span class="p">(){</span>
+    <span class="kr">const</span> <span class="nx">allPostsData</span> <span class="o">=</span> <span class="nx">getSortedPostsData</span><span class="p">()</span>
+    <span class="k">return</span> <span class="p">{</span>
+        <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
+            <span class="nx">allPostsData</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p>And then <code>allPostsData</code> prop will be passed to the <code>Home</code> component. </p>
+<div class="highlight"><pre><span></span><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Home</span> <span class="p">({</span> <span class="nx">allPostsData</span> <span class="p">})</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</pre></div>
+
+
+<p>To display the data - </p>
+<div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">allPostsData</span><span class="p">.</span><span class="nx">map</span><span class="p">(({</span><span class="nx">id</span><span class="p">,</span> <span class="nx">date</span><span class="p">,</span> <span class="nx">title</span><span class="p">})</span> <span class="p">=&gt;</span> <span class="p">(</span>
+    <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">utilStyles</span><span class="p">.</span><span class="nx">listItem</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">id</span><span class="p">}</span><span class="o">&gt;</span>
+        <span class="p">{</span><span class="nx">title</span><span class="p">}</span>
+        <span class="o">&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+        <span class="p">{</span><span class="nx">id</span><span class="p">}</span>
+        <span class="o">&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
+        <span class="p">{</span><span class="nx">date</span><span class="p">}</span>
+    <span class="o">&lt;</span><span class="err">/li&gt;</span>
+<span class="p">))}</span>
+</pre></div>
+
+
+<p>We successfully fetch external data (from the file system)and pre-render the index page with this data -</p>
+<p><img alt="Data Fetching and Pre-rendering" src="https://nextjs.org/static/images/learn/data-fetching/index-page.png"></p>
+<h3>Fetch External API or Query Database</h3>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">fetch</span> <span class="nx">from</span> <span class="s1">&#39;node-fetch&#39;</span>
+
+<span class="kr">export</span> <span class="nx">async</span> <span class="kd">function</span> <span class="nx">getSortedPostsData</span><span class="p">(){</span>
+    <span class="c1">//Instead of the file system, fetch post data from an external API endpoint</span>
+    <span class="kr">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<h3>Querying Database Directly</h3>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">someDatabaseSDK</span> <span class="nx">from</span> <span class="s1">&#39;someDatabaseSDK&#39;</span>
+
+<span class="kr">const</span> <span class="nx">databaseClient</span> <span class="o">=</span> <span class="nx">someDatabaseSDK</span><span class="p">.</span><span class="nx">createClient</span><span class="p">(...)</span>
+
+<span class="kr">export</span> <span class="nx">async</span> <span class="kd">function</span> <span class="nx">getSortedPostsData</span><span class="p">(){</span>
+    <span class="c1">//Instead of the file system, fetch post data from a database</span>
+    <span class="k">return</span> <span class="nx">databaseClient</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">&#39;SELECT posts...&#39;</span><span class="p">)</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<ul>
+<li>This is possible because <code>getStaticProps</code> runs <strong>only on the server-side</strong>. It will never be run on the client-side. It won't even be included in the JS bundle for the browser. That means you can write code such as direct database queries without them being sent to browsers. </li>
+</ul>
+<h3>Development Vs. Production</h3>
+<ul>
+<li>In <strong>development</strong> (<code>npm run dev</code> or <code>yarn dev</code>), <code>getStaticProps</code> runs on <em>every request</em> while in <strong>production</strong>, <code>getStaticProps</code> runs at <em>build time</em>.</li>
+</ul>
+<p>Because it's meant to be run at build time, we won't be able to use data that's only available during request time, such as query parameters or HTTP headers. </p>
+<ul>
+<li>Also <code>getStaticProps</code> can only be exported from a <strong>page</strong>. We can't export it from non-page files. One of the reasons for this restriction is that React needs to have all the required data before the page is rendered. </li>
+</ul>
+<h3>Fetching Data at Request Time</h3>
+<ul>
+<li>If we need to fetch data at <strong>request time</strong> instead of build time, we can try <strong>Server-side Rendering</strong>. Here, we need to export <code>getServerSideProps</code> instead of <code>getStaticProps</code> from your page.</li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kr">export</span> <span class="nx">async</span> <span class="kd">function</span> <span class="nx">getServerSideProps</span><span class="p">(</span><span class="nx">context</span><span class="p">){</span>
+    <span class="k">return</span><span class="p">{</span>
+        <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
+            <span class="c1">// props for your component</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+
+
+<p><img alt="Server-side Rendering with Data" src="https://nextjs.org/static/images/learn/data-fetching/server-side-rendering-with-data.png"></p>
+<blockquote>
+<p>We should use <code>getServerSideProps</code> only if we need to pre-render a page whose data must be fetched at request time. TTFB (Time to First Byte) will be slower than <code>getStaticProps</code> because the server must compute the result on every request, and the result cannot be cached by a CDN without extra configuration. </p>
+</blockquote>
+<h3>Client-Side Rendering</h3>
+<ul>
+<li>As alternative strategy to pre-rendering, we can Statically generate (pre-render) only parts of the page that do not require external data and then fetch external data from the client using JavaScript when the page loads and populate the remaining parts. </li>
+</ul>
+<p><img alt="Selective Pre-Rendering and Client-Side Rendering" src="https://nextjs.org/static/images/learn/data-fetching/client-side-rendering.png"></p>
+<blockquote>
+<p>e.g - In <strong>user dashboard</strong> like pages, we can use this approach because it is a private, user-specific page, SEO is not relevant, and the page doesn't need to be pre-rendered. Data is frequently updated, which required request-time data fetching. </p>
+</blockquote>
+<h3>SWR - React Hook for Data Fetching</h3>
+<ul>
+<li>Highly recommended when fetching data on the client side. It handles caching, revalidation, focus tracking, refetching on interval, and more. </li>
+</ul>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">useSWR</span> <span class="nx">from</span> <span class="s1">&#39;swr&#39;</span>
+
+<span class="kd">function</span> <span class="nx">Profile</span><span class="p">(){</span>
+    <span class="kr">const</span> <span class="p">{</span><span class="nx">data</span><span class="p">,</span> <span class="nx">error</span><span class="p">}</span> <span class="o">=</span> <span class="nx">useSWR</span><span class="p">(</span><span class="s1">&#39;/api/user&#39;</span><span class="p">,</span><span class="nx">fetch</span><span class="p">)</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span> <span class="nx">failed</span> <span class="nx">to</span> <span class="nx">load</span> <span class="o">&lt;</span><span class="err">/div&gt;</span>
+    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">data</span><span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span> <span class="nx">loading</span><span class="p">...</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span> <span class="nx">hello</span> <span class="p">{</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">!&lt;</span><span class="err">/div&gt;</span>
+<span class="p">}</span>
+</pre></div></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">
+        Chandan Sinha
+    </span>
+  </span>
+<time datetime="2020-07-12T23:15:00+05:30" pubdate>Sun 12 July 2020</time>  <span class="categories">
+    <a class='category' href='/category/programming.html'>Programming</a>
+  </span>
+  <span class="categories">
+    <a class="category" href="/tag/javascript.html">javascript</a>,    <a class="category" href="/tag/learning.html">learning</a>,    <a class="category" href="/tag/notes.html">notes</a>,    <a class="category" href="/tag/web-development.html">web-development</a>  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite">  <script type="text/javascript">
+    var disqus_shortname = 'mechanicalcodertechblog';
+
+    //     // var disqus_identifier = '/learning-nextjs-in-lockdown.html';
+    // var disqus_url = '/learning-nextjs-in-lockdown.html';
+    // var disqus_title = 'Learning NextJS In Lockdown';
+    //     
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+  <!--  -->
+</div>
+<aside class="sidebar">
+  <section>
+    <h1>Recent Posts</h1>
+    <ul id="recent_posts">
+      <li class="post">
+          <a href="/techrantsrandom.html">Techrants.Random</a>
+      </li>
+      <li class="post">
+          <a href="/learning-nextjs-in-lockdown.html">Learning NextJS In Lockdown</a>
+      </li>
+      <li class="post">
+          <a href="/learning-reactjs-in-lockdown.html">Learning ReactJS In Lockdown</a>
+      </li>
+      <li class="post">
+          <a href="/into-the-real-world.html">Into The Real World</a>
+      </li>
+      <li class="post">
+          <a href="/validating-matlab-code-analytically.html">Validating MATLAB Code Analytically</a>
+      </li>
+    </ul>
+  </section>
+  <section>
+      
+    <h1>Categories</h1>
+    <ul id="recent_posts">
+        <li><a href="/category/aerospace.html">Aerospace</a> (2)</li>
+        <li><a href="/category/design.html">Design</a> (4)</li>
+        <li><a href="/category/filmmaking.html">Filmmaking</a> (2)</li>
+        <li><a href="/category/life.html">Life</a> (5)</li>
+        <li><a href="/category/programming.html">Programming</a> (6)</li>
+        <li><a href="/category/research.html">Research</a> (2)</li>
+        <li><a href="/category/technology.html">Technology</a> (6)</li>
+    </ul>
+  </section>
+ 
+
+<!--   <section>
+  <h1>Tags</h1>
+    <a href="/tag/javascript.html">javascript</a>,    <a href="/tag/learning.html">learning</a>,    <a href="/tag/notes.html">notes</a>,    <a href="/tag/web-development.html">web-development</a>,    <a href="/tag/events.html">events</a>,    <a href="/tag/letter.html">letter</a>,    <a href="/tag/advice.html">advice</a>,    <a href="/tag/aerospace.html">aerospace</a>,    <a href="/tag/iisc.html">IISc</a>,    <a href="/tag/combustion.html">combustion</a>,    <a href="/tag/blogging.html">blogging</a>,    <a href="/tag/technology.html">technology</a>,    <a href="/tag/art.html">art</a>,    <a href="/tag/design.html">design</a>,    <a href="/tag/test.html">test</a>,    <a href="/tag/product-design.html">product-design</a>,    <a href="/tag/engineering.html">engineering</a>,    <a href="/tag/programming.html">programming</a>,    <a href="/tag/science.html">science</a>,    <a href="/tag/research.html">research</a>,    <a href="/tag/space.html">space</a>,    <a href="/tag/exploration.html">exploration</a>,    <a href="/tag/features.html">features</a>,    <a href="/tag/markdown.html">markdown</a>,    <a href="/tag/pelican.html">pelican</a>,    <a href="/tag/troubleshooting.html">troubleshooting</a>,    <a href="/tag/automation.html">automation</a>,    <a href="/tag/mathematics.html">mathematics</a>,    <a href="/tag/creativity.html">creativity</a>,    <a href="/tag/fun.html">fun</a>,    <a href="/tag/editing.html">editing</a>,    <a href="/tag/software.html">software</a>,    <a href="/tag/feature.html">feature</a>,    <a href="/tag/internship.html">internship</a>  </section> -->
+
+
+    <section>
+        <h1>Internet Coordinates</h1>
+        <ul>
+            <li><a href="https://github.com/mechandansinha" target="_blank"><i class="fab fa-github"></i>GitHub</a></li>
+            <li><a href="https://www.goodreads.com/user/show/37670581-chandan-sinha" target="_blank"><i class="fab fa-goodreads"></i>Goodreads</a></li>
+            <li><a href="https://in.linkedin.com/in/chandansinha1" target="_blank"><i class="fab fa-linkedin"></i>LinkedIn</a></li>
+            <li><a href="https://space.stackexchange.com/users/28487/orangedurito" target="_blank"><i class="fab fa-stack-exchange"></i>Stack Exchange</a></li>
+            <li><a href="https://twitter.com/OrangeDurito" target="_blank"><i class="fab fa-twitter"></i>Twitter</a></li>
+            <li><a href="https://thevindicatedaxiom.wordpress.com/" target="_blank"><i class="fab fa-wordpress"></i>WordPress</a></li>
+            <li><a href="https://www.youtube.com/channel/UC-9V3F-jbe9Kq4sN_NJYakw" target="_blank"><i class="fab fa-youtube"></i>YouTube</a></li>
+        </ul>
+    </section>
+
+</aside>    </div>
+  </div>
+  <footer role="contentinfo"><p>
+    Copyright &copy;  2016&ndash;2020  Chandan Sinha &mdash;
+  <span class="credit">Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> | </span>
+  <span class= credit"> <a href="https://github.com/duilio/pelican-octopress-theme" target="_blank">Octopress</a> Theme </span>
+</p></footer>
+  <script src="/theme/js/modernizr-2.0.js"></script>
+  <script src="/theme/js/ender.js"></script>
+  <script src="/theme/js/octopress.js" type="text/javascript"></script>
+    <script type="text/javascript">
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-80245224-1']);
+    _gaq.push(['_trackPageview']);
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+    (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+    (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+    m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+    })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+    ga('create', 'UA-80245224-1');
+    ga('send', 'pageview');
+</script>
+<!--   <script type="text/javascript">
+    var disqus_shortname = 'mechanicalcodertechblog';
+
+    //     // var disqus_identifier = '/learning-nextjs-in-lockdown.html';
+    // var disqus_url = '/learning-nextjs-in-lockdown.html';
+    // var disqus_title = 'Learning NextJS In Lockdown';
+    //     
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+ -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script type="text/javascript">
+    (function($) {
+      $(function() {
+        // Toggle open and close nav styles on click
+        $('#nav-toggle').click(function() {
+          $('nav ul').slideToggle();
+        });
+        // Hamburger to X toggle
+        $('#nav-toggle').on('click', function() {
+          this.classList.toggle('active');
+        });
+      });
+    })(jQuery);
+  </script>
+</body>
+</html>
