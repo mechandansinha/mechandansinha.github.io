@@ -4,8 +4,10 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
   <head>
 	<meta charset="utf-8">
-	<title>Tag: fun &mdash; OrangeDurito.blog</title>
+	<title>Getting Acquainted With Electric UI &mdash; OrangeDurito.blog</title>
 	<meta name="author" content="Chandan Sinha">
+
+
 
 
 
@@ -72,100 +74,97 @@
 <div id="main">
   <div id="content">
 <div>
-	<article role="article">
-    	<header>
-    		<h1 class="entry-title">Tag: fun</h1>
-    	</header>
+  <article class="hentry" role="article">
+<header>
+      <h1 class="entry-title">Getting Acquainted With Electric UI</h1>
+    <p class="meta">
+<time datetime="2021-04-17T01:15:00+05:30" pubdate>Sat 17 April 2021</time>    </p>
+</header>
 
-    	<div id="blog-archives">
-            <h2>2017</h2>
-                    <article>
-                        <h1><a href="/beauty-of-mathematics.html">Beauty Of Mathematics</a></h1>
-                        <time datetime="2017-12-13 23:00:00+05:30" pubdate>
-                            <span class="month">Dec</span>
-                            <span class="day">13</span>
-                            <span class="year">2017</span>
-                        </time>
-                        <footer>
-                            <span class="categories">posted in
-                                <a class='category' href='/category/life.html'>Life</a>
-                            </span>
-                        </footer>
-                    </article>
-            <h2>2016</h2>
-                    <article>
-                        <h1><a href="/ask-permission-to-save-image-javascript.html">Ask Permission To Save Image | Javascript</a></h1>
-                        <time datetime="2016-10-07 22:00:00+05:30" pubdate>
-                            <span class="month">Oct</span>
-                            <span class="day">07</span>
-                            <span class="year">2016</span>
-                        </time>
-                        <footer>
-                            <span class="categories">posted in
-                                <a class='category' href='/category/programming.html'>Programming</a>
-                            </span>
-                        </footer>
-                    </article>
-                    <article>
-                        <h1><a href="/wall-art-behind-the-scenes.html">Wall Art | Behind The Scenes</a></h1>
-                        <time datetime="2016-07-15 22:00:00+05:30" pubdate>
-                            <span class="month">Jul</span>
-                            <span class="day">15</span>
-                            <span class="year">2016</span>
-                        </time>
-                        <footer>
-                            <span class="categories">posted in
-                                <a class='category' href='/category/design.html'>Design</a>
-                            </span>
-                        </footer>
-                    </article>
-                    <article>
-                        <h1><a href="/city-visit-a-video.html">City Visit | A Video</a></h1>
-                        <time datetime="2016-07-14 22:00:00+05:30" pubdate>
-                            <span class="month">Jul</span>
-                            <span class="day">14</span>
-                            <span class="year">2016</span>
-                        </time>
-                        <footer>
-                            <span class="categories">posted in
-                                <a class='category' href='/category/filmmaking.html'>Filmmaking</a>
-                            </span>
-                        </footer>
-                    </article>
-                    <article>
-                        <h1><a href="/internship-diary-2016-bangalore.html">Internship Diary 2016 | Bangalore</a></h1>
-                        <time datetime="2016-05-31 22:00:00+05:30" pubdate>
-                            <span class="month">May</span>
-                            <span class="day">31</span>
-                            <span class="year">2016</span>
-                        </time>
-                        <footer>
-                            <span class="categories">posted in
-                                <a class='category' href='/category/life.html'>Life</a>
-                            </span>
-                        </footer>
-                    </article>
-	    </div>
-    </article>
+  <div class="entry-content"><h2>Prologue</h2>
+<p>I came across Electric UI during the recent live-stream by <a href="https://www.youtube.com/watch?v=d1w2P0XJZME">CCS Technologies</a>. It can be used to make <strong>cross-platform user interface for real time hardware visualization and control</strong>. I did the quick setup and went on to read their documentation. While going through the basics, I stumbled upon several questions embedded within the texts. They required us to have an understanding of ReactJS as well as ElectricUI's core components. There were no clue around, so the readers were left to find the solutions themselves. After a lot of WTHs and pulling my hair out, I figured them out one by one. Through this post, I wanted to document my solutions.</p>
+<h2>Q&amp;As</h2>
+<blockquote>
+<h3>Try adding another Switch, or a Checkbox component to manually set the led_state variable to 0 or 1 while led_blink is disabled. [From <a href="https://electricui.com/docs/quick-start/ui">Blink Mode Control</a>]</h3>
+</blockquote>
+<p>Solution - </p>
+<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">useHardwareState</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@electricui/components-core&#39;</span>
+
+<span class="p">...</span>
+
+<span class="kr">const</span> <span class="nx">isBlinking</span> <span class="o">=</span> <span class="nx">useHardwareState</span><span class="p">(</span><span class="s1">&#39;led_blink&#39;</span><span class="p">)</span>
+
+<span class="p">{</span>
+    <span class="p">(</span><span class="o">!</span><span class="nx">isBlinking</span><span class="p">)</span><span class="o">?</span> 
+    <span class="p">(</span>
+      <span class="o">&lt;</span><span class="nx">Switch</span>
+        <span class="nx">unchecked</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">}</span>
+        <span class="nx">checked</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span>
+        <span class="nx">accessor</span><span class="o">=</span><span class="p">{</span><span class="nx">state</span> <span class="p">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">led_state</span><span class="p">}</span>
+        <span class="nx">writer</span><span class="o">=</span><span class="p">{(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
+          <span class="nx">state</span><span class="p">.</span><span class="nx">led_state</span> <span class="o">=</span> <span class="nx">value</span>
+        <span class="p">}}</span>
+
+      <span class="o">&gt;</span>
+        <span class="nx">Manually</span> <span class="nx">toggle</span> <span class="nx">LED</span> <span class="nx">state</span>
+      <span class="o">&lt;</span><span class="err">/Switch&gt;</span>
+    <span class="p">)</span><span class="o">:</span><span class="kc">null</span>
+<span class="p">}</span>
+</pre></div></div>
+    <footer>
+<p class="meta">
+  <span class="byline author vcard">
+    Posted by <span class="fn">
+        Chandan Sinha
+    </span>
+  </span>
+<time datetime="2021-04-17T01:15:00+05:30" pubdate>Sat 17 April 2021</time>  <span class="categories">
+    <a class='category' href='/category/programming.html'>Programming</a>
+  </span>
+  <span class="categories">
+    <a class="category" href="/tag/engineering.html">engineering</a>,    <a class="category" href="/tag/features.html">features</a>,    <a class="category" href="/tag/javascript.html">javascript</a>,    <a class="category" href="/tag/learning.html">learning</a>,    <a class="category" href="/tag/software.html">software</a>,    <a class="category" href="/tag/troubleshooting.html">troubleshooting</a>  </span>
+</p><div class="sharing">
+</div>    </footer>
+  </article>
+  <section>
+    <h1>Comments</h1>
+    <div id="disqus_thread" aria-live="polite">  <script type="text/javascript">
+    var disqus_shortname = 'mechanicalcodertechblog';
+
+    //     // var disqus_identifier = '/getting-acquainted-with-electric-ui.html';
+    // var disqus_url = '/getting-acquainted-with-electric-ui.html';
+    // var disqus_title = 'Getting Acquainted With Electric UI';
+    //     
+    (function() {
+      var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+      dsq.src = "//" + disqus_shortname + '.disqus.com/embed.js';
+      (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+     })();
+  </script>
+  <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript" rel="nofollow">comments powered by Disqus.</a></noscript>
+</div>
+  </section>
+
+  <!--  -->
 </div>
 <aside class="sidebar">
   <section>
     <h1>Recent Posts</h1>
     <ul id="recent_posts">
       <li class="post">
-          <a href="/beauty-of-mathematics.html">Beauty Of Mathematics</a>
+          <a href="/techrantsrandom.html">Techrants.Random</a>
       </li>
       <li class="post">
-          <a href="/ask-permission-to-save-image-javascript.html">Ask Permission To Save Image | Javascript</a>
+          <a href="/video-editing-showreel-chandan-sinha.html">Video Editing Showreel | Chandan Sinha</a>
       </li>
       <li class="post">
-          <a href="/wall-art-behind-the-scenes.html">Wall Art | Behind The Scenes</a>
+          <a href="/getting-acquainted-with-electric-ui.html">Getting Acquainted With Electric UI</a>
       </li>
       <li class="post">
-          <a href="/city-visit-a-video.html">City Visit | A Video</a>
+          <a href="/untangle-uncover-loosing-and-finding-your-uniqueness.html">Untangle & Uncover - Loosing and Finding Your Uniqueness</a>
       </li>
       <li class="post">
-          <a href="/internship-diary-2016-bangalore.html">Internship Diary 2016 | Bangalore</a>
+          <a href="/learning-nextjs-in-lockdown.html">Learning NextJS In Lockdown</a>
       </li>
     </ul>
   </section>
@@ -241,6 +240,9 @@
 <!--   <script type="text/javascript">
     var disqus_shortname = 'mechanicalcodertechblog';
 
+    //     // var disqus_identifier = '/getting-acquainted-with-electric-ui.html';
+    // var disqus_url = '/getting-acquainted-with-electric-ui.html';
+    // var disqus_title = 'Getting Acquainted With Electric UI';
     //     
     (function() {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
