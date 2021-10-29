@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
   <head>
 	<meta charset="utf-8">
-	<title>Pelican MathJax Issue &mdash; OrangeDurito.blog</title>
+	<title>The IISc. Chronicle &mdash; OrangeDurito.blog</title>
 	<meta name="author" content="Chandan Sinha">
 
 
@@ -76,52 +76,66 @@
 <div>
   <article class="hentry" role="article">
 <header>
-      <h1 class="entry-title">Pelican MathJax Issue</h1>
+      <h1 class="entry-title">The IISc. Chronicle</h1>
     <p class="meta">
-<time datetime="2018-07-17T23:26:00+05:30" pubdate>Tue 17 July 2018</time>    </p>
+<time datetime="2019-07-27T02:00:00+05:30" pubdate>Sat 27 July 2019</time>    </p>
 </header>
 
-  <div class="entry-content"><p>I updated pelican recently because I had upgraded to <code>python 3.x</code>. When I tried to execute <code>pelican content</code> command, it threw an error saying <code>no valid contents were found</code>. After some searching, I found out that I hadn't re-installed <code>markdown</code> (the earlier version was completely undetectable). </p>
-<p>After installing markdown by <code>pip install markdown</code>, I re-ran the earlier command but this time I got this warning -</p>
-<div class="highlight"><pre><span></span>$ pelican content
-Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
-  File <span class="s2">&quot;C:\Users\CHANDAN\Techblog\pelican-plugins\render_math\math.py&quot;</span>, line <span class="m">272</span>, in mathjax_for_markdown
-    pelicanobj.settings<span class="o">[</span><span class="s1">&#39;MD_EXTENSIONS&#39;</span><span class="o">]</span>.append<span class="o">(</span>PelicanMathJaxExtension<span class="o">(</span>config<span class="o">))</span>
-KeyError: <span class="s1">&#39;MD_EXTENSIONS&#39;</span>
+  <div class="entry-content"><h2>Prelude</h2>
+<p>In a meticulously planned but fairly quick turn of events, I had joined <a href="https://iisc.ac.in">Indian Institute of Science, Bangalore</a> as a Research Assistant in <a href="https://jetpecl.wordpress.com/">High Speed Turbulent Combustion &amp; Spray Lab</a> in the Dept. of Aerospace Engineering under the guidance of Prof. S. Chaudhuri (now at University of Toronto). My tenure started from 10th May, 2019.</p>
+<p>In the first few days, I talked to the fellow students (PhD, M.Tech and current project assistants) about the projects they were involved in. This gave me a fair idea about the research work going in this field. Since, I did not have an extensive background in Turbulent Combustion (or even combustion for that matter, coming from product design and mechatronics background in undergrad), I had to dug into the literature to understand the physics behind our experiment. Moreover, the computational work excited me more as I wanted to strengthen my analytical skills. </p>
+<p>After few days, I chose to work with one of the PhD students who was trying to understand the swirling turbulent flame interaction in land-based gas turbine engines through PIV (Particle Image Velocimetry) and PLIF (Planar Laser Induced Fluorescence) imaging techniques. Understanding the right dynamics behind flame interaction in multi-swirler setup is crucial in the sense that precautionary steps could be taken in advance to prevent blow off. This is one of the key problems that results in huge monetary losses to both the suppliers and the consumers. </p>
+<h2>Research Statement</h2>
+<p>Premixed or partially premixed swirling flames are used in gas turbine engines due to their compactness, high ignition efficiency and low <span class="math">\(NO_{x}\)</span> emissions. Operating in lean mode, the interaction between combustor pressure oscillations and reactants' supply rates produces equivalence ratio perturbations leading to combustion instabilities. We are trying to comprehend this phenomenon using a model combustor. We consider a small section of the annular arrangement from <a href="https://en.wikipedia.org/wiki/CFM_International_CFM56">CFM-56 Turbofan Engine</a> with three swirlers for studying the flame interaction. Moreover, the swirlers are arranged in a linear fashion for the experiment, considering the large radius of annular ring. This facilitates in emulating the actual environment in the lab. The fuel used is simply Methane (CH<sub>4</sub>) along with air for a lean premixed flow. </p>
+<h2>Objective</h2>
+<p>During the course of my Research Assistantship, I modified and used numerous MATLAB files which has to be used in sequence in order to extract useful information from the sPIV (Stereoscopic PIV) and PLIF flame images. While the former provided the velocity information in a flow field, the later gives an image file of the flame within definite user-defined bounds. The MATLAB codes took the .vc7 and .im7 files as inputs and we used PIVMat toolbox with ReadIMX package to work with these files.</p>
+<p>We needed to compute critical parameters (normal, curvature, strain rate, etc.) from the flame images taken for different swirler-configurations (varying swirler angles between 30 and 45 or blocking one/two of the swirlers altogether). We correlated these parameters to blowoff-phenomena through a Probability Distribution Function (PDF). I co-authored a research paper where we looked into the mechanism of quasi-periodic extinction-reignition and the final blowoff event. Later, I briefly worked with Prof. Konduri Aditya from the Dept. of Computational and Data Sciences on predicting the blowoff phenomena using Machine Learning.</p>
+<p><center>
+    <video width="889" height="500" controls>
+      <source src="images/flame_blowoff.mp4" type="video/mp4">
+    </video>
+</center></p>
+<h2>Image Processing</h2>
+<p>The processing was done in following [higher-level] sequence  -</p>
+<ol>
+<li>For a given dataset, transverse through the .im7 image files and extract the flame edges using Canny Edge Detection algorithm. Store the edge data in corresponding edge file for each image. Discard the ones for which edges could not be detected properly.</li>
+</ol>
+<p><img alt="Sample .im7 image" src="images/im21_im7.jpg"> </p>
+<ol>
+<li>Load the edge file one by one and manually clean the image (a tedious and painstaking process). Update the edge files with the refined edge data.</li>
+</ol>
+<p><img alt="Extracted edges after refining" src="images/im21_edge.jpg"> </p>
+<ol>
+<li>
+<p>Save the edge data, within the desired bounds, of all the images into a 3-dimensional <code>image</code> matrix (.mat file). Similarly, save velocity information for each image from .vc7 file in <code>v</code> matrix and store the original .im7 images in <code>imm</code> matrix files.</p>
+</li>
+<li>
+<p>Calculate the normal using gradients from the edge data and curvature using the formulae : <span class="math">\(C = \frac{x'y'' - y'x''}{{(x'^{2} +y'^{2})}^{\frac{3}{2}}}\)</span></p>
+</li>
+</ol>
+<p><img alt="Curvature Calculation" src="images/im21_Curvature.jpg"></p>
+<ol>
+<li>Calculate the 2D tangential strain rate using the formulae : <span class="math">\(K = (1-n_{x}^{2})\frac{\partial u}{\partial x} + (1-n_{y}^{2})\frac{\partial v}{\partial y} + n_{x}n_{y}(\frac{\partial u}{\partial y} + \frac{\partial v}{\partial x})\)</span></li>
+</ol>
+<p><img alt="Strain Rate Calculation" src="images/im21_Strain_rate.jpg"></p>
+<p>A turbulent premixd flame can be thought of as a thin flexible surface propagating in a flow filed, which may get distorted by the strong velocity gradients as well as the large-scale flow structures present there. This can result in excessive localized straining of the flame, which may proceed to extinction, if the residence time scales are large. </p>
+<p>For calculating the strain rates, velocity gradients in all the three directions are required which is not available from 2D3C (2-Dimensional 3-Center) stereoscopic PIV measurements. Consequently, only the in-plane (x-y plane) components of strain rates are computed. </p>
+<ol>
+<li>Combine all the strain rates into a single matrix and plot the Probability Distribution Function (PDF)</li>
+</ol>
+<p><img alt="Probability Distribution Function Graph" src="images/pdfgraph.png"></p>
+<h2>Validating MATLAB Code Analytically</h2>
+<p>One of the major challenge of image processing through MATLAB codes was to validate if the computation agreed with the analytical solution. The caveat of using in-built MATLAB functions is deviating from valid solutions because of their implicit nature. It becomes hard to catch the error the further one moves along the sequence described above. I tried several approaches (using the already available image file, creating my own data emulating an image file, and finally creating a sample flow field and running it through the algorithm since the Physics of the sample flow around certain geometries are well known). The final methodology is explained below.</p>
+<h3>Creating struct field</h3>
+<p>You can find all the files I used for analytical validation <a href="" target="_blank">here.</a></p>
+<p><strong>Step1</strong> - I used a uniform and doublet flow fields to create a source-sink pair to generate the velocity matrix and saved everything in a structured form. Similarly, imm and image (edge) matrices were generated by taking a rectangle in the flow field. After running the usual steps I had used for flame images, all the matrices were generated (normals, curvature, strain rate, etc.).</p>
+<p><strong>Step2</strong> - The analytical values for the tangential strain rate were taken to be <span class="math">\(\frac{du}{dx}\)</span> and <span class="math">\(\frac{dv}{dy}\)</span> along the horizontal and vertical line respectively. </p>
+<p>When plotting the strain rate matrix obtained in step 1, I get two rectangles - outer and inner ones. I don't know why it is happening. While running the code for flame edges, it never happened. I will look into the reason. Anyway, I took both the outer and inner rectangles for comparison.</p>
+<p>For comparing the values, I excluded the corner values because they will be erratic due to the differences in du/dx and dv/dy values in those cells. Then I calculated the absolute differences between the corresponding cells and averaged them to find the average percentage error which comes out to be 2.75% and 4.24% for outer and inner rectangle respectively. </p>
+<p>All the matrices are there in the <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTCiKCk90krbMyKQvFcFE-Bi7fR1ua_K1_u-8TmMZbj7cs-M6Ish7u9buJCix1KLQ/pubhtml"><code>vmatrix.xlsx</code></a> excel sheet. Everything has been color-coded in the final 'Difference' workbook, the meanings of which have been explained at the bottom.</p>
+<iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTCiKCk90krbMyKQvFcFE-Bi7fR1ua_K1_u-8TmMZbj7cs-M6Ish7u9buJCix1KLQ/pubhtml?widget=true&amp;headers=false" height="1000px" width="100%"></iframe>
 
-Error - the pelican mathjax markdown extension failed to configure. MathJax is non-functional.
-</pre></div>
-
-
-<p>Apparantly, my MathJax plugin wasn't working properly. I searched for this error on Google which led me to this <a href="https://github.com/getpelican/pelican-plugins/issues/815">Github issue #815</a>. On further reading, I found out this issue was merged with <a href="https://github.com/getpelican/pelican-plugins/pull/787">an earlier one #787</a>. On this link, I found a commit made to <code>math.py</code> file. Here's the change at line 271.</p>
-<p>Instead of this -</p>
-<div class="highlight"><pre><span></span>    <span class="k">try</span><span class="p">:</span>
-        <span class="n">pelicanobj</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;MD_EXTENSIONS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PelicanMathJaxExtension</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">excepthook</span><span class="p">(</span><span class="o">*</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">())</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Error - the pelican mathjax markdown extension failed to configure. MathJax is non-functional.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-</pre></div>
-
-
-<p>Write this -</p>
-<div class="highlight"><pre><span></span>    <span class="k">try</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pelicanobj</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MD_EXTENSIONS&#39;</span><span class="p">),</span> <span class="nb">list</span><span class="p">):</span> <span class="c1"># pelican 3.6.3 and earlier</span>
-            <span class="n">pelicanobj</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;MD_EXTENSIONS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PelicanMathJaxExtension</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">pelicanobj</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;MARKDOWN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;extensions&#39;</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PelicanMathJaxExtension</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">excepthook</span><span class="p">(</span><span class="o">*</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">())</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Error - the pelican mathjax markdown extension failed to configure. MathJax is non-functional.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-</pre></div>
-
-
-<p>And it worked like a charm. Now you know what to do when you encounter this error.</p>
-<p>Example -</p>
-<div class="math">$$\frac{Q_{1}Q_{2}}{4\pi\epsilon r^{2}}$$</div>
-<div class="math">$$d = \sqrt{(x_{2} - x_{1})^2 + (y_{2} - y_{1})^2}$$</div>
-<p>See you in the next post :)</p>
+<p>The average difference of ~2-3% shows that our code gives almost correct values.</p>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -186,11 +200,11 @@ Error - the pelican mathjax markdown extension failed to configure. MathJax is n
         Chandan Sinha
     </span>
   </span>
-<time datetime="2018-07-17T23:26:00+05:30" pubdate>Tue 17 July 2018</time>  <span class="categories">
-    <a class='category' href='/category/programming.html'>Programming</a>
+<time datetime="2019-07-27T02:00:00+05:30" pubdate>Sat 27 July 2019</time>  <span class="categories">
+    <a class='category' href='/category/research.html'>Research</a>
   </span>
   <span class="categories">
-    <a class="category" href="/tag/features.html">features</a>,    <a class="category" href="/tag/markdown.html">markdown</a>,    <a class="category" href="/tag/pelican.html">pelican</a>,    <a class="category" href="/tag/troubleshooting.html">troubleshooting</a>  </span>
+    <a class="category" href="/tag/aerospace.html">aerospace</a>,    <a class="category" href="/tag/iisc.html">IISc</a>,    <a class="category" href="/tag/combustion.html">combustion</a>,    <a class="category" href="/tag/blogging.html">blogging</a>,    <a class="category" href="/tag/events.html">events</a>  </span>
 </p><div class="sharing">
 </div>    </footer>
   </article>
@@ -199,9 +213,9 @@ Error - the pelican mathjax markdown extension failed to configure. MathJax is n
     <div id="disqus_thread" aria-live="polite">  <script type="text/javascript">
     var disqus_shortname = 'mechanicalcodertechblog';
 
-    //     // var disqus_identifier = '/pelican-mathjax-issue.html';
-    // var disqus_url = '/pelican-mathjax-issue.html';
-    // var disqus_title = 'Pelican MathJax Issue';
+    //     // var disqus_identifier = '/the-iisc-chronicle.html';
+    // var disqus_url = '/the-iisc-chronicle.html';
+    // var disqus_title = 'The IISc. Chronicle';
     //     
     (function() {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -308,9 +322,9 @@ Error - the pelican mathjax markdown extension failed to configure. MathJax is n
 <!--   <script type="text/javascript">
     var disqus_shortname = 'mechanicalcodertechblog';
 
-    //     // var disqus_identifier = '/pelican-mathjax-issue.html';
-    // var disqus_url = '/pelican-mathjax-issue.html';
-    // var disqus_title = 'Pelican MathJax Issue';
+    //     // var disqus_identifier = '/the-iisc-chronicle.html';
+    // var disqus_url = '/the-iisc-chronicle.html';
+    // var disqus_title = 'The IISc. Chronicle';
     //     
     (function() {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
