@@ -89,7 +89,9 @@
 <p>Premixed or partially premixed swirling flames are used in gas turbine engines due to their compactness, high ignition efficiency and low <span class="math">\(NO_{x}\)</span> emissions. Operating in lean mode, the interaction between combustor pressure oscillations and reactants' supply rates produces equivalence ratio perturbations leading to combustion instabilities. We are trying to comprehend this phenomenon using a model combustor. We consider a small section of the annular arrangement from <a href="https://en.wikipedia.org/wiki/CFM_International_CFM56">CFM-56 Turbofan Engine</a> with three swirlers for studying the flame interaction. Moreover, the swirlers are arranged in a linear fashion for the experiment, considering the large radius of annular ring. This facilitates in emulating the actual environment in the lab. The fuel used is simply Methane (CH<sub>4</sub>) along with air for a lean premixed flow. </p>
 <h2>Objective</h2>
 <p>During the course of my Research Assistantship, I modified and used numerous MATLAB files which has to be used in sequence in order to extract useful information from the sPIV (Stereoscopic PIV) and PLIF flame images. While the former provided the velocity information in a flow field, the later gives an image file of the flame within definite user-defined bounds. The MATLAB codes took the .vc7 and .im7 files as inputs and we used PIVMat toolbox with ReadIMX package to work with these files.</p>
-<p>We needed to compute critical parameters (normal, curvature, strain rate, etc.) from the flame images taken for different swirler-configurations (varying swirler angles between 30 and 45 or blocking one/two of the swirlers altogether). We correlated these parameters to blowoff-phenomena through a Probability Distribution Function (PDF). I co-authored a research paper where we looked into the mechanism of quasi-periodic extinction-reignition and the final blowoff event. Later, I briefly worked with Prof. Konduri Aditya from the Dept. of Computational and Data Sciences on predicting the blowoff phenomena using Machine Learning.</p>
+<p>We needed to compute critical parameters (normal, curvature, strain rate, etc.) from the flame images taken for different swirler-configurations (varying swirler angles between 30 and 45 or blocking one/two of the swirlers altogether). We correlated these parameters to blowoff-phenomena through a Probability Distribution Function (PDF). I co-authored a research paper where we looked into the mechanism of quasi-periodic extinction-reignition and the final blowoff event. </p>
+<p><center><iframe src="https://drive.google.com/file/d/1rXqro0Ni6h-ZbvbmAfqcjfzvbIm_yudT/preview" width="90%" height="1000"></iframe></center></p>
+<p>Later, I briefly worked with Prof. Konduri Aditya from the Dept. of Computational and Data Sciences on predicting the blowoff phenomena using Machine Learning.</p>
 <p><center>
     <video width="889" height="500" controls>
       <source src="images/flame_blowoff.mp4" type="video/mp4">
@@ -100,11 +102,11 @@
 <ol>
 <li>For a given dataset, transverse through the .im7 image files and extract the flame edges using Canny Edge Detection algorithm. Store the edge data in corresponding edge file for each image. Discard the ones for which edges could not be detected properly.</li>
 </ol>
-<p><img alt="Sample .im7 image" src="images/im21_im7.jpg"> </p>
+<p><img alt="Sample .im7 image" src="images/im20_im7.jpg"> </p>
 <ol>
 <li>Load the edge file one by one and manually clean the image (a tedious and painstaking process). Update the edge files with the refined edge data.</li>
 </ol>
-<p><img alt="Extracted edges after refining" src="images/im21_edge.jpg"> </p>
+<p><img alt="Extracted edges after refining" src="images/im20_edge.jpg"> </p>
 <ol>
 <li>
 <p>Save the edge data, within the desired bounds, of all the images into a 3-dimensional <code>image</code> matrix (.mat file). Similarly, save velocity information for each image from .vc7 file in <code>v</code> matrix and store the original .im7 images in <code>imm</code> matrix files.</p>
@@ -112,18 +114,19 @@
 <li>
 <p>Calculate the normal using gradients from the edge data and curvature using the formulae : <span class="math">\(C = \frac{x'y'' - y'x''}{{(x'^{2} +y'^{2})}^{\frac{3}{2}}}\)</span></p>
 </li>
+<li>
+<p>Calculate the 2D tangential strain rate using the formulae : <span class="math">\(K = (1-n_{x}^{2})\frac{\partial u}{\partial x} + (1-n_{y}^{2})\frac{\partial v}{\partial y} + n_{x}n_{y}(\frac{\partial u}{\partial y} + \frac{\partial v}{\partial x})\)</span></p>
+</li>
 </ol>
-<p><img alt="Curvature Calculation" src="images/im21_Curvature.jpg"></p>
-<ol>
-<li>Calculate the 2D tangential strain rate using the formulae : <span class="math">\(K = (1-n_{x}^{2})\frac{\partial u}{\partial x} + (1-n_{y}^{2})\frac{\partial v}{\partial y} + n_{x}n_{y}(\frac{\partial u}{\partial y} + \frac{\partial v}{\partial x})\)</span></li>
-</ol>
-<p><img alt="Strain Rate Calculation" src="images/im21_Strain_rate.jpg"></p>
-<p>A turbulent premixd flame can be thought of as a thin flexible surface propagating in a flow filed, which may get distorted by the strong velocity gradients as well as the large-scale flow structures present there. This can result in excessive localized straining of the flame, which may proceed to extinction, if the residence time scales are large. </p>
+<p><img alt="Strain Rate Calculation" src="images/im20_strain_rate.jpg"></p>
+<p>A turbulent premixed flame can be thought of as a thin flexible surface propagating in a flow filed, which may get distorted by the strong velocity gradients as well as the large-scale flow structures present there. This can result in excessive localized straining of the flame, which may proceed to extinction, if the residence time scales are large. </p>
 <p>For calculating the strain rates, velocity gradients in all the three directions are required which is not available from 2D3C (2-Dimensional 3-Center) stereoscopic PIV measurements. Consequently, only the in-plane (x-y plane) components of strain rates are computed. </p>
 <ol>
 <li>Combine all the strain rates into a single matrix and plot the Probability Distribution Function (PDF)</li>
 </ol>
-<p><img alt="Probability Distribution Function Graph" src="images/pdfgraph.png"></p>
+<p><img alt="Probability Distribution Function Graph" src="images/pdfgraph.PNG"></p>
+<p>We did this for different swirler configurations in longitudinal (<span class="math">\(r-\theta\)</span> plane) and transverse (<span class="math">\(r-z\)</span> plane) for both normal and blowoff conditions. A few of these are shown in the screenshot below -</p>
+<p><img alt="For different configurations" src="images/blowoff_different_configurations.PNG"></p>
 <h2>Validating MATLAB Code Analytically</h2>
 <p>One of the major challenge of image processing through MATLAB codes was to validate if the computation agreed with the analytical solution. The caveat of using in-built MATLAB functions is deviating from valid solutions because of their implicit nature. It becomes hard to catch the error the further one moves along the sequence described above. I tried several approaches (using the already available image file, creating my own data emulating an image file, and finally creating a sample flow field and running it through the algorithm since the Physics of the sample flow around certain geometries are well known). The final methodology is explained below.</p>
 <h3>Creating struct field</h3>
@@ -253,9 +256,9 @@
   <section>
     <h1>Categories</h1>
     <ul id="recent_posts">
-        <li><a href="/category/aerospace.html">Aerospace</a> (2)</li>
+        <li><a href="/category/aerospace.html">Aerospace</a> (3)</li>
         <li><a href="/category/design.html">Design</a> (4)</li>
-        <li><a href="/category/filmmaking.html">filmmaking</a> (3)</li>
+        <li><a href="/category/filmmaking.html">Filmmaking</a> (3)</li>
         <li><a href="/category/life.html">Life</a> (4)</li>
         <li><a href="/category/programming.html">Programming</a> (7)</li>
         <li><a href="/category/research.html">Research</a> (1)</li>
@@ -266,7 +269,7 @@
 
 <!--   <section>
   <h1>Tags</h1>
-    <a href="/tag/engineering.html">engineering</a>,    <a href="/tag/features.html">features</a>,    <a href="/tag/javascript.html">javascript</a>,    <a href="/tag/learning.html">learning</a>,    <a href="/tag/software.html">software</a>,    <a href="/tag/troubleshooting.html">troubleshooting</a>,    <a href="/tag/notes.html">notes</a>,    <a href="/tag/web-development.html">web-development</a>,    <a href="/tag/editing.html">editing</a>,    <a href="/tag/art.html">art</a>,    <a href="/tag/creativity.html">creativity</a>,    <a href="/tag/aerospace.html">aerospace</a>,    <a href="/tag/iisc.html">IISc</a>,    <a href="/tag/combustion.html">combustion</a>,    <a href="/tag/blogging.html">blogging</a>,    <a href="/tag/events.html">events</a>,    <a href="/tag/technology.html">technology</a>,    <a href="/tag/design.html">design</a>,    <a href="/tag/test.html">test</a>,    <a href="/tag/product-design.html">product-design</a>,    <a href="/tag/programming.html">programming</a>,    <a href="/tag/science.html">science</a>,    <a href="/tag/research.html">research</a>,    <a href="/tag/space.html">space</a>,    <a href="/tag/exploration.html">exploration</a>,    <a href="/tag/markdown.html">markdown</a>,    <a href="/tag/pelican.html">pelican</a>,    <a href="/tag/automation.html">automation</a>,    <a href="/tag/letter.html">letter</a>,    <a href="/tag/advice.html">advice</a>,    <a href="/tag/mathematics.html">mathematics</a>,    <a href="/tag/fun.html">fun</a>,    <a href="/tag/feature.html">feature</a>,    <a href="/tag/internship.html">internship</a>  </section> -->
+    <a href="/tag/engineering.html">engineering</a>,    <a href="/tag/features.html">features</a>,    <a href="/tag/javascript.html">javascript</a>,    <a href="/tag/learning.html">learning</a>,    <a href="/tag/software.html">software</a>,    <a href="/tag/troubleshooting.html">troubleshooting</a>,    <a href="/tag/notes.html">notes</a>,    <a href="/tag/web-development.html">web-development</a>,    <a href="/tag/editing.html">editing</a>,    <a href="/tag/art.html">art</a>,    <a href="/tag/creativity.html">creativity</a>,    <a href="/tag/aerospace.html">aerospace</a>,    <a href="/tag/iisc.html">IISc</a>,    <a href="/tag/combustion.html">combustion</a>,    <a href="/tag/blogging.html">blogging</a>,    <a href="/tag/events.html">events</a>,    <a href="/tag/technology.html">technology</a>,    <a href="/tag/design.html">design</a>,    <a href="/tag/test.html">test</a>,    <a href="/tag/product-design.html">product-design</a>,    <a href="/tag/programming.html">programming</a>,    <a href="/tag/exploration.html">exploration</a>,    <a href="/tag/science.html">science</a>,    <a href="/tag/space.html">space</a>,    <a href="/tag/research.html">research</a>,    <a href="/tag/markdown.html">markdown</a>,    <a href="/tag/pelican.html">pelican</a>,    <a href="/tag/automation.html">automation</a>,    <a href="/tag/letter.html">letter</a>,    <a href="/tag/advice.html">advice</a>,    <a href="/tag/mathematics.html">mathematics</a>,    <a href="/tag/fun.html">fun</a>,    <a href="/tag/feature.html">feature</a>,    <a href="/tag/internship.html">internship</a>  </section> -->
 
 
     <section>
