@@ -98,14 +98,13 @@
 <p>An integer can be equal to a floating point.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="mi">42</span> <span class="o">==</span> <span class="s1">&#39;42&#39;</span>
-<span class="bp">False</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="mi">42</span> <span class="o">==</span> <span class="s1">&#39;42&#39;</span>
+<span class="kc">False</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="mi">42</span> <span class="o">==</span> <span class="mf">42.0</span>
-<span class="bp">True</span>
+<span class="kc">True</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="mf">42.0</span> <span class="o">==</span> <span class="mf">0042.000</span>
-<span class="bp">True</span>
-</pre></div>
-
+<span class="kc">True</span>
+</code></pre></div>
 
 <ul>
 <li>
@@ -149,23 +148,21 @@
 <p>Since python code does not have other syntax to remind you of types, your variable names are a key way for you to keep straight what is going on.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span>  <span class="c1"># % operator</span>
+<div class="highlight"><pre><span></span><code>  <span class="c1"># % operator</span>
   <span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="si">%d</span><span class="s2"> little pigs come out, or I&#39;ll </span><span class="si">%s</span><span class="s2">, and I&#39;ll </span><span class="si">%s</span><span class="s2">, and I&#39;ll blow your </span><span class="si">%s</span><span class="s2"> down.&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;huff&#39;</span><span class="p">,</span> <span class="s1">&#39;puff&#39;</span><span class="p">,</span> <span class="s1">&#39;house&#39;</span><span class="p">)</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>Character encoding -</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="c1">## (ustring from above contains a unicode string)</span>
+<div class="highlight"><pre><span></span><code><span class="c1">## (ustring from above contains a unicode string)</span>
 <span class="o">&gt;</span> <span class="n">s</span> <span class="o">=</span> <span class="n">ustring</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
 <span class="o">&gt;</span> <span class="n">s</span>
 <span class="s1">&#39;A unicode </span><span class="se">\xc6\x8e</span><span class="s1"> string </span><span class="se">\xc3\xb1</span><span class="s1">&#39;</span>  <span class="c1">## bytes of utf-8 encoding</span>
-<span class="o">&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="nb">unicode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>             <span class="c1">## Convert bytes back to a unicode string</span>
+<span class="o">&gt;</span> <span class="n">t</span> <span class="o">=</span> <span class="n">unicode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>             <span class="c1">## Convert bytes back to a unicode string</span>
 <span class="o">&gt;</span> <span class="n">t</span> <span class="o">==</span> <span class="n">ustring</span>                      <span class="c1">## It&#39;s the same as the original, yay!</span>
-<span class="bp">True</span>
-</pre></div>
-
+<span class="kc">True</span>
+</code></pre></div>
 
 <h2>List</h2>
 <ul>
@@ -176,39 +173,35 @@
 <p><code>for</code>, <code>not</code> and <code>in</code> constructors:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">squares</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">]</span>
 <span class="nb">sum</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">for</span> <span class="n">num</span> <span class="ow">in</span> <span class="n">squares</span><span class="p">:</span>
     <span class="nb">sum</span> <span class="o">+=</span> <span class="n">num</span>
-<span class="k">print</span> <span class="nb">sum</span>  <span class="c1">#30</span>
-</pre></div>
+<span class="nb">print</span> <span class="nb">sum</span>  <span class="c1">#30</span>
+</code></pre></div>
 
-
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;hi&#39;</span><span class="p">,</span> <span class="s1">&#39;howdy&#39;</span><span class="p">,</span> <span class="s1">&#39;heyas&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span> <span class="s1">&#39;hi&#39;</span><span class="p">,</span> <span class="s1">&#39;howdy&#39;</span><span class="p">,</span> <span class="s1">&#39;heyas&#39;</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;cat&#39;</span> <span class="ow">in</span> <span class="n">spam</span>
-<span class="bp">False</span>
+<span class="kc">False</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="s1">&#39;howdy&#39;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">spam</span>
-<span class="bp">False</span>
-</pre></div>
+<span class="kc">False</span>
+</code></pre></div>
 
-
-<div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;larry&#39;</span><span class="p">,</span><span class="s1">&#39;curly&#39;</span><span class="p">,</span><span class="s1">&#39;moe&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;larry&#39;</span><span class="p">,</span><span class="s1">&#39;curly&#39;</span><span class="p">,</span><span class="s1">&#39;moe&#39;</span><span class="p">]</span>
 <span class="k">if</span> <span class="s1">&#39;curly&#39;</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s1">&#39;yay&#39;</span>   <span class="c1">#yay</span>
-</pre></div>
-
+    <span class="nb">print</span> <span class="s1">&#39;yay&#39;</span>   <span class="c1">#yay</span>
+</code></pre></div>
 
 <ul>
 <li>Multiple assignment trick -</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">cat</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fat&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;loud&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">cat</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;fat&#39;</span><span class="p">,</span> <span class="s1">&#39;orange&#39;</span><span class="p">,</span> <span class="s1">&#39;loud&#39;</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">size</span><span class="p">,</span> <span class="n">color</span><span class="p">,</span> <span class="n">disposition</span> <span class="o">=</span> <span class="n">cat</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">size</span>
 <span class="s1">&#39;fat&#39;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">color</span>
 <span class="s1">&#39;orange&#39;</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>Augmented assignment - </li>
@@ -246,23 +239,21 @@
 <ul>
 <li>Swapping values -</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="s1">&#39;Alice&#39;</span><span class="p">,</span> <span class="s1">&#39;Bob&#39;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>
 <span class="s1">&#39;Bob&#39;</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="k">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
 <span class="s1">&#39;Alice&#39;</span>
-</pre></div>
+</code></pre></div>
 
+<div class="highlight"><pre><span></span><code><span class="o">*</span> ```<span class="nv">range</span><span class="ss">(</span><span class="nv">n</span><span class="ss">)</span>``` <span class="nv">function</span> <span class="nv">yields</span> <span class="nv">the</span> <span class="nv">number</span> <span class="mi">0</span>,<span class="mi">1</span>,...<span class="nv">n</span><span class="o">-</span><span class="mi">1</span> <span class="nv">and</span> ```<span class="nv">range</span><span class="ss">(</span><span class="nv">a</span>,<span class="nv">b</span><span class="ss">)</span>``` <span class="nv">returns</span> <span class="nv">a</span>, <span class="nv">a</span><span class="o">+</span><span class="mi">1</span>, <span class="nv">a</span><span class="o">+</span><span class="mi">2</span>, .....,<span class="nv">b</span><span class="o">-</span><span class="mi">1</span>
 
-<div class="highlight"><pre><span></span>* ```range(n)``` function yields the number 0,1,...n-1 and ```range(a,b)``` returns a, a+1, a+2, .....,b-1
-
-* The combination of the for-loop and the range(n) function allow us to build a traditional numeric for loop:
-```python
-for i in range(100):
-    print i
-</pre></div>
-
+<span class="o">*</span> <span class="nv">The</span> <span class="nv">combination</span> <span class="nv">of</span> <span class="nv">the</span> <span class="k">for</span><span class="o">-</span><span class="k">loop</span> <span class="nv">and</span> <span class="nv">the</span> <span class="nv">range</span><span class="ss">(</span><span class="nv">n</span><span class="ss">)</span> <span class="nv">function</span> <span class="nv">allow</span> <span class="nv">us</span> <span class="nv">to</span> <span class="nv">build</span> <span class="nv">a</span> <span class="nv">traditional</span> <span class="nv">numeric</span> <span class="k">for</span> <span class="k">loop</span>:
+```<span class="nv">python</span>
+<span class="k">for</span> <span class="nv">i</span> <span class="nv">in</span> <span class="nv">range</span><span class="ss">(</span><span class="mi">100</span><span class="ss">)</span>:
+    <span class="nv">print</span> <span class="nv">i</span>
+</code></pre></div>
 
 <ul>
 <li>
@@ -272,59 +263,54 @@ for i in range(100):
 <p>while loop gives total control over the index numbers.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="n">i</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">a</span><span class="p">):</span>
-    <span class="k">print</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="nb">print</span> <span class="n">a</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
     <span class="n">i</span> <span class="o">=</span> <span class="n">i</span><span class="o">+</span><span class="mi">3</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>List methods:</li>
 </ul>
-<div class="highlight"><pre><span></span>  <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;larry&#39;</span><span class="p">,</span> <span class="s1">&#39;curly&#39;</span><span class="p">,</span> <span class="s1">&#39;moe&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code>  <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;larry&#39;</span><span class="p">,</span> <span class="s1">&#39;curly&#39;</span><span class="p">,</span> <span class="s1">&#39;moe&#39;</span><span class="p">]</span>
   <span class="nb">list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="s1">&#39;shemp&#39;</span><span class="p">)</span>         <span class="c1">## append elem at end</span>
   <span class="nb">list</span><span class="o">.</span><span class="n">insert</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;xxx&#39;</span><span class="p">)</span>        <span class="c1">## insert elem at index 0</span>
   <span class="nb">list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="s1">&#39;yyy&#39;</span><span class="p">,</span> <span class="s1">&#39;zzz&#39;</span><span class="p">])</span>  <span class="c1">## add list of elems at end</span>
-  <span class="k">print</span> <span class="nb">list</span>  <span class="c1">## [&#39;xxx&#39;, &#39;larry&#39;, &#39;curly&#39;, &#39;moe&#39;, &#39;shemp&#39;, &#39;yyy&#39;, &#39;zzz&#39;]</span>
-  <span class="k">print</span> <span class="nb">list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;curly&#39;</span><span class="p">)</span>    <span class="c1">## 2</span>
+  <span class="nb">print</span> <span class="nb">list</span>  <span class="c1">## [&#39;xxx&#39;, &#39;larry&#39;, &#39;curly&#39;, &#39;moe&#39;, &#39;shemp&#39;, &#39;yyy&#39;, &#39;zzz&#39;]</span>
+  <span class="nb">print</span> <span class="nb">list</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;curly&#39;</span><span class="p">)</span>    <span class="c1">## 2</span>
 
   <span class="nb">list</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="s1">&#39;curly&#39;</span><span class="p">)</span>         <span class="c1">## search and remove that element</span>
   <span class="nb">list</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>                  <span class="c1">## removes and returns &#39;larry&#39;</span>
-  <span class="k">print</span> <span class="nb">list</span>  <span class="c1">## [&#39;xxx&#39;, &#39;moe&#39;, &#39;shemp&#39;, &#39;yyy&#39;, &#39;zzz&#39;]</span>
-</pre></div>
-
+  <span class="nb">print</span> <span class="nb">list</span>  <span class="c1">## [&#39;xxx&#39;, &#39;moe&#39;, &#39;shemp&#39;, &#39;yyy&#39;, &#39;zzz&#39;]</span>
+</code></pre></div>
 
 <ul>
 <li>Where there are duplicated of the value in the list, the index of its first appearance is returned. </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Zophie&#39;</span><span class="p">,</span> <span class="s1">&#39;Pooka&#39;</span><span class="p">,</span> <span class="s1">&#39;Fat-tail&#39;</span><span class="p">,</span> <span class="s1">&#39;Pooka&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Zophie&#39;</span><span class="p">,</span> <span class="s1">&#39;Pooka&#39;</span><span class="p">,</span> <span class="s1">&#39;Fat-tail&#39;</span><span class="p">,</span> <span class="s1">&#39;Pooka&#39;</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span><span class="o">.</span><span class="n">index</span><span class="p">(</span><span class="s1">&#39;Pooka&#39;</span><span class="p">)</span>
 <span class="mi">1</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>List Slices - works just like in strings</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">]</span>
-<span class="k">print</span> <span class="nb">list</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>   <span class="c1">## [&#39;b&#39;, &#39;c&#39;]</span>
+<div class="highlight"><pre><span></span><code><span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">]</span>
+<span class="nb">print</span> <span class="nb">list</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>   <span class="c1">## [&#39;b&#39;, &#39;c&#39;]</span>
 <span class="nb">list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;z&#39;</span>    <span class="c1">## replace [&#39;a&#39;, &#39;b&#39;] with [&#39;z&#39;]</span>
-<span class="k">print</span> <span class="nb">list</span>         <span class="c1">## [&#39;z&#39;, &#39;c&#39;, &#39;d&#39;]</span>
-</pre></div>
-
+<span class="nb">print</span> <span class="nb">list</span>         <span class="c1">## [&#39;z&#39;, &#39;c&#39;, &#39;d&#39;]</span>
+</code></pre></div>
 
 <ul>
 <li>A string is also kind of a list of single text character</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Zophie&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">name</span> <span class="o">=</span> <span class="s1">&#39;Zophie&#39;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="s1">&#39;Z&#39;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">name</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">4</span><span class="p">]</span>
 <span class="s1">&#39;Zoph&#39;</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>
@@ -335,22 +321,21 @@ for i in range(100):
 </li>
 </ul>
 <p><img alt="alt text" src="https://automatetheboringstuff.com/images/000081.jpg" title="Reference figure"></p>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">4.5</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">,</span><span class="mf">4.5</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">cheese</span> <span class="o">=</span> <span class="n">spam</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">cheese</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;Hello!&#39;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span>
 <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Hello!&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">cheese</span>
 <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;Hello!&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><strong>Python uses references whenever variables must store values of mutable data types, such as lists or dictionaries. For values of immutable data types such as strings, integers, or tuples, Python variables will store the value itself.</strong></p>
 <h3><code>copy()</code> and <code>deepcopy()</code> functions under <code>copy</code> module -</h3>
 <ul>
 <li>If we don't want to change the original list or dictionary - </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">copy</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">copy</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">cheese</span> <span class="o">=</span> <span class="n">copy</span><span class="o">.</span><span class="n">copy</span><span class="p">(</span><span class="n">spam</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">cheese</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
@@ -358,8 +343,7 @@ for i in range(100):
 <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="s1">&#39;B&#39;</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">cheese</span>
 <span class="p">[</span><span class="s1">&#39;A&#39;</span><span class="p">,</span> <span class="mi">42</span><span class="p">,</span> <span class="s1">&#39;C&#39;</span><span class="p">,</span> <span class="s1">&#39;D&#39;</span><span class="p">]</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>If the list you need to copy contains list, then use <code>copy.deepcopy()</code> function instead of <code>copy.copy()</code>. The <code>deepcopy()</code> function will copy these inner lists as well.</li>
@@ -368,7 +352,7 @@ for i in range(100):
 <ul>
 <li>Just like list but immutable. Declared by () brackets.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">eggs</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">eggs</span> <span class="o">=</span> <span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span><span class="mi">42</span><span class="p">,</span><span class="mf">0.5</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">eggs</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="s1">&#39;hello&#39;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">eggs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
@@ -376,35 +360,33 @@ for i in range(100):
   <span class="n">File</span> <span class="s2">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">1</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
     <span class="n">eggs</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">99</span>
 <span class="ne">TypeError</span><span class="p">:</span> <span class="s1">&#39;tuple&#39;</span> <span class="nb">object</span> <span class="n">does</span> <span class="ow">not</span> <span class="n">support</span> <span class="n">item</span> <span class="n">assignment</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>If the tuple has only one value, it can be indicated by placing a trailing comma after the value inside the parenthesis. </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">((</span><span class="s1">&#39;hello&#39;</span><span class="p">,))</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">((</span><span class="s1">&#39;hello&#39;</span><span class="p">,))</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">tuple</span><span class="s1">&#39;&gt;</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">type</span><span class="p">((</span><span class="s1">&#39;hello&#39;</span><span class="p">))</span>
 <span class="o">&lt;</span><span class="k">class</span> <span class="err">&#39;</span><span class="nc">str</span><span class="s1">&#39;&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>Converting types with <code>list()</code> and <code>tuple()</code> functions -</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="nb">tuple</span><span class="p">([</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="nb">tuple</span><span class="p">([</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="p">(</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">((</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
 <span class="p">[</span><span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;dog&#39;</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="nb">list</span><span class="p">(</span><span class="s1">&#39;hello&#39;</span><span class="p">)</span>
 <span class="p">[</span><span class="s1">&#39;h&#39;</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">]</span>
-<span class="sb">````</span>
+<span class="err">````</span>
 <span class="o">**</span><span class="n">Converting</span> <span class="n">a</span> <span class="nb">tuple</span> <span class="n">to</span> <span class="n">a</span> <span class="nb">list</span> <span class="ow">is</span> <span class="n">handy</span> <span class="k">if</span> <span class="n">you</span> <span class="n">need</span> <span class="n">a</span> <span class="n">mutable</span> <span class="n">version</span> <span class="n">of</span> <span class="n">a</span> <span class="nb">tuple</span> <span class="n">value</span><span class="o">.**</span>
 
 <span class="c1">## Sorting</span>
 
-<span class="o">*</span> <span class="sb">```sort()```</span> <span class="n">method</span> <span class="o">-</span>
-<span class="sb">``</span><span class="err">`</span><span class="n">python</span>
+<span class="o">*</span> <span class="err">```</span><span class="n">sort</span><span class="p">()</span><span class="err">```</span> <span class="n">method</span> <span class="o">-</span>
+<span class="err">```</span><span class="n">python</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mf">3.14</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="o">-</span><span class="mi">7</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span>
@@ -413,45 +395,41 @@ for i in range(100):
 <span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span><span class="o">.</span><span class="n">sort</span><span class="p">()</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span>
 <span class="p">[</span><span class="s1">&#39;ants&#39;</span><span class="p">,</span> <span class="s1">&#39;badgers&#39;</span><span class="p">,</span> <span class="s1">&#39;cats&#39;</span><span class="p">,</span> <span class="s1">&#39;dogs&#39;</span><span class="p">,</span> <span class="s1">&#39;elephants&#39;</span><span class="p">]</span>
-<span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+<span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span>
 <span class="p">[</span><span class="s1">&#39;elephants&#39;</span><span class="p">,</span> <span class="s1">&#39;dogs&#39;</span><span class="p">,</span> <span class="s1">&#39;cats&#39;</span><span class="p">,</span> <span class="s1">&#39;badgers&#39;</span><span class="p">,</span> <span class="s1">&#39;ants&#39;</span><span class="p">]</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>To sort the values in regular alphabetical order, pass <code>str.lower</code> for the <code>key</code> keyword argument in the <code>sort()</code> method call.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;Z&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;Z&#39;</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">)</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span>
 <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span><span class="s1">&#39;A&#39;</span><span class="p">,</span><span class="s1">&#39;z&#39;</span><span class="p">,</span><span class="s1">&#39;Z&#39;</span><span class="p">]</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li><code>sorted</code> function sort the elements and returns a new list. The original list remains unchanged.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
-<span class="k">print</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1">## [1, 3, 4, 5]</span>
-<span class="k">print</span> <span class="n">a</span>  <span class="c1">## [5, 1, 4, 3]</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">a</span><span class="p">)</span>  <span class="c1">## [1, 3, 4, 5]</span>
+<span class="nb">print</span> <span class="n">a</span>  <span class="c1">## [5, 1, 4, 3]</span>
+</code></pre></div>
 
 <p>It is also customizable with optional arguments like <code>key</code> and <code>reverse=True</code></p>
-<div class="highlight"><pre><span></span><span class="n">strs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;aa&#39;</span><span class="p">,</span> <span class="s1">&#39;BB&#39;</span><span class="p">,</span> <span class="s1">&#39;zz&#39;</span><span class="p">,</span> <span class="s1">&#39;CC&#39;</span><span class="p">]</span>
-<span class="k">print</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">strs</span><span class="p">)</span>  <span class="c1">## [&#39;BB&#39;, &#39;CC&#39;, &#39;aa&#39;, &#39;zz&#39;] (case sensitive)</span>
-<span class="k">print</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">strs</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>   <span class="c1">## [&#39;zz&#39;, &#39;aa&#39;, &#39;CC&#39;, &#39;BB&#39;]</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">strs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;aa&#39;</span><span class="p">,</span> <span class="s1">&#39;BB&#39;</span><span class="p">,</span> <span class="s1">&#39;zz&#39;</span><span class="p">,</span> <span class="s1">&#39;CC&#39;</span><span class="p">]</span>
+<span class="nb">print</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">strs</span><span class="p">)</span>  <span class="c1">## [&#39;BB&#39;, &#39;CC&#39;, &#39;aa&#39;, &#39;zz&#39;] (case sensitive)</span>
+<span class="nb">print</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">strs</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>   <span class="c1">## [&#39;zz&#39;, &#39;aa&#39;, &#39;CC&#39;, &#39;BB&#39;]</span>
+</code></pre></div>
 
 <ul>
 <li>More examples on <code>key</code> argument</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">strs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;aa&#39;</span><span class="p">,</span> <span class="s1">&#39;BB&#39;</span><span class="p">,</span> <span class="s1">&#39;zz&#39;</span><span class="p">,</span> <span class="s1">&#39;CC&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">strs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;aa&#39;</span><span class="p">,</span> <span class="s1">&#39;BB&#39;</span><span class="p">,</span> <span class="s1">&#39;zz&#39;</span><span class="p">,</span> <span class="s1">&#39;CC&#39;</span><span class="p">]</span>
 
 <span class="c1">## &quot;key&quot; argument specifying str.lower function to use for sorting</span>
-<span class="k">print</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">strs</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">)</span>  <span class="c1">## [&#39;aa&#39;, &#39;BB&#39;, &#39;CC&#39;, &#39;zz&#39;]</span>
+<span class="nb">print</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">strs</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">str</span><span class="o">.</span><span class="n">lower</span><span class="p">)</span>  <span class="c1">## [&#39;aa&#39;, &#39;BB&#39;, &#39;CC&#39;, &#39;zz&#39;]</span>
 
 <span class="n">strings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;xc&#39;</span><span class="p">,</span> <span class="s1">&#39;zb&#39;</span><span class="p">,</span> <span class="s1">&#39;yd&#39;</span> <span class="p">,</span><span class="s1">&#39;wa&#39;</span><span class="p">]</span>
 
@@ -461,41 +439,37 @@ for i in range(100):
 <span class="k">return</span> <span class="n">s</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 
 <span class="c1">## Now pass key=MyFn to sorted() to sort by the last letter:</span>
-<span class="k">print</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">strs</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">MyFn</span><span class="p">)</span>  <span class="c1">## [&#39;wa&#39;, &#39;zb&#39;, &#39;xc&#39;, &#39;yd&#39;]</span>
-</pre></div>
-
+<span class="nb">print</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">strs</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">MyFn</span><span class="p">)</span>  <span class="c1">## [&#39;wa&#39;, &#39;zb&#39;, &#39;xc&#39;, &#39;yd&#39;]</span>
+</code></pre></div>
 
 <ul>
 <li>Working with <code>tuple</code></li>
 </ul>
-<div class="highlight"><pre><span></span><span class="nb">tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;hi&#39;</span><span class="p">)</span>
-<span class="k">print</span> <span class="nb">len</span><span class="p">(</span><span class="nb">tuple</span><span class="p">)</span>  <span class="c1">## 3</span>
-<span class="k">print</span> <span class="nb">tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>    <span class="c1">## hi</span>
+<div class="highlight"><pre><span></span><code><span class="nb">tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;hi&#39;</span><span class="p">)</span>
+<span class="nb">print</span> <span class="nb">len</span><span class="p">(</span><span class="nb">tuple</span><span class="p">)</span>  <span class="c1">## 3</span>
+<span class="nb">print</span> <span class="nb">tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>    <span class="c1">## hi</span>
 <span class="nb">tuple</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;bye&#39;</span>  <span class="c1">## NO, tuples cannot be changed</span>
 <span class="nb">tuple</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;bye&#39;</span><span class="p">)</span>  <span class="c1">## this works</span>
 
 <span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">z</span><span class="p">)</span> <span class="o">=</span> <span class="p">(</span><span class="mi">42</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="s2">&quot;hike&quot;</span><span class="p">)</span>
-<span class="k">print</span> <span class="n">z</span>  <span class="c1">## hike</span>
+<span class="nb">print</span> <span class="n">z</span>  <span class="c1">## hike</span>
 <span class="p">(</span><span class="n">err_string</span><span class="p">,</span> <span class="n">err_code</span><span class="p">)</span> <span class="o">=</span> <span class="n">Foo</span><span class="p">()</span>  <span class="c1">## Foo() returns a length-2 tuple</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>List Comprehension</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
 <span class="n">squares</span> <span class="o">=</span> <span class="p">[</span> <span class="n">n</span> <span class="o">*</span> <span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nums</span> <span class="p">]</span>   <span class="c1">## [1, 4, 9, 16]</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>Common syntax - <code>[expr for var in list]</code></p>
-<div class="highlight"><pre><span></span><span class="n">strs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span><span class="s1">&#39;and&#39;</span><span class="p">,</span><span class="s1">&#39;goodbye&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="n">strs</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;hello&#39;</span><span class="p">,</span><span class="s1">&#39;and&#39;</span><span class="p">,</span><span class="s1">&#39;goodbye&#39;</span><span class="p">]</span>
 <span class="n">shouting</span> <span class="o">=</span> <span class="p">[</span><span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span><span class="o">+</span><span class="s1">&#39;!!!&#39;</span> <span class="k">for</span> <span class="n">words</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">strs</span><span class="p">]</span>
 <span class="c1">## [&#39;HELLO!!!&#39;, &#39;AND!!!&#39;, &#39;GOODBYE!!!&#39;]</span>
-</pre></div>
+</code></pre></div>
 
-
-<div class="highlight"><pre><span></span><span class="c1">## Select values &lt;= 2</span>
+<div class="highlight"><pre><span></span><code><span class="c1">## Select values &lt;= 2</span>
 <span class="n">nums</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">]</span>
 <span class="n">small</span> <span class="o">=</span> <span class="p">[</span> <span class="n">n</span> <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">nums</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&lt;=</span> <span class="mi">2</span> <span class="p">]</span>  <span class="c1">## [2, 1]</span>
 
@@ -503,12 +477,11 @@ for i in range(100):
 <span class="n">fruits</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;cherry&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;lemon&#39;</span><span class="p">]</span>
 <span class="n">afruits</span> <span class="o">=</span> <span class="p">[</span> <span class="n">s</span><span class="o">.</span><span class="n">upper</span><span class="p">()</span> <span class="k">for</span> <span class="n">s</span> <span class="ow">in</span> <span class="n">fruits</span> <span class="k">if</span> <span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="n">s</span> <span class="p">]</span>
 <span class="c1">## [&#39;APPLE&#39;, &#39;BANANA&#39;]</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Dict Hash Table</h2>
 <p>Python's efficient key/value hash table structure is called a "dict". The contents of a dict can be written as a series of key:value pairs within braces { }, e.g. dict = {key1:value1, key2:value2, ... }. </p>
-<div class="highlight"><pre><span></span><span class="c1">## Can build up a dict by starting with the the empty dict {}</span>
+<div class="highlight"><pre><span></span><code><span class="c1">## Can build up a dict by starting with the the empty dict {}</span>
 <span class="c1">## and storing key/value pairs into the dict like this:</span>
 <span class="c1">## dict[key] = value-for-that-key</span>
 <span class="nb">dict</span> <span class="o">=</span> <span class="p">{}</span>
@@ -516,91 +489,86 @@ for i in range(100):
 <span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;g&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;gamma&#39;</span>
 <span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;o&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;omega&#39;</span>
 
-<span class="k">print</span> <span class="nb">dict</span>  <span class="c1">## {&#39;a&#39;: &#39;alpha&#39;, &#39;o&#39;: &#39;omega&#39;, &#39;g&#39;: &#39;gamma&#39;}</span>
+<span class="nb">print</span> <span class="nb">dict</span>  <span class="c1">## {&#39;a&#39;: &#39;alpha&#39;, &#39;o&#39;: &#39;omega&#39;, &#39;g&#39;: &#39;gamma&#39;}</span>
 
-<span class="k">print</span> <span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span>     <span class="c1">## Simple lookup, returns &#39;alpha&#39;</span>
+<span class="nb">print</span> <span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span>     <span class="c1">## Simple lookup, returns &#39;alpha&#39;</span>
 <span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">6</span>       <span class="c1">## Put new key/value into dict</span>
 <span class="s1">&#39;a&#39;</span> <span class="ow">in</span> <span class="nb">dict</span>         <span class="c1">## True</span>
 <span class="c1">## print dict[&#39;z&#39;]                  ## Throws KeyError</span>
-<span class="k">if</span> <span class="s1">&#39;z&#39;</span> <span class="ow">in</span> <span class="nb">dict</span><span class="p">:</span> <span class="k">print</span> <span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>     <span class="c1">## Avoid KeyError</span>
-<span class="k">print</span> <span class="nb">dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>  <span class="c1">## None (instead of KeyError)</span>
-</pre></div>
-
+<span class="k">if</span> <span class="s1">&#39;z&#39;</span> <span class="ow">in</span> <span class="nb">dict</span><span class="p">:</span> <span class="nb">print</span> <span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;z&#39;</span><span class="p">]</span>     <span class="c1">## Avoid KeyError</span>
+<span class="nb">print</span> <span class="nb">dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;z&#39;</span><span class="p">)</span>  <span class="c1">## None (instead of KeyError)</span>
+</code></pre></div>
 
 <ul>
 <li>While the order of items matters for determining whether two <strong>lists</strong> are the same, it does not matter in what order the key-value pairs are typed in a <strong>dictionary</strong>.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cats&#39;</span><span class="p">,</span> <span class="s1">&#39;dogs&#39;</span><span class="p">,</span> <span class="s1">&#39;moose&#39;</span><span class="p">]</span>
+<div class="highlight"><pre><span></span><code><span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;cats&#39;</span><span class="p">,</span> <span class="s1">&#39;dogs&#39;</span><span class="p">,</span> <span class="s1">&#39;moose&#39;</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">bacon</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;dogs&#39;</span><span class="p">,</span> <span class="s1">&#39;moose&#39;</span><span class="p">,</span> <span class="s1">&#39;cats&#39;</span><span class="p">]</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">spam</span> <span class="o">==</span> <span class="n">bacon</span>
-<span class="bp">False</span>
+<span class="kc">False</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">eggs</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Zophie&#39;</span><span class="p">,</span> <span class="s1">&#39;species&#39;</span><span class="p">:</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="s1">&#39;8&#39;</span><span class="p">}</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">ham</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;species&#39;</span><span class="p">:</span> <span class="s1">&#39;cat&#39;</span><span class="p">,</span> <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="s1">&#39;8&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;Zophie&#39;</span><span class="p">}</span>
 <span class="o">&gt;&gt;&gt;</span> <span class="n">eggs</span> <span class="o">==</span> <span class="n">ham</span>
-<span class="bp">True</span>
-</pre></div>
-
+<span class="kc">True</span>
+</code></pre></div>
 
 <ul>
 <li>Traversing <code>dict</code></li>
 </ul>
-<div class="highlight"><pre><span></span><span class="c1">## By default, iterating over a dict iterates over its keys.</span>
+<div class="highlight"><pre><span></span><code><span class="c1">## By default, iterating over a dict iterates over its keys.</span>
 <span class="c1">## Note that the keys are in a random order.</span>
-<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">dict</span><span class="p">:</span> <span class="k">print</span> <span class="n">key</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">dict</span><span class="p">:</span> <span class="nb">print</span> <span class="n">key</span>
 <span class="c1">## prints a g o</span>
 
 <span class="c1">## Exactly the same as above</span>
-<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span> <span class="k">print</span> <span class="n">key</span>
+<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">dict</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span> <span class="nb">print</span> <span class="n">key</span>
 
 <span class="c1">## Get the .keys() list:</span>
-<span class="k">print</span> <span class="nb">dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>  <span class="c1">## [&#39;a&#39;, &#39;o&#39;, &#39;g&#39;]</span>
+<span class="nb">print</span> <span class="nb">dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>  <span class="c1">## [&#39;a&#39;, &#39;o&#39;, &#39;g&#39;]</span>
 
 <span class="c1">## Likewise, there&#39;s a .values() list of values</span>
-<span class="k">print</span> <span class="nb">dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>  <span class="c1">## [&#39;alpha&#39;, &#39;omega&#39;, &#39;gamma&#39;]</span>
+<span class="nb">print</span> <span class="nb">dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>  <span class="c1">## [&#39;alpha&#39;, &#39;omega&#39;, &#39;gamma&#39;]</span>
 
 <span class="c1">## Common case -- loop over the keys in sorted order,</span>
 <span class="c1">## accessing each key/value</span>
 <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="nb">dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()):</span>
-<span class="k">print</span> <span class="n">key</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>    <span class="c1">## My comment: didn&#39;t work. &#39;dict&#39; object has no attribute &#39;key&#39;</span>
+<span class="nb">print</span> <span class="n">key</span><span class="p">,</span> <span class="nb">dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>    <span class="c1">## My comment: didn&#39;t work. &#39;dict&#39; object has no attribute &#39;key&#39;</span>
 
 <span class="c1">## .items() is the dict expressed as (key, value) tuples</span>
-<span class="k">print</span> <span class="nb">dict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>  <span class="c1">##  [(&#39;a&#39;, &#39;alpha&#39;), (&#39;o&#39;, &#39;omega&#39;), (&#39;g&#39;, &#39;gamma&#39;)]</span>
+<span class="nb">print</span> <span class="nb">dict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>  <span class="c1">##  [(&#39;a&#39;, &#39;alpha&#39;), (&#39;o&#39;, &#39;omega&#39;), (&#39;g&#39;, &#39;gamma&#39;)]</span>
 
 <span class="c1">## This loop syntax accesses the whole dict by looping</span>
 <span class="c1">## over the .items() tuple list, accessing one (key, value)</span>
 <span class="c1">## pair on each iteration.</span>
-<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span> <span class="k">print</span> <span class="n">k</span><span class="p">,</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">,</span> <span class="n">v</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span> <span class="nb">print</span> <span class="n">k</span><span class="p">,</span> <span class="s1">&#39;&gt;&#39;</span><span class="p">,</span> <span class="n">v</span>
 <span class="c1">## a &gt; alpha    o &gt; omega     g &gt; gamma</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>Dict Formatting</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="nb">hash</span> <span class="o">=</span> <span class="p">{}</span>
+<div class="highlight"><pre><span></span><code><span class="nb">hash</span> <span class="o">=</span> <span class="p">{}</span>
 <span class="nb">hash</span><span class="p">[</span><span class="s1">&#39;word&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;garfield&#39;</span>
 <span class="nb">hash</span><span class="p">[</span><span class="s1">&#39;count&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="mi">42</span>
 <span class="n">s</span> <span class="o">=</span> <span class="s1">&#39;I want </span><span class="si">%(count)d</span><span class="s1"> copies of </span><span class="si">%(word)s</span><span class="s1">&#39;</span> <span class="o">%</span> <span class="nb">hash</span>  <span class="c1"># %d for int, %s for string</span>
 <span class="c1"># &#39;I want 42 copies of garfield&#39;</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li><code>del</code> operator</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="n">var</span> <span class="o">=</span> <span class="mi">6</span>
+<div class="highlight"><pre><span></span><code><span class="n">var</span> <span class="o">=</span> <span class="mi">6</span>
 <span class="k">del</span> <span class="n">var</span>  <span class="c1"># var no more!</span>
 
 <span class="nb">list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;d&#39;</span><span class="p">]</span>
 <span class="k">del</span> <span class="nb">list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>     <span class="c1">## Delete first element</span>
 <span class="k">del</span> <span class="nb">list</span><span class="p">[</span><span class="o">-</span><span class="mi">2</span><span class="p">:]</span>   <span class="c1">## Delete last two elements</span>
-<span class="k">print</span> <span class="nb">list</span>      <span class="c1">## [&#39;b&#39;]</span>
+<span class="nb">print</span> <span class="nb">list</span>      <span class="c1">## [&#39;b&#39;]</span>
 
 <span class="nb">dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;a&#39;</span><span class="p">:</span><span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">}</span>
 <span class="k">del</span> <span class="nb">dict</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span>   <span class="c1">## Delete &#39;b&#39; entry</span>
-<span class="k">print</span> <span class="nb">dict</span>      <span class="c1">## {&#39;a&#39;:1, &#39;c&#39;:3}</span>
-</pre></div>
-
+<span class="nb">print</span> <span class="nb">dict</span>      <span class="c1">## {&#39;a&#39;:1, &#39;c&#39;:3}</span>
+</code></pre></div>
 
 <h2>Files</h2>
 <ul>
@@ -611,14 +579,13 @@ for i in range(100):
 <p>The special mode 'rU' is the "Universal" option for text files where it's smart about converting different line-endings so they always come through as a simple '\n'. The standard for-loop works for text files, iterating through the lines of the file (this works only for text files, not binary files). The for-loop technique is a simple and efficient way to look at all the lines in a text file:</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span> <span class="c1"># Echo the contents of a file</span>
+<div class="highlight"><pre><span></span><code> <span class="c1"># Echo the contents of a file</span>
 <span class="n">f</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;foo.txt&#39;</span><span class="p">,</span> <span class="s1">&#39;rU&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>   <span class="c1">## iterates over the lines of the file</span>
-<span class="k">print</span> <span class="n">line</span><span class="p">,</span>    <span class="c1">## trailing , so print does not add an end-of-line char</span>
+<span class="nb">print</span> <span class="n">line</span><span class="p">,</span>    <span class="c1">## trailing , so print does not add an end-of-line char</span>
         <span class="c1">## since &#39;line&#39; already includes the end-of line.</span>
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>
@@ -631,32 +598,29 @@ for i in range(100):
 <p>Files Unicode - The "codecs" module provides support for reading a unicode file.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">codecs</span>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span> <span class="nn">codecs</span>
 
 <span class="n">f</span> <span class="o">=</span> <span class="n">codecs</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;foo.txt&#39;</span><span class="p">,</span><span class="s1">&#39;rU&#39;</span><span class="p">,</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="p">:</span>
-    <span class="k">print</span> <span class="n">line</span><span class="p">,</span>
+    <span class="nb">print</span> <span class="n">line</span><span class="p">,</span>
 
 <span class="n">f</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
-</pre></div>
-
+</code></pre></div>
 
 <h2>Regular Expressions</h2>
 <p>Python "re" module provides regular expression support.</p>
-<div class="highlight"><pre><span></span><span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span><span class="nb">str</span><span class="p">)</span> <span class="c1">#returns match object or None otherwise</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span><span class="nb">str</span><span class="p">)</span> <span class="c1">#returns match object or None otherwise</span>
+</code></pre></div>
 
 <p>Example:</p>
-<div class="highlight"><pre><span></span><span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;an example word:cat!!&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="nb">str</span> <span class="o">=</span> <span class="s1">&#39;an example word:cat!!&#39;</span>
 <span class="n">match</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="sa">r</span><span class="s1">&#39;word:\w\w\w&#39;</span><span class="p">,</span><span class="nb">str</span><span class="p">)</span>
 <span class="c1"># If-statement after search() tests if it succeeded</span>
 <span class="k">if</span> <span class="n">match</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s1">&#39;found&#39;</span><span class="p">,</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">()</span> <span class="c1">## &#39;found word:cat&#39;</span>
+    <span class="nb">print</span> <span class="s1">&#39;found&#39;</span><span class="p">,</span><span class="n">match</span><span class="o">.</span><span class="n">group</span><span class="p">()</span> <span class="c1">## &#39;found word:cat&#39;</span>
 <span class="k">else</span><span class="p">:</span>
-    <span class="k">print</span> <span class="s1">&#39;did not find&#39;</span>
-</pre></div>
-
+    <span class="nb">print</span> <span class="s1">&#39;did not find&#39;</span>
+</code></pre></div>
 
 <p><code>match.group()</code> is the matching text.</p>
 <ul>
@@ -706,16 +670,16 @@ for i in range(100):
           <a href="/techrantsrandom.html">Techrants.Random</a>
       </li>
       <li class="post">
+          <a href="/acsl-research-work.html">ACSL Research Work</a>
+      </li>
+      <li class="post">
+          <a href="/making-my-own-discord-bots.html">Making My Own Discord Bots</a>
+      </li>
+      <li class="post">
           <a href="/getting-acquainted-with-electric-ui.html">Getting Acquainted With Electric UI</a>
       </li>
       <li class="post">
           <a href="/learning-nextjs-in-lockdown.html">Learning NextJS In Lockdown</a>
-      </li>
-      <li class="post">
-          <a href="/learning-reactjs-in-lockdown.html">Learning ReactJS In Lockdown</a>
-      </li>
-      <li class="post">
-          <a href="/video-editing-portfolio.html">Video Editing Portfolio</a>
       </li>
     </ul>
   </section>
@@ -726,8 +690,8 @@ for i in range(100):
         <li><a href="/category/design.html">Design</a> (4)</li>
         <li><a href="/category/filmmaking.html">Filmmaking</a> (3)</li>
         <li><a href="/category/life.html">Life</a> (4)</li>
-        <li><a href="/category/programming.html">Programming</a> (7)</li>
-        <li><a href="/category/research.html">Research</a> (1)</li>
+        <li><a href="/category/programming.html">Programming</a> (8)</li>
+        <li><a href="/category/research.html">Research</a> (3)</li>
         <li><a href="/category/technology.html">Technology</a> (6)</li>
     </ul>
   </section>
@@ -735,7 +699,7 @@ for i in range(100):
 
 <!--   <section>
   <h1>Tags</h1>
-    <a href="/tag/engineering.html">engineering</a>,    <a href="/tag/features.html">features</a>,    <a href="/tag/javascript.html">javascript</a>,    <a href="/tag/learning.html">learning</a>,    <a href="/tag/software.html">software</a>,    <a href="/tag/troubleshooting.html">troubleshooting</a>,    <a href="/tag/notes.html">notes</a>,    <a href="/tag/web-development.html">web-development</a>,    <a href="/tag/editing.html">editing</a>,    <a href="/tag/art.html">art</a>,    <a href="/tag/creativity.html">creativity</a>,    <a href="/tag/aerospace.html">aerospace</a>,    <a href="/tag/iisc.html">IISc</a>,    <a href="/tag/combustion.html">combustion</a>,    <a href="/tag/blogging.html">blogging</a>,    <a href="/tag/events.html">events</a>,    <a href="/tag/technology.html">technology</a>,    <a href="/tag/design.html">design</a>,    <a href="/tag/test.html">test</a>,    <a href="/tag/product-design.html">product-design</a>,    <a href="/tag/programming.html">programming</a>,    <a href="/tag/exploration.html">exploration</a>,    <a href="/tag/science.html">science</a>,    <a href="/tag/space.html">space</a>,    <a href="/tag/research.html">research</a>,    <a href="/tag/markdown.html">markdown</a>,    <a href="/tag/pelican.html">pelican</a>,    <a href="/tag/automation.html">automation</a>,    <a href="/tag/letter.html">letter</a>,    <a href="/tag/advice.html">advice</a>,    <a href="/tag/mathematics.html">mathematics</a>,    <a href="/tag/fun.html">fun</a>,    <a href="/tag/feature.html">feature</a>,    <a href="/tag/internship.html">internship</a>  </section> -->
+    <a href="/tag/engineering.html">engineering</a>,    <a href="/tag/learning.html">learning</a>,    <a href="/tag/life.html">life</a>,    <a href="/tag/masters.html">master's</a>,    <a href="/tag/javascript.html">javascript</a>,    <a href="/tag/software.html">software</a>,    <a href="/tag/troubleshooting.html">troubleshooting</a>,    <a href="/tag/features.html">features</a>,    <a href="/tag/notes.html">notes</a>,    <a href="/tag/web-development.html">web-development</a>,    <a href="/tag/editing.html">editing</a>,    <a href="/tag/art.html">art</a>,    <a href="/tag/creativity.html">creativity</a>,    <a href="/tag/aerospace.html">aerospace</a>,    <a href="/tag/iisc.html">IISc</a>,    <a href="/tag/combustion.html">combustion</a>,    <a href="/tag/blogging.html">blogging</a>,    <a href="/tag/events.html">events</a>,    <a href="/tag/technology.html">technology</a>,    <a href="/tag/design.html">design</a>,    <a href="/tag/test.html">test</a>,    <a href="/tag/product-design.html">product-design</a>,    <a href="/tag/programming.html">programming</a>,    <a href="/tag/exploration.html">exploration</a>,    <a href="/tag/science.html">science</a>,    <a href="/tag/space.html">space</a>,    <a href="/tag/research.html">research</a>,    <a href="/tag/markdown.html">markdown</a>,    <a href="/tag/pelican.html">pelican</a>,    <a href="/tag/automation.html">automation</a>,    <a href="/tag/letter.html">letter</a>,    <a href="/tag/advice.html">advice</a>,    <a href="/tag/mathematics.html">mathematics</a>,    <a href="/tag/fun.html">fun</a>,    <a href="/tag/feature.html">feature</a>,    <a href="/tag/internship.html">internship</a>  </section> -->
 
 
     <section>

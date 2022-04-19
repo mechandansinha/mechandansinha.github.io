@@ -88,18 +88,18 @@
 <h3>Try adding another Switch, or a Checkbox component to manually set the led_state variable to 0 or 1 while led_blink is disabled. [From <a href="https://electricui.com/docs/quick-start/ui">Blink Mode Control</a>]</h3>
 </blockquote>
 <p>Solution - </p>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">useHardwareState</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;@electricui/components-core&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useHardwareState</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@electricui/components-core&#39;</span>
 
 <span class="p">...</span>
 
-<span class="kr">const</span> <span class="nx">isBlinking</span> <span class="o">=</span> <span class="nx">useHardwareState</span><span class="p">(</span><span class="s1">&#39;led_blink&#39;</span><span class="p">)</span>
+<span class="kd">const</span> <span class="nx">isBlinking</span> <span class="o">=</span> <span class="nx">useHardwareState</span><span class="p">(</span><span class="s1">&#39;led_blink&#39;</span><span class="p">)</span>
 
 <span class="p">{</span>
     <span class="p">(</span><span class="o">!</span><span class="nx">isBlinking</span><span class="p">)</span><span class="o">?</span> 
     <span class="p">(</span>
       <span class="o">&lt;</span><span class="nx">Switch</span>
-        <span class="nx">unchecked</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">}</span>
-        <span class="nx">checked</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">}</span>
+        <span class="nx">unchecked</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0</span><span class="p">}</span>
+        <span class="nx">checked</span> <span class="o">=</span> <span class="p">{</span><span class="mf">1</span><span class="p">}</span>
         <span class="nx">accessor</span><span class="o">=</span><span class="p">{</span><span class="nx">state</span> <span class="p">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">led_state</span><span class="p">}</span>
         <span class="nx">writer</span><span class="o">=</span><span class="p">{(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
           <span class="nx">state</span><span class="p">.</span><span class="nx">led_state</span> <span class="o">=</span> <span class="nx">value</span>
@@ -110,7 +110,7 @@
       <span class="o">&lt;</span><span class="err">/Switch&gt;</span>
     <span class="p">)</span><span class="o">:</span><span class="kc">null</span>
 <span class="p">}</span>
-</pre></div></div>
+</code></pre></div></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
@@ -155,16 +155,16 @@
           <a href="/techrantsrandom.html">Techrants.Random</a>
       </li>
       <li class="post">
+          <a href="/acsl-research-work.html">ACSL Research Work</a>
+      </li>
+      <li class="post">
+          <a href="/making-my-own-discord-bots.html">Making My Own Discord Bots</a>
+      </li>
+      <li class="post">
           <a href="/getting-acquainted-with-electric-ui.html">Getting Acquainted With Electric UI</a>
       </li>
       <li class="post">
           <a href="/learning-nextjs-in-lockdown.html">Learning NextJS In Lockdown</a>
-      </li>
-      <li class="post">
-          <a href="/learning-reactjs-in-lockdown.html">Learning ReactJS In Lockdown</a>
-      </li>
-      <li class="post">
-          <a href="/video-editing-portfolio.html">Video Editing Portfolio</a>
       </li>
     </ul>
   </section>
@@ -175,8 +175,8 @@
         <li><a href="/category/design.html">Design</a> (4)</li>
         <li><a href="/category/filmmaking.html">Filmmaking</a> (3)</li>
         <li><a href="/category/life.html">Life</a> (4)</li>
-        <li><a href="/category/programming.html">Programming</a> (7)</li>
-        <li><a href="/category/research.html">Research</a> (1)</li>
+        <li><a href="/category/programming.html">Programming</a> (8)</li>
+        <li><a href="/category/research.html">Research</a> (3)</li>
         <li><a href="/category/technology.html">Technology</a> (6)</li>
     </ul>
   </section>
@@ -184,7 +184,7 @@
 
 <!--   <section>
   <h1>Tags</h1>
-    <a href="/tag/engineering.html">engineering</a>,    <a href="/tag/features.html">features</a>,    <a href="/tag/javascript.html">javascript</a>,    <a href="/tag/learning.html">learning</a>,    <a href="/tag/software.html">software</a>,    <a href="/tag/troubleshooting.html">troubleshooting</a>,    <a href="/tag/notes.html">notes</a>,    <a href="/tag/web-development.html">web-development</a>,    <a href="/tag/editing.html">editing</a>,    <a href="/tag/art.html">art</a>,    <a href="/tag/creativity.html">creativity</a>,    <a href="/tag/aerospace.html">aerospace</a>,    <a href="/tag/iisc.html">IISc</a>,    <a href="/tag/combustion.html">combustion</a>,    <a href="/tag/blogging.html">blogging</a>,    <a href="/tag/events.html">events</a>,    <a href="/tag/technology.html">technology</a>,    <a href="/tag/design.html">design</a>,    <a href="/tag/test.html">test</a>,    <a href="/tag/product-design.html">product-design</a>,    <a href="/tag/programming.html">programming</a>,    <a href="/tag/exploration.html">exploration</a>,    <a href="/tag/science.html">science</a>,    <a href="/tag/space.html">space</a>,    <a href="/tag/research.html">research</a>,    <a href="/tag/markdown.html">markdown</a>,    <a href="/tag/pelican.html">pelican</a>,    <a href="/tag/automation.html">automation</a>,    <a href="/tag/letter.html">letter</a>,    <a href="/tag/advice.html">advice</a>,    <a href="/tag/mathematics.html">mathematics</a>,    <a href="/tag/fun.html">fun</a>,    <a href="/tag/feature.html">feature</a>,    <a href="/tag/internship.html">internship</a>  </section> -->
+    <a href="/tag/engineering.html">engineering</a>,    <a href="/tag/learning.html">learning</a>,    <a href="/tag/life.html">life</a>,    <a href="/tag/masters.html">master's</a>,    <a href="/tag/javascript.html">javascript</a>,    <a href="/tag/software.html">software</a>,    <a href="/tag/troubleshooting.html">troubleshooting</a>,    <a href="/tag/features.html">features</a>,    <a href="/tag/notes.html">notes</a>,    <a href="/tag/web-development.html">web-development</a>,    <a href="/tag/editing.html">editing</a>,    <a href="/tag/art.html">art</a>,    <a href="/tag/creativity.html">creativity</a>,    <a href="/tag/aerospace.html">aerospace</a>,    <a href="/tag/iisc.html">IISc</a>,    <a href="/tag/combustion.html">combustion</a>,    <a href="/tag/blogging.html">blogging</a>,    <a href="/tag/events.html">events</a>,    <a href="/tag/technology.html">technology</a>,    <a href="/tag/design.html">design</a>,    <a href="/tag/test.html">test</a>,    <a href="/tag/product-design.html">product-design</a>,    <a href="/tag/programming.html">programming</a>,    <a href="/tag/exploration.html">exploration</a>,    <a href="/tag/science.html">science</a>,    <a href="/tag/space.html">space</a>,    <a href="/tag/research.html">research</a>,    <a href="/tag/markdown.html">markdown</a>,    <a href="/tag/pelican.html">pelican</a>,    <a href="/tag/automation.html">automation</a>,    <a href="/tag/letter.html">letter</a>,    <a href="/tag/advice.html">advice</a>,    <a href="/tag/mathematics.html">mathematics</a>,    <a href="/tag/fun.html">fun</a>,    <a href="/tag/feature.html">feature</a>,    <a href="/tag/internship.html">internship</a>  </section> -->
 
 
     <section>

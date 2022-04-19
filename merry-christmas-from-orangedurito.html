@@ -82,40 +82,37 @@
 </header>
 
   <div class="entry-content"><p>The clock was about to strike 12 and I found myself pondering over this question on the christmas eve - </p>
-<div class="highlight"><pre><span></span>what is the geekiest way I could wish christmas, right now? 
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>what is the geekiest way I could wish christmas, right now? 
+</code></pre></div>
 
 <p>Well, I was too lazy to get up and walk around in this freezing cold (even if I had to get anything). So it has to be here, sitting on my chair. </p>
 <p>Hmm...let's see what I have around here within my reach - a book, few notebooks, HP Probook 4540s laptop, LG 22MP68VQ IPS display monitor, a JBL Go Speaker, Redmi Note 5 smartphone, pencils, pen, an eraser, extension chord, stationary holder, a cello-tape dispenser, stapler, poster colors, earphone, glue, paperweight, dismantled washing-machine timer, table drawer filled with spare parts, calculator, 1TB Seagate external hard drive, few blank papers, bread board and Arduino Mega 2560 board. </p>
-<div class="highlight"><pre><span></span>See <span class="k">if</span> you can churn out a different way to wish using these combination before me. 
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>See <span class="k">if</span> you can churn out a different way to wish using these combination before me. 
+</code></pre></div>
 
 <p>For me, the easiest thing was to do something with my Arduino board. But what? I don't have any sensor, actuator or end effector. All I have is the default LED ligth on the board at PIN 13. It has to be light. </p>
 <p>How do I convert my text into light? <strong>Morse code</strong> was the first thing that came in my mind. I searched for the Arduino library that converts text into Morse code and there I found this <a href="https://github.com/markfickett/arduinomorse">arduinomorse repository</a> by Mark Fickett. It consisted of a header file and one cpp file along with read instructions. There was a little example mentioned at the bottom which was just perfect for my job. All I had to do was to replace the text.</p>
-<div class="highlight"><pre><span></span><span class="cp">#define PIN_STATUS  13</span>
-<span class="cp">#include</span> <span class="cpf">&quot;morse.h&quot;</span><span class="cp"></span>
+<div class="highlight"><pre><span></span><code><span class="cp">#define PIN_STATUS  13</span>
+<span class="cp">#include</span><span class="w"> </span><span class="cpf">&quot;morse.h&quot;</span><span class="cp"></span>
 
-<span class="n">LEDMorseSender</span> <span class="nf">sender</span><span class="p">(</span><span class="n">PIN_STATUS</span><span class="p">);</span>
+<span class="n">LEDMorseSender</span><span class="w"> </span><span class="nf">sender</span><span class="p">(</span><span class="n">PIN_STATUS</span><span class="p">);</span><span class="w"></span>
 
-<span class="kt">void</span> <span class="nf">setup</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="n">sender</span><span class="p">.</span><span class="n">setup</span><span class="p">();</span>
-  <span class="n">sender</span><span class="p">.</span><span class="n">setMessage</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;merry christmas!&quot;</span><span class="p">));</span>
-  <span class="n">pinMode</span><span class="p">(</span><span class="n">PIN_SENSOR</span><span class="p">,</span> <span class="n">INPUT</span><span class="p">);</span>
-<span class="p">}</span>
+<span class="kt">void</span><span class="w"> </span><span class="nf">setup</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="n">sender</span><span class="p">.</span><span class="n">setup</span><span class="p">();</span><span class="w"></span>
+<span class="w">  </span><span class="n">sender</span><span class="p">.</span><span class="n">setMessage</span><span class="p">(</span><span class="n">String</span><span class="p">(</span><span class="s">&quot;merry christmas!&quot;</span><span class="p">));</span><span class="w"></span>
+<span class="w">  </span><span class="n">pinMode</span><span class="p">(</span><span class="n">PIN_SENSOR</span><span class="p">,</span><span class="w"> </span><span class="n">INPUT</span><span class="p">);</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
 
-<span class="kt">void</span> <span class="nf">loop</span><span class="p">()</span>
-<span class="p">{</span>
-  <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="n">sender</span><span class="p">.</span><span class="n">continueSending</span><span class="p">())</span>
-  <span class="p">{</span>
-    <span class="n">delay</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span>
-    <span class="n">sender</span><span class="p">.</span><span class="n">startSending</span><span class="p">();</span> 
-  <span class="p">}</span>
-<span class="p">}</span>
-</pre></div>
-
+<span class="kt">void</span><span class="w"> </span><span class="nf">loop</span><span class="p">()</span><span class="w"></span>
+<span class="p">{</span><span class="w"></span>
+<span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="n">sender</span><span class="p">.</span><span class="n">continueSending</span><span class="p">())</span><span class="w"></span>
+<span class="w">  </span><span class="p">{</span><span class="w"></span>
+<span class="w">    </span><span class="n">delay</span><span class="p">(</span><span class="mi">5000</span><span class="p">);</span><span class="w"></span>
+<span class="w">    </span><span class="n">sender</span><span class="p">.</span><span class="n">startSending</span><span class="p">();</span><span class="w"> </span>
+<span class="w">  </span><span class="p">}</span><span class="w"></span>
+<span class="p">}</span><span class="w"></span>
+</code></pre></div>
 
 <p>I had converted my text to all lowercase as it was instructed. But, as it goes with programming (especially when you are in hurry), I encountered a compilation error. I checked the code. 
 - All files placed properly - checked
@@ -174,16 +171,16 @@
           <a href="/techrantsrandom.html">Techrants.Random</a>
       </li>
       <li class="post">
+          <a href="/acsl-research-work.html">ACSL Research Work</a>
+      </li>
+      <li class="post">
+          <a href="/making-my-own-discord-bots.html">Making My Own Discord Bots</a>
+      </li>
+      <li class="post">
           <a href="/getting-acquainted-with-electric-ui.html">Getting Acquainted With Electric UI</a>
       </li>
       <li class="post">
           <a href="/learning-nextjs-in-lockdown.html">Learning NextJS In Lockdown</a>
-      </li>
-      <li class="post">
-          <a href="/learning-reactjs-in-lockdown.html">Learning ReactJS In Lockdown</a>
-      </li>
-      <li class="post">
-          <a href="/video-editing-portfolio.html">Video Editing Portfolio</a>
       </li>
     </ul>
   </section>
@@ -194,8 +191,8 @@
         <li><a href="/category/design.html">Design</a> (4)</li>
         <li><a href="/category/filmmaking.html">Filmmaking</a> (3)</li>
         <li><a href="/category/life.html">Life</a> (4)</li>
-        <li><a href="/category/programming.html">Programming</a> (7)</li>
-        <li><a href="/category/research.html">Research</a> (1)</li>
+        <li><a href="/category/programming.html">Programming</a> (8)</li>
+        <li><a href="/category/research.html">Research</a> (3)</li>
         <li><a href="/category/technology.html">Technology</a> (6)</li>
     </ul>
   </section>
@@ -203,7 +200,7 @@
 
 <!--   <section>
   <h1>Tags</h1>
-    <a href="/tag/engineering.html">engineering</a>,    <a href="/tag/features.html">features</a>,    <a href="/tag/javascript.html">javascript</a>,    <a href="/tag/learning.html">learning</a>,    <a href="/tag/software.html">software</a>,    <a href="/tag/troubleshooting.html">troubleshooting</a>,    <a href="/tag/notes.html">notes</a>,    <a href="/tag/web-development.html">web-development</a>,    <a href="/tag/editing.html">editing</a>,    <a href="/tag/art.html">art</a>,    <a href="/tag/creativity.html">creativity</a>,    <a href="/tag/aerospace.html">aerospace</a>,    <a href="/tag/iisc.html">IISc</a>,    <a href="/tag/combustion.html">combustion</a>,    <a href="/tag/blogging.html">blogging</a>,    <a href="/tag/events.html">events</a>,    <a href="/tag/technology.html">technology</a>,    <a href="/tag/design.html">design</a>,    <a href="/tag/test.html">test</a>,    <a href="/tag/product-design.html">product-design</a>,    <a href="/tag/programming.html">programming</a>,    <a href="/tag/exploration.html">exploration</a>,    <a href="/tag/science.html">science</a>,    <a href="/tag/space.html">space</a>,    <a href="/tag/research.html">research</a>,    <a href="/tag/markdown.html">markdown</a>,    <a href="/tag/pelican.html">pelican</a>,    <a href="/tag/automation.html">automation</a>,    <a href="/tag/letter.html">letter</a>,    <a href="/tag/advice.html">advice</a>,    <a href="/tag/mathematics.html">mathematics</a>,    <a href="/tag/fun.html">fun</a>,    <a href="/tag/feature.html">feature</a>,    <a href="/tag/internship.html">internship</a>  </section> -->
+    <a href="/tag/engineering.html">engineering</a>,    <a href="/tag/learning.html">learning</a>,    <a href="/tag/life.html">life</a>,    <a href="/tag/masters.html">master's</a>,    <a href="/tag/javascript.html">javascript</a>,    <a href="/tag/software.html">software</a>,    <a href="/tag/troubleshooting.html">troubleshooting</a>,    <a href="/tag/features.html">features</a>,    <a href="/tag/notes.html">notes</a>,    <a href="/tag/web-development.html">web-development</a>,    <a href="/tag/editing.html">editing</a>,    <a href="/tag/art.html">art</a>,    <a href="/tag/creativity.html">creativity</a>,    <a href="/tag/aerospace.html">aerospace</a>,    <a href="/tag/iisc.html">IISc</a>,    <a href="/tag/combustion.html">combustion</a>,    <a href="/tag/blogging.html">blogging</a>,    <a href="/tag/events.html">events</a>,    <a href="/tag/technology.html">technology</a>,    <a href="/tag/design.html">design</a>,    <a href="/tag/test.html">test</a>,    <a href="/tag/product-design.html">product-design</a>,    <a href="/tag/programming.html">programming</a>,    <a href="/tag/exploration.html">exploration</a>,    <a href="/tag/science.html">science</a>,    <a href="/tag/space.html">space</a>,    <a href="/tag/research.html">research</a>,    <a href="/tag/markdown.html">markdown</a>,    <a href="/tag/pelican.html">pelican</a>,    <a href="/tag/automation.html">automation</a>,    <a href="/tag/letter.html">letter</a>,    <a href="/tag/advice.html">advice</a>,    <a href="/tag/mathematics.html">mathematics</a>,    <a href="/tag/fun.html">fun</a>,    <a href="/tag/feature.html">feature</a>,    <a href="/tag/internship.html">internship</a>  </section> -->
 
 
     <section>

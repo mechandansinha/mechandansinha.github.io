@@ -131,9 +131,9 @@
 <p>If you need to add attributes like, for example, <code>className</code>, add it to the <code>a</code> tag, not the <code>Link</code> tag.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">Link</span> <span class="nx">from</span> <span class="s1">&#39;next/link&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">Link</span> <span class="kr">from</span> <span class="s1">&#39;next/link&#39;</span>
 
-<span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">LinkClassnameExample</span><span class="p">(){</span>
+<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">LinkClassnameExample</span><span class="p">(){</span>
     <span class="k">return</span><span class="p">(</span>
         <span class="o">&lt;</span><span class="nx">Link</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="o">&gt;</span>
             <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span> <span class="nx">target</span><span class="o">=</span><span class="s2">&quot;_blank&quot;</span> <span class="nx">rel</span><span class="o">=</span><span class="s2">&quot;noopener noreferrer&quot;</span><span class="o">&gt;</span>
@@ -142,16 +142,14 @@
         <span class="o">&lt;</span><span class="err">/Link&gt;</span>
     <span class="p">)</span>
 <span class="p">}</span> 
-</pre></div>
-
+</code></pre></div>
 
 <h2>Assets, Metadata, and CSS</h2>
 <ul>
 <li>Next.js can serve static assets, like images, under <strong>the top-level</strong> <code>public</code> directory. Files inside <code>public</code> can be referenced from the root of the application similar to <code>pages</code>. </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/vercel.svg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Vercel Logo&quot;</span> <span class="na">className</span><span class="o">=</span><span class="s">&quot;logo&quot;</span> <span class="p">/&gt;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">img</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;/vercel.svg&quot;</span> <span class="na">alt</span><span class="o">=</span><span class="s">&quot;Vercel Logo&quot;</span> <span class="na">className</span><span class="o">=</span><span class="s">&quot;logo&quot;</span> <span class="p">/&gt;</span>
+</code></pre></div>
 
 <ul>
 <li>The <code>public</code> directory is also useful for <code>robots.txt</code>, Google Site Verification, and any other static assets. </li>
@@ -160,11 +158,10 @@
 <ul>
 <li><code>styled-jsx</code> library (a "CSS-in-JS" library that lets you write CSS within a React component, and the CSS styles will be scoped, meaning other components won't be affected.)</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="p">&lt;</span><span class="nt">style</span> <span class="na">jsx</span><span class="p">&gt;{</span><span class="err">&#39;</span>
-    <span class="err">...</span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">style</span> <span class="na">jsx</span><span class="p">&gt;{</span><span class="err">&#39;</span><span class="w"></span>
+<span class="w">    </span><span class="err">...</span><span class="w"></span>
 <span class="err">&#39;</span><span class="p">}&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li><a href="https://github.com/css-modules/css-modules">CSS Modules</a> lets us import CSS files in a React component.</li>
@@ -181,11 +178,10 @@
 <ul>
 <li>To load global CSS files, create a file called <code>_app.js</code> under <code>pages</code> with following code -</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">App</span><span class="p">({</span><span class="nx">Component</span><span class="p">,</span> <span class="nx">pageProps</span><span class="p">}){</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">App</span><span class="p">({</span><span class="nx">Component</span><span class="p">,</span> <span class="nx">pageProps</span><span class="p">}){</span>
     <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Component</span> <span class="p">{...</span><span class="nx">pageProps</span><span class="p">}</span> <span class="o">/&gt;</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>
@@ -195,9 +191,8 @@
 <p>Development server needs to be restarted after adding <code>_app.js</code></p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span>npm run dev
-</pre></div>
-
+<div class="highlight"><pre><span></span><code>npm run dev
+</code></pre></div>
 
 <ul>
 <li>In Next.js, we can add global CSS files by importing them from <code>_app.js</code>. We cannot import global CSS anywhere else.</li>
@@ -271,12 +266,12 @@
 <blockquote>
 <p><code>getStaticProps</code> runs at build time in production and inside the function, you can fetch external data and pass that as the props of the page.</p>
 </blockquote>
-<div class="highlight"><pre><span></span><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Home</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span> <span class="p">...</span> <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Home</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span> <span class="p">...</span> <span class="p">}</span>
 
-<span class="kr">export</span> <span class="nx">async</span> <span class="kd">function</span> <span class="nx">getStaticProps</span><span class="p">(){</span>
+<span class="k">export</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">getStaticProps</span><span class="p">(){</span>
     <span class="c1">//Get external data from the file system/API/DB, etc.</span>
 
-    <span class="kr">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">...</span>
+    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">...</span>
 
     <span class="c1">//The value of the `props` key will be passed to the `Home` component</span>
 
@@ -284,27 +279,25 @@
         <span class="nx">props</span><span class="o">:</span> <span class="p">...</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>Essentially, <code>getStaticProps</code> allows you to tell Next.js: <em>\"Hey, this page has some data dependencies - so when you pre-render this page at build time, make sure to resolve them first!"</em></li>
 </ul>
 <h2>Blog Data</h2>
 <p><code>pre-rendering.md</code> file created in top-level 'posts' directory.</p>
-<div class="highlight"><pre><span></span>---
+<div class="highlight"><pre><span></span><code>---
 title: &#39;Two Forms of Pre-rendering&#39;
-date: &#39;11-07-2020&#39;
----
+<span class="gu">date: &#39;11-07-2020&#39;</span>
+<span class="gu">---</span>
 
-Next.js has two forms of pre-rendering: **Static Generation** and **Server-side Rendering**. The difference is in **when** it generates the HTML for a page.
+Next.js has two forms of pre-rendering: <span class="gs">**Static Generation**</span> and <span class="gs">**Server-side Rendering**</span>. The difference is in <span class="gs">**when**</span> it generates the HTML for a page.
 
-- **Static Generation** is the pre-rendering method that generates the HTML at **build time**. The pre-rendered HTML is then _reused_ on each request.
-- **Server-side Rendering** is the pre-rendering method that generates the HTML on **each request**.
+<span class="k">-</span> <span class="gs">**Static Generation**</span> is the pre-rendering method that generates the HTML at <span class="gs">**build time**</span>. The pre-rendered HTML is then <span class="ge">_reused_</span> on each request.
+<span class="k">-</span> <span class="gs">**Server-side Rendering**</span> is the pre-rendering method that generates the HTML on <span class="gs">**each request**</span>.
 
-Importantly, Next.js lets you **choose** which pre-rendering form to use for each page. You can create a &quot;hybrid&quot; Next.js app by using Static Generation for most pages and using Server-side Rendering for others.
-</pre></div>
-
+Importantly, Next.js lets you <span class="gs">**choose**</span> which pre-rendering form to use for each page. You can create a &quot;hybrid&quot; Next.js app by using Static Generation for most pages and using Server-side Rendering for others.
+</code></pre></div>
 
 <blockquote>
 <p>Notice that each markdown file has a metadata section at the top containing <code>title</code> and <code>date</code>. This is called <strong>YAML Front Matter</strong>, which can be parsed using a library called <a href="https://github.com/jonschlinkert/gray-matter">gray-matter</a>.</p>
@@ -318,29 +311,26 @@ Importantly, Next.js lets you **choose** which pre-rendering form to use for eac
 <ul>
 <li>After installing <code>gray-matter</code> we parse the markdown posts by creating <code>lib/posts.js</code> file in the top domain. Then we import the function in <code>pages/index.js</code> as </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="p">{</span> <span class="nx">getSortedPostsData</span> <span class="p">}</span> <span class="nx">from</span> <span class="s1">&#39;../lib/posts&#39;</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">getSortedPostsData</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;../lib/posts&#39;</span>
+</code></pre></div>
 
 <p>Then we call this function in <code>getStaticProps</code> and return the result inside the <code>props</code> key as</p>
-<div class="highlight"><pre><span></span><span class="kr">export</span> <span class="nx">async</span> <span class="kd">function</span> <span class="nx">getStaticProps</span><span class="p">(){</span>
-    <span class="kr">const</span> <span class="nx">allPostsData</span> <span class="o">=</span> <span class="nx">getSortedPostsData</span><span class="p">()</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">getStaticProps</span><span class="p">(){</span>
+    <span class="kd">const</span> <span class="nx">allPostsData</span> <span class="o">=</span> <span class="nx">getSortedPostsData</span><span class="p">()</span>
     <span class="k">return</span> <span class="p">{</span>
         <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
             <span class="nx">allPostsData</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>And then <code>allPostsData</code> prop will be passed to the <code>Home</code> component. </p>
-<div class="highlight"><pre><span></span><span class="kr">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Home</span> <span class="p">({</span> <span class="nx">allPostsData</span> <span class="p">})</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Home</span> <span class="p">({</span> <span class="nx">allPostsData</span> <span class="p">})</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+</code></pre></div>
 
 <p>To display the data - </p>
-<div class="highlight"><pre><span></span><span class="p">{</span><span class="nx">allPostsData</span><span class="p">.</span><span class="nx">map</span><span class="p">(({</span><span class="nx">id</span><span class="p">,</span> <span class="nx">date</span><span class="p">,</span> <span class="nx">title</span><span class="p">})</span> <span class="p">=&gt;</span> <span class="p">(</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nx">allPostsData</span><span class="p">.</span><span class="nx">map</span><span class="p">(({</span><span class="nx">id</span><span class="p">,</span> <span class="nx">date</span><span class="p">,</span> <span class="nx">title</span><span class="p">})</span> <span class="p">=&gt;</span> <span class="p">(</span>
     <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">utilStyles</span><span class="p">.</span><span class="nx">listItem</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">id</span><span class="p">}</span><span class="o">&gt;</span>
         <span class="p">{</span><span class="nx">title</span><span class="p">}</span>
         <span class="o">&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
@@ -349,33 +339,30 @@ Importantly, Next.js lets you **choose** which pre-rendering form to use for eac
         <span class="p">{</span><span class="nx">date</span><span class="p">}</span>
     <span class="o">&lt;</span><span class="err">/li&gt;</span>
 <span class="p">))}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p>We successfully fetch external data (from the file system)and pre-render the index page with this data -</p>
 <p><img alt="Data Fetching and Pre-rendering" src="https://nextjs.org/static/images/learn/data-fetching/index-page.png"></p>
 <h3>Fetch External API or Query Database</h3>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">fetch</span> <span class="nx">from</span> <span class="s1">&#39;node-fetch&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">fetch</span> <span class="kr">from</span> <span class="s1">&#39;node-fetch&#39;</span>
 
-<span class="kr">export</span> <span class="nx">async</span> <span class="kd">function</span> <span class="nx">getSortedPostsData</span><span class="p">(){</span>
+<span class="k">export</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">getSortedPostsData</span><span class="p">(){</span>
     <span class="c1">//Instead of the file system, fetch post data from an external API endpoint</span>
-    <span class="kr">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="nx">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
     <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <h3>Querying Database Directly</h3>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">someDatabaseSDK</span> <span class="nx">from</span> <span class="s1">&#39;someDatabaseSDK&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">someDatabaseSDK</span> <span class="kr">from</span> <span class="s1">&#39;someDatabaseSDK&#39;</span>
 
-<span class="kr">const</span> <span class="nx">databaseClient</span> <span class="o">=</span> <span class="nx">someDatabaseSDK</span><span class="p">.</span><span class="nx">createClient</span><span class="p">(...)</span>
+<span class="kd">const</span> <span class="nx">databaseClient</span> <span class="o">=</span> <span class="nx">someDatabaseSDK</span><span class="p">.</span><span class="nx">createClient</span><span class="p">(...)</span>
 
-<span class="kr">export</span> <span class="nx">async</span> <span class="kd">function</span> <span class="nx">getSortedPostsData</span><span class="p">(){</span>
+<span class="k">export</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">getSortedPostsData</span><span class="p">(){</span>
     <span class="c1">//Instead of the file system, fetch post data from a database</span>
     <span class="k">return</span> <span class="nx">databaseClient</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">&#39;SELECT posts...&#39;</span><span class="p">)</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <ul>
 <li>This is possible because <code>getStaticProps</code> runs <strong>only on the server-side</strong>. It will never be run on the client-side. It won't even be included in the JS bundle for the browser. That means you can write code such as direct database queries without them being sent to browsers. </li>
@@ -392,15 +379,14 @@ Importantly, Next.js lets you **choose** which pre-rendering form to use for eac
 <ul>
 <li>If we need to fetch data at <strong>request time</strong> instead of build time, we can try <strong>Server-side Rendering</strong>. Here, we need to export <code>getServerSideProps</code> instead of <code>getStaticProps</code> from your page.</li>
 </ul>
-<div class="highlight"><pre><span></span><span class="kr">export</span> <span class="nx">async</span> <span class="kd">function</span> <span class="nx">getServerSideProps</span><span class="p">(</span><span class="nx">context</span><span class="p">){</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">getServerSideProps</span><span class="p">(</span><span class="nx">context</span><span class="p">){</span>
     <span class="k">return</span><span class="p">{</span>
         <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
             <span class="c1">// props for your component</span>
         <span class="p">}</span>
     <span class="p">}</span>
 <span class="p">}</span>
-</pre></div>
-
+</code></pre></div>
 
 <p><img alt="Server-side Rendering with Data" src="https://nextjs.org/static/images/learn/data-fetching/server-side-rendering-with-data.png"></p>
 <blockquote>
@@ -418,16 +404,16 @@ Importantly, Next.js lets you **choose** which pre-rendering form to use for eac
 <ul>
 <li>Highly recommended when fetching data on the client side. It handles caching, revalidation, focus tracking, refetching on interval, and more. </li>
 </ul>
-<div class="highlight"><pre><span></span><span class="kr">import</span> <span class="nx">useSWR</span> <span class="nx">from</span> <span class="s1">&#39;swr&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">useSWR</span> <span class="kr">from</span> <span class="s1">&#39;swr&#39;</span>
 
 <span class="kd">function</span> <span class="nx">Profile</span><span class="p">(){</span>
-    <span class="kr">const</span> <span class="p">{</span><span class="nx">data</span><span class="p">,</span> <span class="nx">error</span><span class="p">}</span> <span class="o">=</span> <span class="nx">useSWR</span><span class="p">(</span><span class="s1">&#39;/api/user&#39;</span><span class="p">,</span><span class="nx">fetch</span><span class="p">)</span>
+    <span class="kd">const</span> <span class="p">{</span><span class="nx">data</span><span class="p">,</span> <span class="nx">error</span><span class="p">}</span> <span class="o">=</span> <span class="nx">useSWR</span><span class="p">(</span><span class="s1">&#39;/api/user&#39;</span><span class="p">,</span><span class="nx">fetch</span><span class="p">)</span>
 
     <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span> <span class="nx">failed</span> <span class="nx">to</span> <span class="nx">load</span> <span class="o">&lt;</span><span class="err">/div&gt;</span>
     <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">data</span><span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span> <span class="nx">loading</span><span class="p">...</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
     <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span> <span class="nx">hello</span> <span class="p">{</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">!&lt;</span><span class="err">/div&gt;</span>
 <span class="p">}</span>
-</pre></div></div>
+</code></pre></div></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
@@ -472,16 +458,16 @@ Importantly, Next.js lets you **choose** which pre-rendering form to use for eac
           <a href="/techrantsrandom.html">Techrants.Random</a>
       </li>
       <li class="post">
+          <a href="/acsl-research-work.html">ACSL Research Work</a>
+      </li>
+      <li class="post">
+          <a href="/making-my-own-discord-bots.html">Making My Own Discord Bots</a>
+      </li>
+      <li class="post">
           <a href="/getting-acquainted-with-electric-ui.html">Getting Acquainted With Electric UI</a>
       </li>
       <li class="post">
           <a href="/learning-nextjs-in-lockdown.html">Learning NextJS In Lockdown</a>
-      </li>
-      <li class="post">
-          <a href="/learning-reactjs-in-lockdown.html">Learning ReactJS In Lockdown</a>
-      </li>
-      <li class="post">
-          <a href="/video-editing-portfolio.html">Video Editing Portfolio</a>
       </li>
     </ul>
   </section>
@@ -492,8 +478,8 @@ Importantly, Next.js lets you **choose** which pre-rendering form to use for eac
         <li><a href="/category/design.html">Design</a> (4)</li>
         <li><a href="/category/filmmaking.html">Filmmaking</a> (3)</li>
         <li><a href="/category/life.html">Life</a> (4)</li>
-        <li><a href="/category/programming.html">Programming</a> (7)</li>
-        <li><a href="/category/research.html">Research</a> (1)</li>
+        <li><a href="/category/programming.html">Programming</a> (8)</li>
+        <li><a href="/category/research.html">Research</a> (3)</li>
         <li><a href="/category/technology.html">Technology</a> (6)</li>
     </ul>
   </section>
@@ -501,7 +487,7 @@ Importantly, Next.js lets you **choose** which pre-rendering form to use for eac
 
 <!--   <section>
   <h1>Tags</h1>
-    <a href="/tag/engineering.html">engineering</a>,    <a href="/tag/features.html">features</a>,    <a href="/tag/javascript.html">javascript</a>,    <a href="/tag/learning.html">learning</a>,    <a href="/tag/software.html">software</a>,    <a href="/tag/troubleshooting.html">troubleshooting</a>,    <a href="/tag/notes.html">notes</a>,    <a href="/tag/web-development.html">web-development</a>,    <a href="/tag/editing.html">editing</a>,    <a href="/tag/art.html">art</a>,    <a href="/tag/creativity.html">creativity</a>,    <a href="/tag/aerospace.html">aerospace</a>,    <a href="/tag/iisc.html">IISc</a>,    <a href="/tag/combustion.html">combustion</a>,    <a href="/tag/blogging.html">blogging</a>,    <a href="/tag/events.html">events</a>,    <a href="/tag/technology.html">technology</a>,    <a href="/tag/design.html">design</a>,    <a href="/tag/test.html">test</a>,    <a href="/tag/product-design.html">product-design</a>,    <a href="/tag/programming.html">programming</a>,    <a href="/tag/exploration.html">exploration</a>,    <a href="/tag/science.html">science</a>,    <a href="/tag/space.html">space</a>,    <a href="/tag/research.html">research</a>,    <a href="/tag/markdown.html">markdown</a>,    <a href="/tag/pelican.html">pelican</a>,    <a href="/tag/automation.html">automation</a>,    <a href="/tag/letter.html">letter</a>,    <a href="/tag/advice.html">advice</a>,    <a href="/tag/mathematics.html">mathematics</a>,    <a href="/tag/fun.html">fun</a>,    <a href="/tag/feature.html">feature</a>,    <a href="/tag/internship.html">internship</a>  </section> -->
+    <a href="/tag/engineering.html">engineering</a>,    <a href="/tag/learning.html">learning</a>,    <a href="/tag/life.html">life</a>,    <a href="/tag/masters.html">master's</a>,    <a href="/tag/javascript.html">javascript</a>,    <a href="/tag/software.html">software</a>,    <a href="/tag/troubleshooting.html">troubleshooting</a>,    <a href="/tag/features.html">features</a>,    <a href="/tag/notes.html">notes</a>,    <a href="/tag/web-development.html">web-development</a>,    <a href="/tag/editing.html">editing</a>,    <a href="/tag/art.html">art</a>,    <a href="/tag/creativity.html">creativity</a>,    <a href="/tag/aerospace.html">aerospace</a>,    <a href="/tag/iisc.html">IISc</a>,    <a href="/tag/combustion.html">combustion</a>,    <a href="/tag/blogging.html">blogging</a>,    <a href="/tag/events.html">events</a>,    <a href="/tag/technology.html">technology</a>,    <a href="/tag/design.html">design</a>,    <a href="/tag/test.html">test</a>,    <a href="/tag/product-design.html">product-design</a>,    <a href="/tag/programming.html">programming</a>,    <a href="/tag/exploration.html">exploration</a>,    <a href="/tag/science.html">science</a>,    <a href="/tag/space.html">space</a>,    <a href="/tag/research.html">research</a>,    <a href="/tag/markdown.html">markdown</a>,    <a href="/tag/pelican.html">pelican</a>,    <a href="/tag/automation.html">automation</a>,    <a href="/tag/letter.html">letter</a>,    <a href="/tag/advice.html">advice</a>,    <a href="/tag/mathematics.html">mathematics</a>,    <a href="/tag/fun.html">fun</a>,    <a href="/tag/feature.html">feature</a>,    <a href="/tag/internship.html">internship</a>  </section> -->
 
 
     <section>

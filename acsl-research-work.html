@@ -4,7 +4,7 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
   <head>
 	<meta charset="utf-8">
-	<title>Pelican MathJax Issue &mdash; OrangeDurito.blog</title>
+	<title>ACSL Research Work &mdash; OrangeDurito.blog</title>
 	<meta name="author" content="Chandan Sinha">
 
 
@@ -76,49 +76,236 @@
 <div>
   <article class="hentry" role="article">
 <header>
-      <h1 class="entry-title">Pelican MathJax Issue</h1>
+      <h1 class="entry-title">ACSL Research Work</h1>
     <p class="meta">
-<time datetime="2018-07-17T23:26:00+05:30" pubdate>Tue 17 July 2018</time>    </p>
+<time datetime="2022-04-18T23:15:00+05:30" pubdate>Mon 18 April 2022</time>    </p>
 </header>
 
-  <div class="entry-content"><p>I updated pelican recently because I had upgraded to <code>python 3.x</code>. When I tried to execute <code>pelican content</code> command, it threw an error saying <code>no valid contents were found</code>. After some searching, I found out that I hadn't re-installed <code>markdown</code> (the earlier version was completely undetectable). </p>
-<p>After installing markdown by <code>pip install markdown</code>, I re-ran the earlier command but this time I got this warning -</p>
-<div class="highlight"><pre><span></span><code>$ pelican content
-Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
-  File <span class="s2">&quot;C:\Users\CHANDAN\Techblog\pelican-plugins\render_math\math.py&quot;</span>, line <span class="m">272</span>, <span class="k">in</span> mathjax_for_markdown
-    pelicanobj.settings<span class="o">[</span><span class="s1">&#39;MD_EXTENSIONS&#39;</span><span class="o">]</span>.append<span class="o">(</span>PelicanMathJaxExtension<span class="o">(</span>config<span class="o">))</span>
-KeyError: <span class="s1">&#39;MD_EXTENSIONS&#39;</span>
-
-Error - the pelican mathjax markdown extension failed to configure. MathJax is non-functional.
-</code></pre></div>
-
-<p>Apparantly, my MathJax plugin wasn't working properly. I searched for this error on Google which led me to this <a href="https://github.com/getpelican/pelican-plugins/issues/815">Github issue #815</a>. On further reading, I found out this issue was merged with <a href="https://github.com/getpelican/pelican-plugins/pull/787">an earlier one #787</a>. On this link, I found a commit made to <code>math.py</code> file. Here's the change at line 271.</p>
-<p>Instead of this -</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">try</span><span class="p">:</span>
-        <span class="n">pelicanobj</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;MD_EXTENSIONS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PelicanMathJaxExtension</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">excepthook</span><span class="p">(</span><span class="o">*</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">())</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Error - the pelican mathjax markdown extension failed to configure. MathJax is non-functional.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-</code></pre></div>
-
-<p>Write this -</p>
-<div class="highlight"><pre><span></span><code>    <span class="k">try</span><span class="p">:</span>
-        <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">pelicanobj</span><span class="o">.</span><span class="n">settings</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;MD_EXTENSIONS&#39;</span><span class="p">),</span> <span class="nb">list</span><span class="p">):</span> <span class="c1"># pelican 3.6.3 and earlier</span>
-            <span class="n">pelicanobj</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;MD_EXTENSIONS&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PelicanMathJaxExtension</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
-        <span class="k">else</span><span class="p">:</span>
-            <span class="n">pelicanobj</span><span class="o">.</span><span class="n">settings</span><span class="p">[</span><span class="s1">&#39;MARKDOWN&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;extensions&#39;</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">PelicanMathJaxExtension</span><span class="p">(</span><span class="n">config</span><span class="p">))</span>
-    <span class="k">except</span><span class="p">:</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">excepthook</span><span class="p">(</span><span class="o">*</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">())</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Error - the pelican mathjax markdown extension failed to configure. MathJax is non-functional.</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)</span>
-        <span class="n">sys</span><span class="o">.</span><span class="n">stderr</span><span class="o">.</span><span class="n">flush</span><span class="p">()</span>
-</code></pre></div>
-
-<p>And it worked like a charm. Now you know what to do when you encounter this error.</p>
-<p>Example -</p>
-<div class="math">$$\frac{Q_{1}Q_{2}}{4\pi\epsilon r^{2}}$$</div>
-<div class="math">$$d = \sqrt{(x_{2} - x_{1})^2 + (y_{2} - y_{1})^2}$$</div>
-<p>See you in the next post :)</p>
+  <div class="entry-content"><h2>Introduction</h2>
+<p>I started my Master's studies at Virginia Tech in August 2021. I am specializing in RADS (Robotics, Autonomous, and Dynamical Systems) thrust area in the Dept. of Mechanical Engineering. I was taking Dr. Andrea L'Afflitto's course on Industrial Robotics and subsequently I joined his Advanced Control Systems Lab where I was given the task to work on the robust and adaptive control of Unmanned Aerial Systems (UAS). This is my weekly log of the work I did in that lab in reverse chronology. </p>
+<p><center style="font-size:2rem;font-family:Helvetica;font-weight:700">ACSL Weekly Lab Meetings Log</center></p>
+<h2>Lab Meeting 14 - 08<sup>th</sup> December 2021 (Special Meeting)</h2>
+<ul>
+<li>Showed my approach so far and resolve symbolic errors.</li>
+</ul>
+<h3>Feedback</h3>
+<ul>
+<li>That's all folks! Let's stop here. We are not a good match.</li>
+</ul>
+<h2>Lab Meeting 13 - 06<sup>th</sup> December 2021</h2>
+<ul>
+<li>Resolved many errors. Stuck with pole placement for now.</li>
+</ul>
+<h2>Lab Meeting 12 - 19<sup>th</sup> November 2021</h2>
+<ul>
+<li>Done calculating the robustness parameters</li>
+<li>Observer design is in work</li>
+<li>Book-keeping for <ul>
+<li>Classical output feedback linearization (with full-state information)</li>
+<li>Robust feedback linearization with full-state information</li>
+<li>Robust feedback linearization without full-state information (linear observer design)</li>
+</ul>
+</li>
+</ul>
+<h3>Feedback</h3>
+<ul>
+<li>There are several ways to design 'v' (virtual input) - pole placement is one technique (used in the provided code), then there are LQR, LQG, H-Infinity, etc.</li>
+<li>It's all just a matter of plugging in the formula.</li>
+<li>There are only a couple of meetings left in this semester. Want to see the result before that.</li>
+</ul>
+<h2>Lab Meeting 11 - 10<sup>th</sup> November 2021</h2>
+<ul>
+<li>Calculated the robustness parameters</li>
+<li>Stuck with matrix dimensions of alpha_r and beta_r</li>
+<li>Now things have started to make sense - states, linearized states, need for linearization, need for robustness, constructing missing states through observability</li>
+</ul>
+<h3>Feedback</h3>
+<ul>
+<li>Checked the MATLAB code</li>
+<li>MATLAB simulation code for spiralling quadcopter <code>Quadrotor Output Feedback Linearization Simulation_10112021</code> sent by Julius</li>
+<li>Work on the graph</li>
+</ul>
+<h2>Lab Meeting 10 - 5<sup>th</sup> November 2021</h2>
+<ul>
+<li>Completed Nonlinear System lecture series (important ones)</li>
+<li>Calculated diffeomorphism in the <code>Output Feedback Linearization</code> code</li>
+<li>Finished reading the paper <code>Robust Output Feedback Linearization Without Full State Information</code>. Need to understand the concept of observability better</li>
+<li>Went through the example MATLAB code for magnetic bearing. It needs a few correction, so working on that.</li>
+<li>Need time to implement it for the UAV</li>
+</ul>
+<h3>Feedback</h3>
+<ul>
+<li>Gave a brief overview of observability</li>
+<li>Show the comparison graph in the next meeting - Using the states as earlier vs. states obtained through robust output linearization</li>
+</ul>
+<h2>Lab Meeting 9 - 27<sup>th</sup> October 2021</h2>
+<ul>
+<li>While the <code>Output Feedback Linearization</code> concept was relatively easy, understanding <code>Robust Output Feedback Linearization</code> needs some context of Nonlinear Systems, hence I focused more on mathematical part this. Understood the why of linearization (and Lie derivatives)</li>
+<li>Nonlinear Systems tutorials on YouTube by Topperly - Almost done with it</li>
+</ul>
+<h3>Feedback</h3>
+<ul>
+<li>While understanding the 'why' of things is alright, I have been given a specific objective to accomplish. I should focus more on that. The semester will be over in \~20 days. Move fast.</li>
+</ul>
+<h2>Lab Meeting 8 - 20<sup>th</sup> October 2021 (Zoom)</h2>
+<ul>
+<li>Reading about Diffeomorphism</li>
+<li>Going through <code>Robust Output Feedback Linearization</code> - theory and code</li>
+<li>Couldn't make much progress because of mid-sem</li>
+<li>Nonlinear systems lectures on YouTube - Topperly. Currently on phase-plane analysis</li>
+</ul>
+<h3>Feedback</h3>
+<ul>
+<li>Propose intiatives, ask questions and decide if something is better/more feasible or not - that's how you outline a thesis</li>
+<li><code>Chris</code> - Integrating ailerons and rudder in Quad Biplane. Before directly jumping onto the MATLAB simulation, go through Grant's and Sean's code and recreate the mission profile with estimated moment we can get from these control surfaces (confirm)</li>
+<li><code>Paul</code> - Observe space through voxel maps, identify the center of the object of interest. You should be able to tell that this set of voxels is occupied by this object</li>
+<li><code>Julius</code> - Oct Tree algorithm, explored vs. unexplored voxels. To reduce computational effort, ignore bins which are more than 60% explored. </li>
+</ul>
+<h2>Lab Meeting 7 - 13<sup>th</sup> October 2021</h2>
+<ul>
+<li>Understood the theory of output feedback linearization (Khalil's chapter 13 and lecture notes)</li>
+<li>Went to couple of initial chapters of the Khalil's book to understand the mathematical representation of non-linear systems</li>
+<li>Went through the code line by line and annotated. Wrote down the equations and correlated it with quadcopter tutorial paper</li>
+</ul>
+<h3>Feedback</h3>
+<ul>
+<li><code>Robust Output Feedback Linearization</code> paper and code for DC motor sent by Julius</li>
+<li>Once done with the code validation, move on to computing <span class="math">\(\ddot{x}\)</span> and <span class="math">\(\dddot{x}\)</span> of the linearized states through the provided code (custom modifications required)</li>
+<li>Run UAV simulation and compare the two cases side by side - </li>
+<li>Estimated <span class="math">\(\ddot{x}\)</span> and <span class="math">\(\dddot{x}\)</span> </li>
+<li><span class="math">\(\ddot{x}\)</span> and <span class="math">\(\dddot{x}\)</span> obtained from code. Ideally, with the same aircraft and same reference trajectory, it should do the same thing when the same physical quantities are calculated by 2 different control methods.</li>
+<li>Linearized states = <span class="math">\(<div class="math">\begin{bmatrix} r \\ \dot{r} \\ \ddot{r} \\ \dddot{r} \\ \phi \\ \dot{\phi} \end{bmatrix}</div>\)</span></li>
+</ul>
+<h3>Miscellaneous (in response to Chris's work)</h3>
+<ul>
+<li>Keep documentation on every decision - why did I arrive at a certain configuration, trade-offs considered, comparisons with alternate configuration, cost-benefit analysis, etc. (mainly for hardware specifications)</li>
+<li>Compare the performance of the UAV in multiple hardware configuration - battery, propeller, ailerons, rudder, etc.</li>
+</ul>
+<h2>Lab Meeting 6 - 6<sup>th</sup> October 2021</h2>
+<ul>
+<li>Julius sent the MATLAB file <code>output_feedback_linearization_outer_loop.m</code>, lecture slides <code>AOE5344.Lecture 18: Multi-Input/Multi-Output Linearization</code> and <code>Hassan-k-khalil-nonlinear-systems</code> book.</li>
+<li>Mail sent to Dr. L'Afflitto outlining the immediate objectives</li>
+<li>Prof. told to help Julius on his vision-based project. Continue familiarizing with the Flight Stack and help Paul</li>
+</ul>
+<h3>Feedback</h3>
+<ul>
+<li>Learn operating 3D printer in the lab. Go through Lab Manual.</li>
+<li>Discussion on inner loop, outer loop, Lyapunov function - in response to Diksha's work</li>
+</ul>
+<h2>Lab Meeting 5 - 1<sup>st</sup> October 2021 (Zoom)</h2>
+<ul>
+<li>Meeting postponed from 29<sup>th</sup> September </li>
+<li>Further reading the tutorial paper</li>
+<li>Further reading Dr. L'Afflitto's <code>A Mathematical Perspective on Flight Dynamics and Control</code></li>
+<li>Going through Grant's thesis</li>
+<li>Sat with Diksha and went through the MRAC codes</li>
+<li>Ask about the textbooks on Flight Dynamics and Control</li>
+</ul>
+<h3>Feedback</h3>
+<ul>
+<li>Not satisfied with my research performance</li>
+<li>Need to push myself </li>
+</ul>
+<h3>Immediate Objectives (as stated in email reply)-</h3>
+<ul>
+<li>Strengthen the theory part for the control algorithms (H-infinity, MRAC, Output Feedback Linearization).</li>
+<li>Go through the entire latest Flight Stack Code (special emphasis on PIXHAWK_INTERFACE.cpp, MOCAP.cpp and CONTROL.cpp), understand the functions, tweak parameters and see how it actually affects flights (through flight test).</li>
+<li>If possible, be there for every flight test with Chris and Diksha.</li>
+<li>Julius informed me that Chris has previously worked on the Shipboard Landing controller, so I asked him to send the relevant code base so that I can understand what has been done already. This has not come up in my previous conversation with him. He had sent me some lecture notes to go through. Today, Julius sent me the code and set some specific objectives for code validation, so I will get started on that right away. </li>
+<li>Learn to perform flight simulations on my own - numerical simulations, Hardware-In-the-Loop simulations and Flight Test (Also, look for a suitable graphic simulator).</li>
+</ul>
+<h2>Lab Meeting 4 - 22<sup>nd</sup> September 2021 (Zoom)</h2>
+<ul>
+<li>Flight testing on Friday</li>
+<li>Going through Lavretsky's book</li>
+</ul>
+<h3>Feedback</h3>
+<ul>
+<li>Grant's and Sean's theses sent</li>
+</ul>
+<h2>Lab Meeting 3 - 15<sup>th</sup> September 2021</h2>
+<ul>
+<li>Further reading the paper</li>
+<li>Non-linear control system lectures on YouTube and Khalil's book</li>
+<li>Talked to Chris about the last Sunday's flight test</li>
+</ul>
+<h3>Feedback</h3>
+<ul>
+<li>Julius suggested an idea to use edge detection/computer vision to detect shelter</li>
+<li>Thesis idea - Landing pad pattern detection</li>
+<li>Shipboard landing or landing on a moving vehicle</li>
+</ul>
+<h2>Lab Meeting 2 - 8<sup>th</sup> September 2021</h2>
+<ul>
+<li>Reading the tutorial paper - <code>An Introduction to Nonlinear Robust Control for Unmanned Quadrotor Aircraft</code></li>
+<li>Control system lectures for the background</li>
+<li>Diksha is isolating, so couldn't perform the test flight</li>
+<li>Talked to Julius about extra resources I should refer to</li>
+</ul>
+<h3>Feedback</h3>
+<ul>
+<li>Read Lavretsky's book for MRAC theory. Start with chapter 9 (scalar and MIMO cases) and then move to chapter 10 (output-feedback case)</li>
+<li>Code sent for MRAC (3 zip files)</li>
+<li>Learn flight test. See your code in action.</li>
+</ul>
+<h2>Lab Meeting 1 - 2<sup>nd</sup> September 2021 (Zoom)</h2>
+<p><b><center> A Guidance System for Tactical Autonomous Unmanned Aerial Vehicles </center></b>
+<center> Advanced Control Systems Lab, Virginia Tech </center></p>
+<h3>Notes</h3>
+<ul>
+<li>Tactical behaviour to multi-rotor unmanned aerial vehicles (UAVs)</li>
+<li>Assumption - neither deterministic nor stochastic information on the opponents is available</li>
+<li>
+<p>The system comprises of -</p>
+<ul>
+<li>optimization-based path planner</li>
+<li>a quadratic programming-based algorithm to reconstruct collision avoidance constraints from voxel maps</li>
+<li>a trajectory planner (which implements a fast model predictive control algorithm)</li>
+</ul>
+</li>
+<li>
+<p>The proposed guidance system allows an autonomous vehicle to reach a goal set, whose position relative to the vehicle's initial position is given, without any prior knowledge of the environment</p>
+</li>
+<li>
+<p>Tactical mechanism - </p>
+<ul>
+<li>House mice inspired - Coasting obstacles i.e following a reference trajectory that leads the UAV to the goal set and which is sufficiently close to the obstacles such as walls, pillars, and other similar environmental features.</li>
+<li>Regulate the UAV's velocity according to its distance from the obstacles' set. If the UAV is shielded by some obstacle, then it should proceed slowly to allow the navigation system to product a more accurate obstacles' map. If no obstacle conceals the vehicle's position, then the UAV should proceed as fast as possible. </li>
+</ul>
+</li>
+<li>
+<p>Reckless (predictable trajectory) Vs. Tactical behavior (unpredictable trajectory)</p>
+</li>
+<li>
+<p>9 user-defined parameters that can be set a priori </p>
+</li>
+<li>
+<p>Objective - an optimization-based path planner and a model predictive control algorithm for trajectory planning</p>
+</li>
+</ul>
+<h3>Doubts</h3>
+<ul>
+<li>Warm start</li>
+<li>Affine constraint function</li>
+<li>Difference between path planning and trajectory planning</li>
+</ul>
+<h3>Feedback</h3>
+<ul>
+<li>Focus on the control algorithms part</li>
+<li>Work with Diksha and Chris on actual flight test. Become familiar with the end-to-end pipeline for flight testing.</li>
+</ul>
+<h2>Lab Meeting with Chris on Flight Stack - 28<sup>th</sup> August 2021</h2>
+<ul>
+<li>Setting up Vicon Tracker software</li>
+<li>MoCap camera calibration</li>
+<li>Defining the origin</li>
+<li>Camera masking</li>
+<li>Object tracking</li>
+<li>SSHing in to Odroid via PuTTY</li>
+<li>Remote debugging and upload via winSCP </li>
+<li>Couldn't fly the drone because of missing parameters</li>
+<li>Flight stack code debugging - syntax errors, function referencing, changing <code>double</code> to <code>float</code> </li>
+</ul>
 <script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
     var align = "center",
         indent = "0em",
@@ -183,11 +370,11 @@ Error - the pelican mathjax markdown extension failed to configure. MathJax is n
         Chandan Sinha
     </span>
   </span>
-<time datetime="2018-07-17T23:26:00+05:30" pubdate>Tue 17 July 2018</time>  <span class="categories">
-    <a class='category' href='/category/programming.html'>Programming</a>
+<time datetime="2022-04-18T23:15:00+05:30" pubdate>Mon 18 April 2022</time>  <span class="categories">
+    <a class='category' href='/category/research.html'>Research</a>
   </span>
   <span class="categories">
-    <a class="category" href="/tag/features.html">features</a>,    <a class="category" href="/tag/markdown.html">markdown</a>,    <a class="category" href="/tag/pelican.html">pelican</a>,    <a class="category" href="/tag/troubleshooting.html">troubleshooting</a>  </span>
+    <a class="category" href="/tag/engineering.html">engineering</a>,    <a class="category" href="/tag/learning.html">learning</a>,    <a class="category" href="/tag/life.html">life</a>,    <a class="category" href="/tag/masters.html">master's</a>  </span>
 </p><div class="sharing">
 </div>    </footer>
   </article>
@@ -196,9 +383,9 @@ Error - the pelican mathjax markdown extension failed to configure. MathJax is n
     <div id="disqus_thread" aria-live="polite">  <script type="text/javascript">
     var disqus_shortname = 'mechanicalcodertechblog';
 
-    //     // var disqus_identifier = '/pelican-mathjax-issue.html';
-    // var disqus_url = '/pelican-mathjax-issue.html';
-    // var disqus_title = 'Pelican MathJax Issue';
+    //     // var disqus_identifier = '/acsl-research-work.html';
+    // var disqus_url = '/acsl-research-work.html';
+    // var disqus_title = 'ACSL Research Work';
     //     
     (function() {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
@@ -305,9 +492,9 @@ Error - the pelican mathjax markdown extension failed to configure. MathJax is n
 <!--   <script type="text/javascript">
     var disqus_shortname = 'mechanicalcodertechblog';
 
-    //     // var disqus_identifier = '/pelican-mathjax-issue.html';
-    // var disqus_url = '/pelican-mathjax-issue.html';
-    // var disqus_title = 'Pelican MathJax Issue';
+    //     // var disqus_identifier = '/acsl-research-work.html';
+    // var disqus_url = '/acsl-research-work.html';
+    // var disqus_title = 'ACSL Research Work';
     //     
     (function() {
       var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;

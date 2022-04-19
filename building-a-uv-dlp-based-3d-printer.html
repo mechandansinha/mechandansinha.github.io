@@ -95,43 +95,40 @@
 <p>We started with reading the documentation of various 3D printers available in the market. </p>
 <p><center><iframe src="https://drive.google.com/file/d/10QiTNZ1LzB5M_-H-_oSK8-th1vHW5g9B/preview" width="640" height="700"></iframe></center></p>
 <p>At that time, the majority of 3D printers available were based on FDM technique which is still the case but we wanted to work on UV-DLP technique for several reasons - </p>
-<div class="highlight"><pre><span></span>- We wanted a cheaper, affordable 3D printing service for mass market
-- Our initial target audience were those of ornament shops, shoe design companies, etc. We wanted to give that soft material material feel.
-- No hassle of base plates 
-- fast printing time and the ease of print
-- Using open-source 3D slicer that read STL files
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">-</span> <span class="nv">We</span> <span class="nv">wanted</span> <span class="nv">a</span> <span class="nv">cheaper</span>, <span class="nv">affordable</span> <span class="mi">3</span><span class="nv">D</span> <span class="nv">printing</span> <span class="nv">service</span> <span class="k">for</span> <span class="nv">mass</span> <span class="nv">market</span>
+<span class="o">-</span> <span class="nv">Our</span> <span class="nv">initial</span> <span class="nv">target</span> <span class="nv">audience</span> <span class="nv">were</span> <span class="nv">those</span> <span class="nv">of</span> <span class="nv">ornament</span> <span class="nv">shops</span>, <span class="nv">shoe</span> <span class="nv">design</span> <span class="nv">companies</span>, <span class="nv">etc</span>. <span class="nv">We</span> <span class="nv">wanted</span> <span class="nv">to</span> <span class="nv">give</span> <span class="nv">that</span> <span class="nv">soft</span> <span class="nv">material</span> <span class="nv">material</span> <span class="nv">feel</span>.
+<span class="o">-</span> <span class="nv">No</span> <span class="nv">hassle</span> <span class="nv">of</span> <span class="nv">base</span> <span class="nv">plates</span> 
+<span class="o">-</span> <span class="nv">fast</span> <span class="nv">printing</span> <span class="nv">time</span> <span class="nv">and</span> <span class="nv">the</span> <span class="nv">ease</span> <span class="nv">of</span> <span class="nv">print</span>
+<span class="o">-</span> <span class="nv">Using</span> <span class="nv">open</span><span class="o">-</span><span class="nv">source</span> <span class="mi">3</span><span class="nv">D</span> <span class="nv">slicer</span> <span class="nv">that</span> <span class="nv">read</span> <span class="nv">STL</span> <span class="nv">files</span>
+</code></pre></div>
 
 <p>First of all, we had to get the basic ingredients right and find out if we can actually make the 3D printing work. We had some basic <a href="https://www.flipkart.com/pinchdart-2020-aluminium-profile-extrusion-length-1-meter-automotive-electronic-hobby-kit/p/itmfbbk4uvszktvy?">T-slot aluminium extrusion frames</a>, L-clamps, <a href="https://www.accu.co.uk/en/nema-17-stepper-motors/394332-NEMA17-34-0-95-1-8?google_shopping=1&amp;c=5&amp;mkwid=_dc&amp;pcrid=317111227122&amp;kword=&amp;match=&amp;plid=&amp;gclid=Cj0KCQiA37HhBRC8ARIsAPWoO0wf45LgxhSzxQ3NopoYf9KiS7OH_m4bL1_D_TZ9-zlumcm0WmOACY4aAq8MEALw_wcB">unipolar stepper motor</a>, lead screw, general projector (for projecting 2D slices intermittently) and a crudely welded base plate, plastic container, <a href="https://www.google.com/url?sa=i&amp;source=images&amp;cd=&amp;cad=rja&amp;uact=8&amp;ved=2ahUKEwiNgdel6c_fAhURfCsKHRSCBGgQjhx6BAgBEAM&amp;url=https%3A%2F%2Fwww.amazon.com%2FMonoprice-Rapid-Printer-Resin-250ml%2Fdp%2FB07BGRSD1X&amp;psig=AOvVaw1aXvJv8cM6kl6XdIMngDgP&amp;ust=1546528933256484">photochemical resin</a>, resin hardener OPV 7102 and a UV light source to harden the model after printing.</p>
 <p>We quickly started putting up a crude model together. We downloaded <a href="https://www.instructables.com/id/How-to-Use-Creation-Workshop-V10075-for-DLP-Printe/">'Creation Workshop'</a> software, which is basically a slicer program for DLP 3D-printing, built up the circuit on a bread-board using following components -</p>
-<div class="highlight"><pre><span></span>* Board - Arduino Micro
-* LCD - 16x2 4-bit Mode
-* Motor Driver - A4988
-* Potentiometer (to set the contrast ratio of LCD)
-* Capacitor (used with motor driver)
-* Jumper wires for the connections.
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">*</span><span class="w"> </span><span class="n">Board</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Arduino</span><span class="w"> </span><span class="n">Micro</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">LCD</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="mh">16</span><span class="n">x2</span><span class="w"> </span><span class="mh">4</span><span class="o">-</span><span class="kt">bit</span><span class="w"> </span><span class="n">Mode</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Motor</span><span class="w"> </span><span class="n">Driver</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">A4988</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Potentiometer</span><span class="w"> </span><span class="p">(</span><span class="n">to</span><span class="w"> </span><span class="n">set</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">contrast</span><span class="w"> </span><span class="n">ratio</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">LCD</span><span class="p">)</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Capacitor</span><span class="w"> </span><span class="p">(</span><span class="n">used</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">motor</span><span class="w"> </span><span class="n">driver</span><span class="p">)</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Jumper</span><span class="w"> </span><span class="n">wires</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">connections</span><span class="p">.</span><span class="w"></span>
+</code></pre></div>
 
 <p>The basic skeleton was ready and we were set to print our first models. Contrary to our surprise, our first few models looked like this -</p>
 <p><center><img src="images/3d2.jpg" height="500px" width="500px">&nbsp; <img src="images/3d3.jpg" height="500px" width="500px"></center></p>
 <p>Hmm...not quite what we want. </p>
 <h1>The Battle</h1>
 <p>Ok, let's take it bird by bird. So what are the variables here?</p>
-<div class="highlight"><pre><span></span>- Projector
-- Resin
-- Priting variables
-    - Slice thickness
-    - Exposure time
-    - No. of bottom layer
-    - Retract speed
-    - Lift speed
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">-</span><span class="w"> </span><span class="n">Projector</span><span class="w"></span>
+<span class="o">-</span><span class="w"> </span><span class="n">Resin</span><span class="w"></span>
+<span class="o">-</span><span class="w"> </span><span class="n">Priting</span><span class="w"> </span><span class="n">variables</span><span class="w"></span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="n">Slice</span><span class="w"> </span><span class="n">thickness</span><span class="w"></span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="n">Exposure</span><span class="w"> </span><span class="n">time</span><span class="w"></span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="n">No</span><span class="o">.</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">bottom</span><span class="w"> </span><span class="n">layer</span><span class="w"></span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="n">Retract</span><span class="w"> </span><span class="n">speed</span><span class="w"></span>
+<span class="w">    </span><span class="o">-</span><span class="w"> </span><span class="n">Lift</span><span class="w"> </span><span class="n">speed</span><span class="w"></span>
+</code></pre></div>
 
 <p><strong>Projector specifications</strong> - We kept the luminosity of the projector at 3200 lumins and resolution at 800x600. The only variable here was the distance of the base from the lens for optimal printing quality. Since, we didn't have any other projector at disposal, we had to work with what we had. Later on, we searched for the best projector for the purpose and settled on <a href="https://www.projectorcentral.com/InFocus-IN8606HD.htm">InFocus IN8606 HD projector</a>.</p>
-<div class="highlight"><pre><span></span>Trivia You Should Know
+<div class="highlight"><pre><span></span><code>Trivia You Should Know
 
 - With DLP projection, printing speed is not affected by the object complexity or the number of parts to be printed on the same base.
 - Wall-thickness(the minimum thickness that your model should have for any given material or technology) should be increased as the design becomes larger :
@@ -140,8 +137,7 @@
     else wall_thickness = 3mm;
 - Orientation of the design while printing influences the surface quality and strength
 - Model needs to be supported externally to keep it in place <span class="err">&amp;</span> prevent from collapsing while being printed if it is narrower than 30 deg.
-</pre></div>
-
+</code></pre></div>
 
 <p><strong>Resin</strong> - This is where we spent most of our pre-fabrication time. It was absolutely essential to get the resin quality right (composition of resin &amp; hardner). We also injected color for different model varities. The transparency of the resin is also something we had to take into consideration. Since it is photo-sensitive, greater transparency meant the light from the projector would affect the liquid beyond the active layer.</p>
 <p><center><img src="images/3d4.jpg" height="500px" width="500px">&nbsp; <img src="images/3d5.jpg" height="500px" width="500px"></center></p>
@@ -150,39 +146,37 @@
 <p><center><img src="images/3d6.jpg" height="500px" width="500px"></center>
 <center><p><i> We printed a lot of these models. I mean a lot. </i></p></center></p>
 <p>It was time to give it an aesthetic form which meant going back to the drawing board and redo everything from scratch (now that we have figured out the functionality). I have broken down the next phase into four different parts -</p>
-<div class="highlight"><pre><span></span>- Mechanical Design (*crude* sketching, CAD modeling, drafting) 
-- Manufacturing &amp; Assembly (parts procurement, vendor identification, shop visits)
-- System Design (basically electronics and other electrical hardware components)
-- Code (customizing &#39;Creation Workshop&#39;, writing our own arduino code for motor movement) 
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">-</span> <span class="nv">Mechanical</span> <span class="nv">Design</span> <span class="ss">(</span><span class="o">*</span><span class="nv">crude</span><span class="o">*</span> <span class="nv">sketching</span>, <span class="nv">CAD</span> <span class="nv">modeling</span>, <span class="nv">drafting</span><span class="ss">)</span> 
+<span class="o">-</span> <span class="nv">Manufacturing</span> <span class="o">&amp;</span> <span class="nv">Assembly</span> <span class="ss">(</span><span class="nv">parts</span> <span class="nv">procurement</span>, <span class="nv">vendor</span> <span class="nv">identification</span>, <span class="nv">shop</span> <span class="nv">visits</span><span class="ss">)</span>
+<span class="o">-</span> <span class="nv">System</span> <span class="nv">Design</span> <span class="ss">(</span><span class="nv">basically</span> <span class="nv">electronics</span> <span class="nv">and</span> <span class="nv">other</span> <span class="nv">electrical</span> <span class="nv">hardware</span> <span class="nv">components</span><span class="ss">)</span>
+<span class="o">-</span> <span class="nv">Code</span> <span class="ss">(</span><span class="nv">customizing</span> <span class="s1">&#39;</span><span class="s">Creation Workshop</span><span class="s1">&#39;</span>, <span class="nv">writing</span> <span class="nv">our</span> <span class="nv">own</span> <span class="nv">arduino</span> <span class="nv">code</span> <span class="k">for</span> <span class="nv">motor</span> <span class="nv">movement</span><span class="ss">)</span> 
+</code></pre></div>
 
 <p>Before we move ahead with the topics, here are some of the design features we finalized for v1.0 -</p>
-<div class="highlight"><pre><span></span>* Flexible vat size
-* Cover lifting mechanism
-* Projector to be kept horizontal to reduce vertical height (use mirror)
-* LCD Screen
-* On-off button (zero position setting)
-* Alternate mechanism for resin to settle in bottom-up approach
-* Sensors to trigger when the vat reaches extremes
-* Alignment balancing
-* LED indicator
-* Resin filling (Automatic &amp; graduate)
-* Overall cover
-* Material selection (resin can be reused after melting)
-* Color injection
-* Immiscible (heavier density) fluid to reduce resin requirement in top-down approach
-* Reverse movement of the base to maintain liquid flow
-* Feedback control 
-* Base position marking (static base positioning to avoid fluid sloshing)
-* Opening for venting smoke
-* G-code &amp; M-code interpreter
-* Adapters for motor, arduino board, etc.
-* Speed variation with changing slope
-* Increase time exposure for smaller or finer area
-* Third-party feature integration to let users browse 3D models online
-</pre></div>
-
+<div class="highlight"><pre><span></span><code><span class="o">*</span><span class="w"> </span><span class="n">Flexible</span><span class="w"> </span><span class="n">vat</span><span class="w"> </span><span class="n">size</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Cover</span><span class="w"> </span><span class="n">lifting</span><span class="w"> </span><span class="n">mechanism</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Projector</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">kept</span><span class="w"> </span><span class="n">horizontal</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">reduce</span><span class="w"> </span><span class="n">vertical</span><span class="w"> </span><span class="n">height</span><span class="w"> </span><span class="p">(</span><span class="n">use</span><span class="w"> </span><span class="n">mirror</span><span class="p">)</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">LCD</span><span class="w"> </span><span class="n">Screen</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">On</span><span class="o">-</span><span class="n">off</span><span class="w"> </span><span class="n">button</span><span class="w"> </span><span class="p">(</span><span class="n">zero</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="n">setting</span><span class="p">)</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Alternate</span><span class="w"> </span><span class="n">mechanism</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">resin</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">settle</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">bottom</span><span class="o">-</span><span class="n">up</span><span class="w"> </span><span class="n">approach</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Sensors</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">trigger</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">vat</span><span class="w"> </span><span class="n">reaches</span><span class="w"> </span><span class="n">extremes</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Alignment</span><span class="w"> </span><span class="n">balancing</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">LED</span><span class="w"> </span><span class="n">indicator</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Resin</span><span class="w"> </span><span class="n">filling</span><span class="w"> </span><span class="p">(</span><span class="n">Automatic</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">graduate</span><span class="p">)</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Overall</span><span class="w"> </span><span class="n">cover</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Material</span><span class="w"> </span><span class="n">selection</span><span class="w"> </span><span class="p">(</span><span class="n">resin</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">reused</span><span class="w"> </span><span class="n">after</span><span class="w"> </span><span class="n">melting</span><span class="p">)</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="nb nb-Type">Color</span><span class="w"> </span><span class="n">injection</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Immiscible</span><span class="w"> </span><span class="p">(</span><span class="n">heavier</span><span class="w"> </span><span class="n">density</span><span class="p">)</span><span class="w"> </span><span class="n">fluid</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">reduce</span><span class="w"> </span><span class="n">resin</span><span class="w"> </span><span class="n">requirement</span><span class="w"> </span><span class="ow">in</span><span class="w"> </span><span class="n">top</span><span class="o">-</span><span class="n">down</span><span class="w"> </span><span class="n">approach</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Reverse</span><span class="w"> </span><span class="n">movement</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">maintain</span><span class="w"> </span><span class="n">liquid</span><span class="w"> </span><span class="n">flow</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Feedback</span><span class="w"> </span><span class="n">control</span><span class="w"> </span>
+<span class="o">*</span><span class="w"> </span><span class="n">Base</span><span class="w"> </span><span class="n">position</span><span class="w"> </span><span class="n">marking</span><span class="w"> </span><span class="p">(</span><span class="k">static</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="n">positioning</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">avoid</span><span class="w"> </span><span class="n">fluid</span><span class="w"> </span><span class="n">sloshing</span><span class="p">)</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Opening</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">venting</span><span class="w"> </span><span class="n">smoke</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">G</span><span class="o">-</span><span class="n">code</span><span class="w"> </span><span class="o">&amp;</span><span class="w"> </span><span class="n">M</span><span class="o">-</span><span class="n">code</span><span class="w"> </span><span class="n">interpreter</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Adapters</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">motor</span><span class="p">,</span><span class="w"> </span><span class="n">arduino</span><span class="w"> </span><span class="n">board</span><span class="p">,</span><span class="w"> </span><span class="n">etc</span><span class="o">.</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Speed</span><span class="w"> </span><span class="n">variation</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">changing</span><span class="w"> </span><span class="n">slope</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Increase</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="n">exposure</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">smaller</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">finer</span><span class="w"> </span><span class="n">area</span><span class="w"></span>
+<span class="o">*</span><span class="w"> </span><span class="n">Third</span><span class="o">-</span><span class="n">party</span><span class="w"> </span><span class="n">feature</span><span class="w"> </span><span class="n">integration</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">let</span><span class="w"> </span><span class="n">users</span><span class="w"> </span><span class="n">browse</span><span class="w"> </span><span class="mi">3</span><span class="n">D</span><span class="w"> </span><span class="n">models</span><span class="w"> </span><span class="n">online</span><span class="w"></span>
+</code></pre></div>
 
 <h2>Mechanical Design</h2>
 <p>Based on our requirements, we decided the dimensions and made the 3D models in Solidworks for both top-down and bottom-up approach separately. Individual components can be found <a href="https://drive.google.com/open?id=0B5ONt2rDwKNVUkhDdV95b0NpZmM">here</a>. For sketches, please refer to the notebook at the end.</p>
@@ -203,23 +197,22 @@
 <p><center><img src="images/3d10.jpg" height="500px" width="500px">&nbsp; <img src="images/3d11.jpg" height="500px" width="500px"></center>
 <center><p><i> Here's me hacking that code :) </i></p></center></p>
 <p>We encountered numerous problems along the way and I kept noting them in my diary. Here are some of the excerpts -</p>
-<div class="highlight"><pre><span></span>&gt; Lack of hardener
-&gt; Liquid amount is crucial- when we&#39;re putting much liquid, the model is not getting formed while if we&#39;re putting less, then the base support is not getting enough liquid to print taking into
-account the liquid suction due to vacuum formation.
-Sheet transparency is also a probable problem. While going through some articles, we found that people were suggesting the change of sheets after 100000 or so layer prints. We can easily clear the glass but sheet cleaning might be tedious.
+<div class="highlight"><pre><span></span><code><span class="o">&gt;</span><span class="w"> </span><span class="n">Lack</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">hardener</span><span class="w"></span>
+<span class="o">&gt;</span><span class="w"> </span><span class="n">Liquid</span><span class="w"> </span><span class="n">amount</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">crucial</span><span class="o">-</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">we</span><span class="s1">&#39;re putting much liquid, the model is not getting formed while if we&#39;</span><span class="n">re</span><span class="w"> </span><span class="n">putting</span><span class="w"> </span><span class="n">less</span><span class="p">,</span><span class="w"> </span><span class="n">then</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="n">support</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="ow">not</span><span class="w"> </span><span class="n">getting</span><span class="w"> </span><span class="n">enough</span><span class="w"> </span><span class="n">liquid</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="nb">print</span><span class="w"> </span><span class="n">taking</span><span class="w"> </span><span class="n">into</span><span class="w"></span>
+<span class="n">account</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">liquid</span><span class="w"> </span><span class="n">suction</span><span class="w"> </span><span class="n">due</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">vacuum</span><span class="w"> </span><span class="n">formation</span><span class="o">.</span><span class="w"></span>
+<span class="n">Sheet</span><span class="w"> </span><span class="n">transparency</span><span class="w"> </span><span class="k">is</span><span class="w"> </span><span class="n">also</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">probable</span><span class="w"> </span><span class="n">problem</span><span class="o">.</span><span class="w"> </span><span class="n">While</span><span class="w"> </span><span class="n">going</span><span class="w"> </span><span class="n">through</span><span class="w"> </span><span class="n">some</span><span class="w"> </span><span class="n">articles</span><span class="p">,</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">found</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">people</span><span class="w"> </span><span class="n">were</span><span class="w"> </span><span class="n">suggesting</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">change</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">sheets</span><span class="w"> </span><span class="n">after</span><span class="w"> </span><span class="mi">100000</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">so</span><span class="w"> </span><span class="n">layer</span><span class="w"> </span><span class="nb">prints</span><span class="o">.</span><span class="w"> </span><span class="n">We</span><span class="w"> </span><span class="n">can</span><span class="w"> </span><span class="n">easily</span><span class="w"> </span><span class="n">clear</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">glass</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">sheet</span><span class="w"> </span><span class="n">cleaning</span><span class="w"> </span><span class="n">might</span><span class="w"> </span><span class="n">be</span><span class="w"> </span><span class="n">tedious</span><span class="o">.</span><span class="w"></span>
 
-&gt; Over-tightening may give rise of greater vacuum formation.
-We increased the exposure time to 2s and moved it.
+<span class="o">&gt;</span><span class="w"> </span><span class="n">Over</span><span class="o">-</span><span class="n">tightening</span><span class="w"> </span><span class="n">may</span><span class="w"> </span><span class="n">give</span><span class="w"> </span><span class="n">rise</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">greater</span><span class="w"> </span><span class="n">vacuum</span><span class="w"> </span><span class="n">formation</span><span class="o">.</span><span class="w"></span>
+<span class="n">We</span><span class="w"> </span><span class="n">increased</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">exposure</span><span class="w"> </span><span class="n">time</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="mi">2</span><span class="n">s</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">moved</span><span class="w"> </span><span class="n">it</span><span class="o">.</span><span class="w"></span>
 
-&gt; Now we got the hardener OPV 7102. We started with mixing 5ml of it but to our utter surprise, the model was worse that the former with no hardener. In fact, the model didn&#39;t even complete because of the softness.
+<span class="o">&gt;</span><span class="w"> </span><span class="n">Now</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">got</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">hardener</span><span class="w"> </span><span class="n">OPV</span><span class="w"> </span><span class="mf">7102.</span><span class="w"> </span><span class="n">We</span><span class="w"> </span><span class="n">started</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">mixing</span><span class="w"> </span><span class="mi">5</span><span class="n">ml</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">it</span><span class="w"> </span><span class="n">but</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">our</span><span class="w"> </span><span class="n">utter</span><span class="w"> </span><span class="n">surprise</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">worse</span><span class="w"> </span><span class="n">that</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">former</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">no</span><span class="w"> </span><span class="n">hardener</span><span class="o">.</span><span class="w"> </span><span class="n">In</span><span class="w"> </span><span class="n">fact</span><span class="p">,</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="n">didn</span><span class="s1">&#39;t even complete because of the softness.</span>
 
-&gt; Vacuum formation under the model - After switching to glass container, we faced a challenge of broken parts being printed out. It left us perplexed for a while. We looked for the cause by
-eliminating the variable. After extensive research online, we finally identified the problem. It was the vacuum being formed at the base when hardened resin was being pulled out during
-printing. Liquid resin couldn&#39;t fill it in time due to large adhesion with glass base. We tried differnt solution like coating the base with PDMS (polydimethylsiloxane) but the resin started
-having whitish appearance at the bottom when heated. We had two other options - Sylgard 184 silicones or FEP sheets. Ultimately we decided to go with the later based on what people had
-suggested. We designed the tension riser for the FEP sheets and we were able to print fine models afterwards.
-</pre></div>
-
+<span class="o">&gt;</span><span class="w"> </span><span class="n">Vacuum</span><span class="w"> </span><span class="n">formation</span><span class="w"> </span><span class="n">under</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">model</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">After</span><span class="w"> </span><span class="n">switching</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">glass</span><span class="w"> </span><span class="n">container</span><span class="p">,</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">faced</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="n">challenge</span><span class="w"> </span><span class="n">of</span><span class="w"> </span><span class="n">broken</span><span class="w"> </span><span class="n">parts</span><span class="w"> </span><span class="n">being</span><span class="w"> </span><span class="n">printed</span><span class="w"> </span><span class="n">out</span><span class="o">.</span><span class="w"> </span><span class="n">It</span><span class="w"> </span><span class="n">left</span><span class="w"> </span><span class="n">us</span><span class="w"> </span><span class="n">perplexed</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">a</span><span class="w"> </span><span class="k">while</span><span class="o">.</span><span class="w"> </span><span class="n">We</span><span class="w"> </span><span class="n">looked</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">cause</span><span class="w"> </span><span class="n">by</span><span class="w"></span>
+<span class="n">eliminating</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">variable</span><span class="o">.</span><span class="w"> </span><span class="n">After</span><span class="w"> </span><span class="n">extensive</span><span class="w"> </span><span class="n">research</span><span class="w"> </span><span class="n">online</span><span class="p">,</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">finally</span><span class="w"> </span><span class="n">identified</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">problem</span><span class="o">.</span><span class="w"> </span><span class="n">It</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">vacuum</span><span class="w"> </span><span class="n">being</span><span class="w"> </span><span class="n">formed</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">base</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">hardened</span><span class="w"> </span><span class="n">resin</span><span class="w"> </span><span class="n">was</span><span class="w"> </span><span class="n">being</span><span class="w"> </span><span class="n">pulled</span><span class="w"> </span><span class="n">out</span><span class="w"> </span><span class="n">during</span><span class="w"></span>
+<span class="n">printing</span><span class="o">.</span><span class="w"> </span><span class="n">Liquid</span><span class="w"> </span><span class="n">resin</span><span class="w"> </span><span class="n">couldn</span><span class="s1">&#39;t fill it in time due to large adhesion with glass base. We tried differnt solution like coating the base with PDMS (polydimethylsiloxane) but the resin started</span>
+<span class="n">having</span><span class="w"> </span><span class="n">whitish</span><span class="w"> </span><span class="n">appearance</span><span class="w"> </span><span class="n">at</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">bottom</span><span class="w"> </span><span class="n">when</span><span class="w"> </span><span class="n">heated</span><span class="o">.</span><span class="w"> </span><span class="n">We</span><span class="w"> </span><span class="n">had</span><span class="w"> </span><span class="n">two</span><span class="w"> </span><span class="n">other</span><span class="w"> </span><span class="n">options</span><span class="w"> </span><span class="o">-</span><span class="w"> </span><span class="n">Sylgard</span><span class="w"> </span><span class="mi">184</span><span class="w"> </span><span class="n">silicones</span><span class="w"> </span><span class="ow">or</span><span class="w"> </span><span class="n">FEP</span><span class="w"> </span><span class="n">sheets</span><span class="o">.</span><span class="w"> </span><span class="n">Ultimately</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">decided</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="n">go</span><span class="w"> </span><span class="n">with</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">later</span><span class="w"> </span><span class="n">based</span><span class="w"> </span><span class="n">on</span><span class="w"> </span><span class="n">what</span><span class="w"> </span><span class="n">people</span><span class="w"> </span><span class="n">had</span><span class="w"></span>
+<span class="n">suggested</span><span class="o">.</span><span class="w"> </span><span class="n">We</span><span class="w"> </span><span class="n">designed</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">tension</span><span class="w"> </span><span class="n">riser</span><span class="w"> </span><span class="k">for</span><span class="w"> </span><span class="n">the</span><span class="w"> </span><span class="n">FEP</span><span class="w"> </span><span class="n">sheets</span><span class="w"> </span><span class="ow">and</span><span class="w"> </span><span class="n">we</span><span class="w"> </span><span class="n">were</span><span class="w"> </span><span class="n">able</span><span class="w"> </span><span class="n">to</span><span class="w"> </span><span class="nb">print</span><span class="w"> </span><span class="n">fine</span><span class="w"> </span><span class="n">models</span><span class="w"> </span><span class="n">afterwards</span><span class="o">.</span><span class="w"></span>
+</code></pre></div>
 
 <p><center><img src="images/3d22.jpg" height="500px" width="500px"></center></p>
 <h1>The Glory</h1>
@@ -232,9 +225,9 @@ suggested. We designed the tension riser for the FEP sheets and we were able to 
 <p>All in all, it was a highly fulfilling experience. The learning I had in those one and half months far exceed one and half years of classroom education. We had our fair bit of fun in the process. Unfortunately, I had to leave before I completely assembled the product because of college. Besides work, an internship is also an excellent way to form a good friendship. Till the next time! Peace ✌</p>
 <p><center><img src="images/3d15.jpg" height="500px" width="600px">&nbsp; <img src="images/3d16.jpg" height="500px" width="600px"></center></p>
 <h1>Internship Notebook</h1>
-<p><section id="scribbles">
+<section id="scribbles">
     <center><iframe src="https://drive.google.com/file/d/0B5ONt2rDwKNVdVh4dFpRZzJhTFE/preview" width="640" height="700"></iframe></center>
-</section></p></div>
+</section></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
@@ -279,16 +272,16 @@ suggested. We designed the tension riser for the FEP sheets and we were able to 
           <a href="/techrantsrandom.html">Techrants.Random</a>
       </li>
       <li class="post">
+          <a href="/acsl-research-work.html">ACSL Research Work</a>
+      </li>
+      <li class="post">
+          <a href="/making-my-own-discord-bots.html">Making My Own Discord Bots</a>
+      </li>
+      <li class="post">
           <a href="/getting-acquainted-with-electric-ui.html">Getting Acquainted With Electric UI</a>
       </li>
       <li class="post">
           <a href="/learning-nextjs-in-lockdown.html">Learning NextJS In Lockdown</a>
-      </li>
-      <li class="post">
-          <a href="/learning-reactjs-in-lockdown.html">Learning ReactJS In Lockdown</a>
-      </li>
-      <li class="post">
-          <a href="/video-editing-portfolio.html">Video Editing Portfolio</a>
       </li>
     </ul>
   </section>
@@ -299,8 +292,8 @@ suggested. We designed the tension riser for the FEP sheets and we were able to 
         <li><a href="/category/design.html">Design</a> (4)</li>
         <li><a href="/category/filmmaking.html">Filmmaking</a> (3)</li>
         <li><a href="/category/life.html">Life</a> (4)</li>
-        <li><a href="/category/programming.html">Programming</a> (7)</li>
-        <li><a href="/category/research.html">Research</a> (1)</li>
+        <li><a href="/category/programming.html">Programming</a> (8)</li>
+        <li><a href="/category/research.html">Research</a> (3)</li>
         <li><a href="/category/technology.html">Technology</a> (6)</li>
     </ul>
   </section>
@@ -308,7 +301,7 @@ suggested. We designed the tension riser for the FEP sheets and we were able to 
 
 <!--   <section>
   <h1>Tags</h1>
-    <a href="/tag/engineering.html">engineering</a>,    <a href="/tag/features.html">features</a>,    <a href="/tag/javascript.html">javascript</a>,    <a href="/tag/learning.html">learning</a>,    <a href="/tag/software.html">software</a>,    <a href="/tag/troubleshooting.html">troubleshooting</a>,    <a href="/tag/notes.html">notes</a>,    <a href="/tag/web-development.html">web-development</a>,    <a href="/tag/editing.html">editing</a>,    <a href="/tag/art.html">art</a>,    <a href="/tag/creativity.html">creativity</a>,    <a href="/tag/aerospace.html">aerospace</a>,    <a href="/tag/iisc.html">IISc</a>,    <a href="/tag/combustion.html">combustion</a>,    <a href="/tag/blogging.html">blogging</a>,    <a href="/tag/events.html">events</a>,    <a href="/tag/technology.html">technology</a>,    <a href="/tag/design.html">design</a>,    <a href="/tag/test.html">test</a>,    <a href="/tag/product-design.html">product-design</a>,    <a href="/tag/programming.html">programming</a>,    <a href="/tag/exploration.html">exploration</a>,    <a href="/tag/science.html">science</a>,    <a href="/tag/space.html">space</a>,    <a href="/tag/research.html">research</a>,    <a href="/tag/markdown.html">markdown</a>,    <a href="/tag/pelican.html">pelican</a>,    <a href="/tag/automation.html">automation</a>,    <a href="/tag/letter.html">letter</a>,    <a href="/tag/advice.html">advice</a>,    <a href="/tag/mathematics.html">mathematics</a>,    <a href="/tag/fun.html">fun</a>,    <a href="/tag/feature.html">feature</a>,    <a href="/tag/internship.html">internship</a>  </section> -->
+    <a href="/tag/engineering.html">engineering</a>,    <a href="/tag/learning.html">learning</a>,    <a href="/tag/life.html">life</a>,    <a href="/tag/masters.html">master's</a>,    <a href="/tag/javascript.html">javascript</a>,    <a href="/tag/software.html">software</a>,    <a href="/tag/troubleshooting.html">troubleshooting</a>,    <a href="/tag/features.html">features</a>,    <a href="/tag/notes.html">notes</a>,    <a href="/tag/web-development.html">web-development</a>,    <a href="/tag/editing.html">editing</a>,    <a href="/tag/art.html">art</a>,    <a href="/tag/creativity.html">creativity</a>,    <a href="/tag/aerospace.html">aerospace</a>,    <a href="/tag/iisc.html">IISc</a>,    <a href="/tag/combustion.html">combustion</a>,    <a href="/tag/blogging.html">blogging</a>,    <a href="/tag/events.html">events</a>,    <a href="/tag/technology.html">technology</a>,    <a href="/tag/design.html">design</a>,    <a href="/tag/test.html">test</a>,    <a href="/tag/product-design.html">product-design</a>,    <a href="/tag/programming.html">programming</a>,    <a href="/tag/exploration.html">exploration</a>,    <a href="/tag/science.html">science</a>,    <a href="/tag/space.html">space</a>,    <a href="/tag/research.html">research</a>,    <a href="/tag/markdown.html">markdown</a>,    <a href="/tag/pelican.html">pelican</a>,    <a href="/tag/automation.html">automation</a>,    <a href="/tag/letter.html">letter</a>,    <a href="/tag/advice.html">advice</a>,    <a href="/tag/mathematics.html">mathematics</a>,    <a href="/tag/fun.html">fun</a>,    <a href="/tag/feature.html">feature</a>,    <a href="/tag/internship.html">internship</a>  </section> -->
 
 
     <section>
