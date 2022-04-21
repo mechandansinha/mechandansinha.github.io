@@ -82,7 +82,199 @@
 </header>
 
   <div class="entry-content"><h2>Prologue</h2>
-<p>Lately, I have been spending a considerable time on Discord. For one, most of our lab conversations happen on Discord and secondly, I have finally started to realize the power of this platform to create an engaging community. Seriously, Discord is awesome! You have different servers of your interest with different channels within, it has pretty decent photos and videos support and you can have group voice and videos calls. But the important of all, which is cherry on the cake, are the Discord bots. They can extend the functionality of this platform multifold. Any task that is mundane or tedious for human intervention can be delegated to bots - moderation:check, saying hi:check, summarizing information:check, server health monitoring:check, list of rocket launches:check, telling jokes:check - you get the idea. Now, it is the last two that I focused on for my Weekend Project. </p></div>
+<p>Lately, I have been spending a considerable time on Discord. For one, most of our lab conversations happen on Discord and secondly, I have finally started to realize the power of this platform to create an engaging community. Seriously, Discord is awesome! You have different servers of your interest with different channels within, it has pretty decent photos and videos support and you can have group voice and videos calls. But the important of all, which is cherry on the cake, are the Discord bots. They can extend the functionality of this platform multifold. Any task that is mundane or tedious for human intervention can be delegated to bots - 
+- [x] moderation
+- [x] saying hi
+- [x] summarizing information
+- [x] server health monitoring
+- [x] list of rocket launches
+- [x] telling jokes</p>
+<p>You get the idea. Now, it is the last two that I focused on for my Weekend Project. </p>
+<p>First of all, follow the setup steps mentioned <a href="https://www.digitaltrends.com/gaming/how-to-make-a-discord-bot/">here</a> for a rudimentary Discord bot connection and testing. After that, all you are limited by is your imagination and the availability of a good API. That's it. Here's my <code>bot.js</code> file for the 'Upcoming Launches' bot which returns a list of next 10 rocket launches whenever you type and enter <code>!launch</code> on Discord -</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">Discord</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;discord.io&#39;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">logger</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;winston&#39;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">auth</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./auth.json&#39;</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;axios&#39;</span><span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">disc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;discord.js&#39;</span><span class="p">)</span>
+
+<span class="c1">// Configure logger settings</span>
+
+<span class="nx">logger</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">logger</span><span class="p">.</span><span class="nx">transports</span><span class="p">.</span><span class="nx">Console</span><span class="p">);</span>
+
+<span class="nx">logger</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="ow">new</span> <span class="nx">logger</span><span class="p">.</span><span class="nx">transports</span><span class="p">.</span><span class="nx">Console</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">colorize</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+
+<span class="nx">logger</span><span class="p">.</span><span class="nx">level</span> <span class="o">=</span> <span class="s1">&#39;debug&#39;</span><span class="p">;</span>
+
+<span class="c1">// Initialize Discord Bot</span>
+
+<span class="kd">var</span> <span class="nx">bot</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Discord</span><span class="p">.</span><span class="nx">Client</span><span class="p">({</span>
+
+    <span class="nx">token</span><span class="o">:</span> <span class="nx">auth</span><span class="p">.</span><span class="nx">token</span><span class="p">,</span>
+
+    <span class="nx">autorun</span><span class="o">:</span> <span class="kc">true</span>
+
+<span class="p">});</span>
+
+
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;ready&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;Connected&#39;</span><span class="p">);</span>
+
+    <span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;Logged in as: &#39;</span><span class="p">);</span>
+
+    <span class="c1">// logger.info(bot.username + &#39; - (&#39; + bot.id + &#39;)&#39;);</span>
+    <span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">bot</span><span class="p">.</span><span class="nx">username</span><span class="p">);</span>
+<span class="p">});</span>
+
+
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">userID</span><span class="p">,</span> <span class="nx">channelID</span><span class="p">,</span> <span class="nx">message</span><span class="p">,</span> <span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">// Our bot needs to know if it will execute a command</span>
+
+<span class="c1">// It will listen for messages that will start with `!`</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;!&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mf">1</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">cmd</span> <span class="o">=</span> <span class="nx">args</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+        <span class="nx">args</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+
+        <span class="k">switch</span><span class="p">(</span><span class="nx">cmd</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="s1">&#39;launch&#39;</span><span class="o">:</span>
+                <span class="kd">let</span> <span class="nx">axiosOptions</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="nx">method</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+                    <span class="nx">url</span><span class="o">:</span> <span class="sb">`https://ll.thespacedevs.com/2.0.0/launch/upcoming/`</span>
+                <span class="p">}</span>
+
+                <span class="nx">axios</span><span class="p">(</span><span class="nx">axiosOptions</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                        <span class="c1">// console.log(response.data)</span>
+                        <span class="kd">let</span> <span class="nx">table</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">results</span>
+
+                        <span class="kd">let</span> <span class="nx">launchlist</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">;</span>
+
+                        <span class="nx">table</span><span class="p">.</span><span class="nx">forEach</span><span class="p">(</span><span class="nx">item</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                            <span class="nx">net_time</span> <span class="o">=</span> <span class="ow">new</span> <span class="nb">Date</span><span class="p">(</span><span class="nx">item</span><span class="p">.</span><span class="nx">net</span><span class="p">)</span>
+                            <span class="nx">launchlist</span> <span class="o">+=</span> <span class="sb">`- </span><span class="si">${</span><span class="nx">item</span><span class="p">.</span><span class="nx">name</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="nx">net_time</span><span class="p">.</span><span class="nx">toString</span><span class="p">().</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">100</span><span class="p">,</span><span class="o">-</span><span class="mf">42</span><span class="p">)</span><span class="si">}</span><span class="sb">, </span><span class="si">${</span><span class="nx">net_time</span><span class="p">.</span><span class="nx">toString</span><span class="p">().</span><span class="nx">slice</span><span class="p">(</span><span class="o">-</span><span class="mf">41</span><span class="p">)</span><span class="si">}</span><span class="sb">\n`</span>
+                        <span class="p">});</span>
+
+                        <span class="kd">var</span> <span class="nx">embed</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">disc</span><span class="p">.</span><span class="nx">MessageEmbed</span><span class="p">()</span>
+                            <span class="p">.</span><span class="nx">setTitle</span><span class="p">(</span><span class="s1">&#39;Upcoming Launches&#39;</span><span class="p">)</span>
+                            <span class="p">.</span><span class="nx">setDescription</span><span class="p">(</span><span class="nx">launchlist</span><span class="p">)</span>
+                            <span class="p">.</span><span class="nx">setURL</span><span class="p">(</span><span class="s1">&#39;http://chandansinha.me&#39;</span><span class="p">)</span>
+
+                    <span class="nx">bot</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">({</span>
+                        <span class="nx">to</span><span class="o">:</span> <span class="nx">channelID</span><span class="p">,</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="sb">`&gt; **</span><span class="si">${</span><span class="nx">embed</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb">** \n</span><span class="si">${</span><span class="nx">embed</span><span class="p">.</span><span class="nx">description</span><span class="si">}</span><span class="sb">`</span>
+                        <span class="p">});</span>
+                    <span class="p">})</span>       
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+</code></pre></div>
+
+<p>I struggled with composing a rich text message with <code>discord.io</code>, so after scratching my head for 3 days and looking through the poor documentation I finally decided to go with <code>discord.js</code> in conjunction with the former. I also used <code>axios</code> library for HTTP request to query the API. </p>
+<p>Similarly, here is the code for my joke bot 'Hoot Hoot' which tells you a joke everytime you type and enter <code>!joke</code> on Discord -</p>
+<div class="highlight"><pre><span></span><code><span class="kd">var</span> <span class="nx">Discord</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;discord.io&#39;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">logger</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;winston&#39;</span><span class="p">);</span>
+
+<span class="kd">var</span> <span class="nx">auth</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;./auth.json&#39;</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">axios</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;axios&#39;</span><span class="p">)</span>
+
+<span class="kd">var</span> <span class="nx">disc</span> <span class="o">=</span> <span class="nx">require</span><span class="p">(</span><span class="s1">&#39;discord.js&#39;</span><span class="p">)</span>
+
+<span class="c1">// Configure logger settings</span>
+
+<span class="nx">logger</span><span class="p">.</span><span class="nx">remove</span><span class="p">(</span><span class="nx">logger</span><span class="p">.</span><span class="nx">transports</span><span class="p">.</span><span class="nx">Console</span><span class="p">);</span>
+
+<span class="nx">logger</span><span class="p">.</span><span class="nx">add</span><span class="p">(</span><span class="ow">new</span> <span class="nx">logger</span><span class="p">.</span><span class="nx">transports</span><span class="p">.</span><span class="nx">Console</span><span class="p">,</span> <span class="p">{</span>
+    <span class="nx">colorize</span><span class="o">:</span> <span class="kc">true</span>
+<span class="p">});</span>
+
+<span class="nx">logger</span><span class="p">.</span><span class="nx">level</span> <span class="o">=</span> <span class="s1">&#39;debug&#39;</span><span class="p">;</span>
+
+<span class="c1">// Initialize Discord Bot</span>
+
+<span class="kd">var</span> <span class="nx">bot</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">Discord</span><span class="p">.</span><span class="nx">Client</span><span class="p">({</span>
+
+    <span class="nx">token</span><span class="o">:</span> <span class="nx">auth</span><span class="p">.</span><span class="nx">token</span><span class="p">,</span>
+
+    <span class="nx">autorun</span><span class="o">:</span> <span class="kc">true</span>
+
+<span class="p">});</span>
+
+
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;ready&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+
+    <span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;Connected&#39;</span><span class="p">);</span>
+
+    <span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="s1">&#39;Logged in as: &#39;</span><span class="p">);</span>
+
+    <span class="c1">// logger.info(bot.username + &#39; - (&#39; + bot.id + &#39;)&#39;);</span>
+    <span class="nx">logger</span><span class="p">.</span><span class="nx">info</span><span class="p">(</span><span class="nx">bot</span><span class="p">.</span><span class="nx">username</span><span class="p">);</span>
+<span class="p">});</span>
+
+
+<span class="nx">bot</span><span class="p">.</span><span class="nx">on</span><span class="p">(</span><span class="s1">&#39;message&#39;</span><span class="p">,</span> <span class="kd">function</span> <span class="p">(</span><span class="nx">user</span><span class="p">,</span> <span class="nx">userID</span><span class="p">,</span> <span class="nx">channelID</span><span class="p">,</span> <span class="nx">message</span><span class="p">,</span> <span class="nx">evt</span><span class="p">)</span> <span class="p">{</span>
+
+<span class="c1">// Our bot needs to know if it will execute a command</span>
+
+<span class="c1">// It will listen for messages that will start with `!`</span>
+
+    <span class="k">if</span> <span class="p">(</span><span class="nx">message</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span> <span class="mf">1</span><span class="p">)</span> <span class="o">==</span> <span class="s1">&#39;!&#39;</span><span class="p">)</span> <span class="p">{</span>
+        <span class="kd">var</span> <span class="nx">args</span> <span class="o">=</span> <span class="nx">message</span><span class="p">.</span><span class="nx">substring</span><span class="p">(</span><span class="mf">1</span><span class="p">).</span><span class="nx">split</span><span class="p">(</span><span class="s1">&#39; &#39;</span><span class="p">);</span>
+        <span class="kd">var</span> <span class="nx">cmd</span> <span class="o">=</span> <span class="nx">args</span><span class="p">[</span><span class="mf">0</span><span class="p">];</span>
+        <span class="nx">args</span> <span class="o">=</span> <span class="nx">args</span><span class="p">.</span><span class="nx">splice</span><span class="p">(</span><span class="mf">1</span><span class="p">);</span>
+
+        <span class="k">switch</span><span class="p">(</span><span class="nx">cmd</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">case</span> <span class="s1">&#39;joke&#39;</span><span class="o">:</span>
+                <span class="kd">let</span> <span class="nx">axiosOptions</span> <span class="o">=</span> <span class="p">{</span>
+                    <span class="nx">method</span><span class="o">:</span> <span class="s2">&quot;get&quot;</span><span class="p">,</span>
+                    <span class="nx">url</span><span class="o">:</span> <span class="sb">`https://v2.jokeapi.dev/joke/Any`</span>
+                <span class="p">}</span>
+
+                <span class="nx">axios</span><span class="p">(</span><span class="nx">axiosOptions</span><span class="p">)</span>
+                    <span class="p">.</span><span class="nx">then</span><span class="p">(</span><span class="nx">response</span> <span class="p">=&gt;</span> <span class="p">{</span>
+                        <span class="kd">let</span> <span class="nx">type</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">type</span>
+
+                        <span class="k">if</span><span class="p">(</span><span class="nx">type</span> <span class="o">==</span> <span class="s1">&#39;single&#39;</span><span class="p">){</span>
+                            <span class="kd">var</span> <span class="nx">whole_joke</span> <span class="o">=</span> <span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">joke</span>
+                        <span class="p">}</span>
+
+                        <span class="k">else</span> <span class="k">if</span><span class="p">(</span><span class="nx">type</span><span class="o">==</span><span class="s1">&#39;twopart&#39;</span><span class="p">){</span>
+                            <span class="kd">var</span> <span class="nx">whole_joke</span> <span class="o">=</span> <span class="sb">`</span><span class="si">${</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">setup</span><span class="si">}</span><span class="sb"> \n</span><span class="si">${</span><span class="nx">response</span><span class="p">.</span><span class="nx">data</span><span class="p">.</span><span class="nx">delivery</span><span class="si">}</span><span class="sb">`</span>
+                        <span class="p">}</span>
+
+                        <span class="kd">var</span> <span class="nx">embed</span> <span class="o">=</span> <span class="ow">new</span> <span class="nx">disc</span><span class="p">.</span><span class="nx">MessageEmbed</span><span class="p">()</span>
+                            <span class="p">.</span><span class="nx">setTitle</span><span class="p">(</span><span class="s2">&quot;Hoot Hoot! Here&#39;s a joke for yah!&quot;</span><span class="p">)</span>
+                            <span class="p">.</span><span class="nx">setDescription</span><span class="p">(</span><span class="nx">whole_joke</span><span class="p">)</span>
+                            <span class="p">.</span><span class="nx">setURL</span><span class="p">(</span><span class="s1">&#39;http://chandansinha.me&#39;</span><span class="p">)</span>
+
+                    <span class="nx">bot</span><span class="p">.</span><span class="nx">sendMessage</span><span class="p">({</span>
+                        <span class="nx">to</span><span class="o">:</span> <span class="nx">channelID</span><span class="p">,</span>
+                        <span class="nx">message</span><span class="o">:</span> <span class="sb">`&gt; **</span><span class="si">${</span><span class="nx">embed</span><span class="p">.</span><span class="nx">title</span><span class="si">}</span><span class="sb">** \n</span><span class="si">${</span><span class="nx">embed</span><span class="p">.</span><span class="nx">description</span><span class="si">}</span><span class="sb">`</span>
+                        <span class="p">});</span>
+                    <span class="p">})</span>       
+            <span class="k">break</span><span class="p">;</span>
+        <span class="p">}</span>
+    <span class="p">}</span>
+<span class="p">});</span>
+
+<span class="c1">// https://sv443.net/jokeapi/v2/</span>
+</code></pre></div>
+
+<h2>Next Step</h2>
+<ul>
+<li>https://www.writebots.com/discord-bot-hosting/</li>
+</ul></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
