@@ -83,13 +83,13 @@
 
   <div class="entry-content"><p>I updated pelican recently because I had upgraded to <code>python 3.x</code>. When I tried to execute <code>pelican content</code> command, it threw an error saying <code>no valid contents were found</code>. After some searching, I found out that I hadn't re-installed <code>markdown</code> (the earlier version was completely undetectable). </p>
 <p>After installing markdown by <code>pip install markdown</code>, I re-ran the earlier command but this time I got this warning -</p>
-<div class="highlight"><pre><span></span><code>$ pelican content
-Traceback <span class="o">(</span>most recent call last<span class="o">)</span>:
-  File <span class="s2">&quot;C:\Users\CHANDAN\Techblog\pelican-plugins\render_math\math.py&quot;</span>, line <span class="m">272</span>, <span class="k">in</span> mathjax_for_markdown
-    pelicanobj.settings<span class="o">[</span><span class="s1">&#39;MD_EXTENSIONS&#39;</span><span class="o">]</span>.append<span class="o">(</span>PelicanMathJaxExtension<span class="o">(</span>config<span class="o">))</span>
-KeyError: <span class="s1">&#39;MD_EXTENSIONS&#39;</span>
+<div class="highlight"><pre><span></span><code>$<span class="w"> </span>pelican<span class="w"> </span>content
+Traceback<span class="w"> </span><span class="o">(</span>most<span class="w"> </span>recent<span class="w"> </span>call<span class="w"> </span>last<span class="o">)</span>:
+<span class="w">  </span>File<span class="w"> </span><span class="s2">&quot;C:\Users\CHANDAN\Techblog\pelican-plugins\render_math\math.py&quot;</span>,<span class="w"> </span>line<span class="w"> </span><span class="m">272</span>,<span class="w"> </span><span class="k">in</span><span class="w"> </span>mathjax_for_markdown
+<span class="w">    </span>pelicanobj.settings<span class="o">[</span><span class="s1">&#39;MD_EXTENSIONS&#39;</span><span class="o">]</span>.append<span class="o">(</span>PelicanMathJaxExtension<span class="o">(</span>config<span class="o">))</span>
+KeyError:<span class="w"> </span><span class="s1">&#39;MD_EXTENSIONS&#39;</span>
 
-Error - the pelican mathjax markdown extension failed to configure. MathJax is non-functional.
+Error<span class="w"> </span>-<span class="w"> </span>the<span class="w"> </span>pelican<span class="w"> </span>mathjax<span class="w"> </span>markdown<span class="w"> </span>extension<span class="w"> </span>failed<span class="w"> </span>to<span class="w"> </span>configure.<span class="w"> </span>MathJax<span class="w"> </span>is<span class="w"> </span>non-functional.
 </code></pre></div>
 
 <p>Apparantly, my MathJax plugin wasn't working properly. I searched for this error on Google which led me to this <a href="https://github.com/getpelican/pelican-plugins/issues/815">Github issue #815</a>. On further reading, I found out this issue was merged with <a href="https://github.com/getpelican/pelican-plugins/pull/787">an earlier one #787</a>. On this link, I found a commit made to <code>math.py</code> file. Here's the change at line 271.</p>
@@ -116,66 +116,9 @@ Error - the pelican mathjax markdown extension failed to configure. MathJax is n
 
 <p>And it worked like a charm. Now you know what to do when you encounter this error.</p>
 <p>Example -</p>
-<div class="math">$$\frac{Q_{1}Q_{2}}{4\pi\epsilon r^{2}}$$</div>
-<div class="math">$$d = \sqrt{(x_{2} - x_{1})^2 + (y_{2} - y_{1})^2}$$</div>
-<p>See you in the next post :)</p>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script></div>
+<p>$$\frac{Q_{1}Q_{2}}{4\pi\epsilon r^{2}}$$</p>
+<p>$$d = \sqrt{(x_{2} - x_{1})^2 + (y_{2} - y_{1})^2}$$</p>
+<p>See you in the next post :)</p></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
@@ -277,7 +220,7 @@ Error - the pelican mathjax markdown extension failed to configure. MathJax is n
 </div>
 <footer role="contentinfo"><p>
 <!--      -->
-    Copyright &copy; Chandan Sinha  2016&ndash;2021  &mdash;
+    Copyright &copy; Chandan Sinha  2016&ndash;2023  &mdash;
   <span class="credit">Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> | </span>
   <span class= credit"> <a href="https://github.com/duilio/pelican-octopress-theme" target="_blank">Octopress</a> Theme </span>
 </p></footer>

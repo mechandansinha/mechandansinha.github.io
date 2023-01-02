@@ -131,17 +131,17 @@
 <p>If you need to add attributes like, for example, <code>className</code>, add it to the <code>a</code> tag, not the <code>Link</code> tag.</p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">Link</span> <span class="kr">from</span> <span class="s1">&#39;next/link&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">Link</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;next/link&#39;</span>
 
-<span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">LinkClassnameExample</span><span class="p">(){</span>
-    <span class="k">return</span><span class="p">(</span>
-        <span class="o">&lt;</span><span class="nx">Link</span> <span class="nx">href</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="o">&gt;</span>
-            <span class="o">&lt;</span><span class="nx">a</span> <span class="nx">className</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span> <span class="nx">target</span><span class="o">=</span><span class="s2">&quot;_blank&quot;</span> <span class="nx">rel</span><span class="o">=</span><span class="s2">&quot;noopener noreferrer&quot;</span><span class="o">&gt;</span>
-                <span class="nx">Hello</span> <span class="nx">World</span>
-            <span class="o">&lt;</span><span class="err">/a&gt;</span>
-        <span class="o">&lt;</span><span class="err">/Link&gt;</span>
-    <span class="p">)</span>
-<span class="p">}</span> 
+<span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">LinkClassnameExample</span><span class="p">(){</span>
+<span class="w">    </span><span class="k">return</span><span class="p">(</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">Link</span><span class="w"> </span><span class="nx">href</span><span class="o">=</span><span class="s2">&quot;/&quot;</span><span class="o">&gt;</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="nx">a</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="s2">&quot;foo&quot;</span><span class="w"> </span><span class="nx">target</span><span class="o">=</span><span class="s2">&quot;_blank&quot;</span><span class="w"> </span><span class="nx">rel</span><span class="o">=</span><span class="s2">&quot;noopener noreferrer&quot;</span><span class="o">&gt;</span>
+<span class="w">                </span><span class="nx">Hello</span><span class="w"> </span><span class="nx">World</span>
+<span class="w">            </span><span class="o">&lt;</span><span class="err">/a&gt;</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="err">/Link&gt;</span>
+<span class="w">    </span><span class="p">)</span>
+<span class="p">}</span><span class="w"> </span>
 </code></pre></div>
 
 <h2>Assets, Metadata, and CSS</h2>
@@ -158,8 +158,8 @@
 <ul>
 <li><code>styled-jsx</code> library (a "CSS-in-JS" library that lets you write CSS within a React component, and the CSS styles will be scoped, meaning other components won't be affected.)</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">style</span> <span class="na">jsx</span><span class="p">&gt;{</span><span class="err">&#39;</span><span class="w"></span>
-<span class="w">    </span><span class="err">...</span><span class="w"></span>
+<div class="highlight"><pre><span></span><code><span class="p">&lt;</span><span class="nt">style</span> <span class="na">jsx</span><span class="p">&gt;{</span><span class="err">&#39;</span>
+<span class="w">    </span><span class="err">...</span>
 <span class="err">&#39;</span><span class="p">}&lt;/</span><span class="nt">style</span><span class="p">&gt;</span>
 </code></pre></div>
 
@@ -178,8 +178,8 @@
 <ul>
 <li>To load global CSS files, create a file called <code>_app.js</code> under <code>pages</code> with following code -</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">App</span><span class="p">({</span><span class="nx">Component</span><span class="p">,</span> <span class="nx">pageProps</span><span class="p">}){</span>
-    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">Component</span> <span class="p">{...</span><span class="nx">pageProps</span><span class="p">}</span> <span class="o">/&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">App</span><span class="p">({</span><span class="nx">Component</span><span class="p">,</span><span class="w"> </span><span class="nx">pageProps</span><span class="p">}){</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">Component</span><span class="w"> </span><span class="p">{...</span><span class="nx">pageProps</span><span class="p">}</span><span class="w"> </span><span class="o">/&gt;</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -191,7 +191,7 @@
 <p>Development server needs to be restarted after adding <code>_app.js</code></p>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code>npm run dev
+<div class="highlight"><pre><span></span><code>npm<span class="w"> </span>run<span class="w"> </span>dev
 </code></pre></div>
 
 <ul>
@@ -266,18 +266,18 @@
 <blockquote>
 <p><code>getStaticProps</code> runs at build time in production and inside the function, you can fetch external data and pass that as the props of the page.</p>
 </blockquote>
-<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Home</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span> <span class="p">...</span> <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Home</span><span class="p">(</span><span class="nx">props</span><span class="p">){</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
 
-<span class="k">export</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">getStaticProps</span><span class="p">(){</span>
-    <span class="c1">//Get external data from the file system/API/DB, etc.</span>
+<span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getStaticProps</span><span class="p">(){</span>
+<span class="w">    </span><span class="c1">//Get external data from the file system/API/DB, etc.</span>
 
-    <span class="kd">const</span> <span class="nx">data</span> <span class="o">=</span> <span class="p">...</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">data</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">...</span>
 
-    <span class="c1">//The value of the `props` key will be passed to the `Home` component</span>
+<span class="w">    </span><span class="c1">//The value of the `props` key will be passed to the `Home` component</span>
 
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="nx">props</span><span class="o">:</span> <span class="p">...</span>
-    <span class="p">}</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">...</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -293,8 +293,8 @@ title: &#39;Two Forms of Pre-rendering&#39;
 
 Next.js has two forms of pre-rendering: <span class="gs">**Static Generation**</span> and <span class="gs">**Server-side Rendering**</span>. The difference is in <span class="gs">**when**</span> it generates the HTML for a page.
 
-<span class="k">-</span> <span class="gs">**Static Generation**</span> is the pre-rendering method that generates the HTML at <span class="gs">**build time**</span>. The pre-rendered HTML is then <span class="ge">_reused_</span> on each request.
-<span class="k">-</span> <span class="gs">**Server-side Rendering**</span> is the pre-rendering method that generates the HTML on <span class="gs">**each request**</span>.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Static Generation**</span> is the pre-rendering method that generates the HTML at <span class="gs">**build time**</span>. The pre-rendered HTML is then <span class="ge">_reused_</span> on each request.
+<span class="k">-</span><span class="w"> </span><span class="gs">**Server-side Rendering**</span> is the pre-rendering method that generates the HTML on <span class="gs">**each request**</span>.
 
 Importantly, Next.js lets you <span class="gs">**choose**</span> which pre-rendering form to use for each page. You can create a &quot;hybrid&quot; Next.js app by using Static Generation for most pages and using Server-side Rendering for others.
 </code></pre></div>
@@ -311,56 +311,56 @@ Importantly, Next.js lets you <span class="gs">**choose**</span> which pre-rende
 <ul>
 <li>After installing <code>gray-matter</code> we parse the markdown posts by creating <code>lib/posts.js</code> file in the top domain. Then we import the function in <code>pages/index.js</code> as </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">getSortedPostsData</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;../lib/posts&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">getSortedPostsData</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;../lib/posts&#39;</span>
 </code></pre></div>
 
 <p>Then we call this function in <code>getStaticProps</code> and return the result inside the <code>props</code> key as</p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">getStaticProps</span><span class="p">(){</span>
-    <span class="kd">const</span> <span class="nx">allPostsData</span> <span class="o">=</span> <span class="nx">getSortedPostsData</span><span class="p">()</span>
-    <span class="k">return</span> <span class="p">{</span>
-        <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
-            <span class="nx">allPostsData</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getStaticProps</span><span class="p">(){</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">allPostsData</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">getSortedPostsData</span><span class="p">()</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="p">{</span>
+<span class="w">        </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="nx">allPostsData</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <p>And then <code>allPostsData</code> prop will be passed to the <code>Home</code> component. </p>
-<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="k">default</span> <span class="kd">function</span> <span class="nx">Home</span> <span class="p">({</span> <span class="nx">allPostsData</span> <span class="p">})</span> <span class="p">{</span> <span class="p">...</span> <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="k">default</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">Home</span><span class="w"> </span><span class="p">({</span><span class="w"> </span><span class="nx">allPostsData</span><span class="w"> </span><span class="p">})</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="p">...</span><span class="w"> </span><span class="p">}</span>
 </code></pre></div>
 
 <p>To display the data - </p>
-<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nx">allPostsData</span><span class="p">.</span><span class="nx">map</span><span class="p">(({</span><span class="nx">id</span><span class="p">,</span> <span class="nx">date</span><span class="p">,</span> <span class="nx">title</span><span class="p">})</span> <span class="p">=&gt;</span> <span class="p">(</span>
-    <span class="o">&lt;</span><span class="nx">li</span> <span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">utilStyles</span><span class="p">.</span><span class="nx">listItem</span><span class="p">}</span> <span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">id</span><span class="p">}</span><span class="o">&gt;</span>
-        <span class="p">{</span><span class="nx">title</span><span class="p">}</span>
-        <span class="o">&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
-        <span class="p">{</span><span class="nx">id</span><span class="p">}</span>
-        <span class="o">&lt;</span><span class="nx">br</span> <span class="o">/&gt;</span>
-        <span class="p">{</span><span class="nx">date</span><span class="p">}</span>
-    <span class="o">&lt;</span><span class="err">/li&gt;</span>
+<div class="highlight"><pre><span></span><code><span class="p">{</span><span class="nx">allPostsData</span><span class="p">.</span><span class="nx">map</span><span class="p">(({</span><span class="nx">id</span><span class="p">,</span><span class="w"> </span><span class="nx">date</span><span class="p">,</span><span class="w"> </span><span class="nx">title</span><span class="p">})</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">(</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="nx">li</span><span class="w"> </span><span class="nx">className</span><span class="o">=</span><span class="p">{</span><span class="nx">utilStyles</span><span class="p">.</span><span class="nx">listItem</span><span class="p">}</span><span class="w"> </span><span class="nx">key</span><span class="o">=</span><span class="p">{</span><span class="nx">id</span><span class="p">}</span><span class="o">&gt;</span>
+<span class="w">        </span><span class="p">{</span><span class="nx">title</span><span class="p">}</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">br</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">        </span><span class="p">{</span><span class="nx">id</span><span class="p">}</span>
+<span class="w">        </span><span class="o">&lt;</span><span class="nx">br</span><span class="w"> </span><span class="o">/&gt;</span>
+<span class="w">        </span><span class="p">{</span><span class="nx">date</span><span class="p">}</span>
+<span class="w">    </span><span class="o">&lt;</span><span class="err">/li&gt;</span>
 <span class="p">))}</span>
 </code></pre></div>
 
 <p>We successfully fetch external data (from the file system)and pre-render the index page with this data -</p>
 <p><img alt="Data Fetching and Pre-rendering" src="https://nextjs.org/static/images/learn/data-fetching/index-page.png"></p>
 <h3>Fetch External API or Query Database</h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">fetch</span> <span class="kr">from</span> <span class="s1">&#39;node-fetch&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">fetch</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;node-fetch&#39;</span>
 
-<span class="k">export</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">getSortedPostsData</span><span class="p">(){</span>
-    <span class="c1">//Instead of the file system, fetch post data from an external API endpoint</span>
-    <span class="kd">const</span> <span class="nx">res</span> <span class="o">=</span> <span class="k">await</span> <span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
-    <span class="k">return</span> <span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
+<span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getSortedPostsData</span><span class="p">(){</span>
+<span class="w">    </span><span class="c1">//Instead of the file system, fetch post data from an external API endpoint</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="nx">res</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="k">await</span><span class="w"> </span><span class="nx">fetch</span><span class="p">(</span><span class="s1">&#39;..&#39;</span><span class="p">)</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">res</span><span class="p">.</span><span class="nx">json</span><span class="p">()</span>
 <span class="p">}</span>
 </code></pre></div>
 
 <h3>Querying Database Directly</h3>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">someDatabaseSDK</span> <span class="kr">from</span> <span class="s1">&#39;someDatabaseSDK&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">someDatabaseSDK</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;someDatabaseSDK&#39;</span>
 
-<span class="kd">const</span> <span class="nx">databaseClient</span> <span class="o">=</span> <span class="nx">someDatabaseSDK</span><span class="p">.</span><span class="nx">createClient</span><span class="p">(...)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">databaseClient</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">someDatabaseSDK</span><span class="p">.</span><span class="nx">createClient</span><span class="p">(...)</span>
 
-<span class="k">export</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">getSortedPostsData</span><span class="p">(){</span>
-    <span class="c1">//Instead of the file system, fetch post data from a database</span>
-    <span class="k">return</span> <span class="nx">databaseClient</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">&#39;SELECT posts...&#39;</span><span class="p">)</span>
+<span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getSortedPostsData</span><span class="p">(){</span>
+<span class="w">    </span><span class="c1">//Instead of the file system, fetch post data from a database</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="nx">databaseClient</span><span class="p">.</span><span class="nx">query</span><span class="p">(</span><span class="s1">&#39;SELECT posts...&#39;</span><span class="p">)</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -379,12 +379,12 @@ Importantly, Next.js lets you <span class="gs">**choose**</span> which pre-rende
 <ul>
 <li>If we need to fetch data at <strong>request time</strong> instead of build time, we can try <strong>Server-side Rendering</strong>. Here, we need to export <code>getServerSideProps</code> instead of <code>getStaticProps</code> from your page.</li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">export</span> <span class="k">async</span> <span class="kd">function</span> <span class="nx">getServerSideProps</span><span class="p">(</span><span class="nx">context</span><span class="p">){</span>
-    <span class="k">return</span><span class="p">{</span>
-        <span class="nx">props</span><span class="o">:</span> <span class="p">{</span>
-            <span class="c1">// props for your component</span>
-        <span class="p">}</span>
-    <span class="p">}</span>
+<div class="highlight"><pre><span></span><code><span class="k">export</span><span class="w"> </span><span class="k">async</span><span class="w"> </span><span class="kd">function</span><span class="w"> </span><span class="nx">getServerSideProps</span><span class="p">(</span><span class="nx">context</span><span class="p">){</span>
+<span class="w">    </span><span class="k">return</span><span class="p">{</span>
+<span class="w">        </span><span class="nx">props</span><span class="o">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">            </span><span class="c1">// props for your component</span>
+<span class="w">        </span><span class="p">}</span>
+<span class="w">    </span><span class="p">}</span>
 <span class="p">}</span>
 </code></pre></div>
 
@@ -404,14 +404,14 @@ Importantly, Next.js lets you <span class="gs">**choose**</span> which pre-rende
 <ul>
 <li>Highly recommended when fetching data on the client side. It handles caching, revalidation, focus tracking, refetching on interval, and more. </li>
 </ul>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="nx">useSWR</span> <span class="kr">from</span> <span class="s1">&#39;swr&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="nx">useSWR</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;swr&#39;</span>
 
-<span class="kd">function</span> <span class="nx">Profile</span><span class="p">(){</span>
-    <span class="kd">const</span> <span class="p">{</span><span class="nx">data</span><span class="p">,</span> <span class="nx">error</span><span class="p">}</span> <span class="o">=</span> <span class="nx">useSWR</span><span class="p">(</span><span class="s1">&#39;/api/user&#39;</span><span class="p">,</span><span class="nx">fetch</span><span class="p">)</span>
+<span class="kd">function</span><span class="w"> </span><span class="nx">Profile</span><span class="p">(){</span>
+<span class="w">    </span><span class="kd">const</span><span class="w"> </span><span class="p">{</span><span class="nx">data</span><span class="p">,</span><span class="w"> </span><span class="nx">error</span><span class="p">}</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useSWR</span><span class="p">(</span><span class="s1">&#39;/api/user&#39;</span><span class="p">,</span><span class="nx">fetch</span><span class="p">)</span>
 
-    <span class="k">if</span> <span class="p">(</span><span class="nx">error</span><span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span> <span class="nx">failed</span> <span class="nx">to</span> <span class="nx">load</span> <span class="o">&lt;</span><span class="err">/div&gt;</span>
-    <span class="k">if</span> <span class="p">(</span><span class="o">!</span><span class="nx">data</span><span class="p">)</span> <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span> <span class="nx">loading</span><span class="p">...</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
-    <span class="k">return</span> <span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span> <span class="nx">hello</span> <span class="p">{</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">!&lt;</span><span class="err">/div&gt;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="nx">error</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="w"> </span><span class="nx">failed</span><span class="w"> </span><span class="nx">to</span><span class="w"> </span><span class="nx">load</span><span class="w"> </span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="p">(</span><span class="o">!</span><span class="nx">data</span><span class="p">)</span><span class="w"> </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="w"> </span><span class="nx">loading</span><span class="p">...</span><span class="o">&lt;</span><span class="err">/div&gt;</span>
+<span class="w">    </span><span class="k">return</span><span class="w"> </span><span class="o">&lt;</span><span class="nx">div</span><span class="o">&gt;</span><span class="w"> </span><span class="nx">hello</span><span class="w"> </span><span class="p">{</span><span class="nx">data</span><span class="p">.</span><span class="nx">name</span><span class="p">}</span><span class="o">!&lt;</span><span class="err">/div&gt;</span>
 <span class="p">}</span>
 </code></pre></div></div>
     <footer>
@@ -515,7 +515,7 @@ Importantly, Next.js lets you <span class="gs">**choose**</span> which pre-rende
 </div>
 <footer role="contentinfo"><p>
 <!--      -->
-    Copyright &copy; Chandan Sinha  2016&ndash;2021  &mdash;
+    Copyright &copy; Chandan Sinha  2016&ndash;2023  &mdash;
   <span class="credit">Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> | </span>
   <span class= credit"> <a href="https://github.com/duilio/pelican-octopress-theme" target="_blank">Octopress</a> Theme </span>
 </p></footer>

@@ -88,27 +88,27 @@
 <h3>Try adding another Switch, or a Checkbox component to manually set the led_state variable to 0 or 1 while led_blink is disabled. [From <a href="https://electricui.com/docs/quick-start/ui">Blink Mode Control</a>]</h3>
 </blockquote>
 <p>Solution - </p>
-<div class="highlight"><pre><span></span><code><span class="k">import</span> <span class="p">{</span> <span class="nx">useHardwareState</span> <span class="p">}</span> <span class="kr">from</span> <span class="s1">&#39;@electricui/components-core&#39;</span>
+<div class="highlight"><pre><span></span><code><span class="k">import</span><span class="w"> </span><span class="p">{</span><span class="w"> </span><span class="nx">useHardwareState</span><span class="w"> </span><span class="p">}</span><span class="w"> </span><span class="kr">from</span><span class="w"> </span><span class="s1">&#39;@electricui/components-core&#39;</span>
 
 <span class="p">...</span>
 
-<span class="kd">const</span> <span class="nx">isBlinking</span> <span class="o">=</span> <span class="nx">useHardwareState</span><span class="p">(</span><span class="s1">&#39;led_blink&#39;</span><span class="p">)</span>
+<span class="kd">const</span><span class="w"> </span><span class="nx">isBlinking</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">useHardwareState</span><span class="p">(</span><span class="s1">&#39;led_blink&#39;</span><span class="p">)</span>
 
 <span class="p">{</span>
-    <span class="p">(</span><span class="o">!</span><span class="nx">isBlinking</span><span class="p">)</span><span class="o">?</span> 
-    <span class="p">(</span>
-      <span class="o">&lt;</span><span class="nx">Switch</span>
-        <span class="nx">unchecked</span> <span class="o">=</span> <span class="p">{</span><span class="mf">0</span><span class="p">}</span>
-        <span class="nx">checked</span> <span class="o">=</span> <span class="p">{</span><span class="mf">1</span><span class="p">}</span>
-        <span class="nx">accessor</span><span class="o">=</span><span class="p">{</span><span class="nx">state</span> <span class="p">=&gt;</span> <span class="nx">state</span><span class="p">.</span><span class="nx">led_state</span><span class="p">}</span>
-        <span class="nx">writer</span><span class="o">=</span><span class="p">{(</span><span class="nx">state</span><span class="p">,</span> <span class="nx">value</span><span class="p">)</span> <span class="p">=&gt;</span> <span class="p">{</span>
-          <span class="nx">state</span><span class="p">.</span><span class="nx">led_state</span> <span class="o">=</span> <span class="nx">value</span>
-        <span class="p">}}</span>
+<span class="w">    </span><span class="p">(</span><span class="o">!</span><span class="nx">isBlinking</span><span class="p">)</span><span class="o">?</span><span class="w"> </span>
+<span class="w">    </span><span class="p">(</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="nx">Switch</span>
+<span class="w">        </span><span class="nx">unchecked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">0</span><span class="p">}</span>
+<span class="w">        </span><span class="nx">checked</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="p">{</span><span class="mf">1</span><span class="p">}</span>
+<span class="w">        </span><span class="nx">accessor</span><span class="o">=</span><span class="p">{</span><span class="nx">state</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="nx">state</span><span class="p">.</span><span class="nx">led_state</span><span class="p">}</span>
+<span class="w">        </span><span class="nx">writer</span><span class="o">=</span><span class="p">{(</span><span class="nx">state</span><span class="p">,</span><span class="w"> </span><span class="nx">value</span><span class="p">)</span><span class="w"> </span><span class="p">=&gt;</span><span class="w"> </span><span class="p">{</span>
+<span class="w">          </span><span class="nx">state</span><span class="p">.</span><span class="nx">led_state</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">value</span>
+<span class="w">        </span><span class="p">}}</span>
 
-      <span class="o">&gt;</span>
-        <span class="nx">Manually</span> <span class="nx">toggle</span> <span class="nx">LED</span> <span class="nx">state</span>
-      <span class="o">&lt;</span><span class="err">/Switch&gt;</span>
-    <span class="p">)</span><span class="o">:</span><span class="kc">null</span>
+<span class="w">      </span><span class="o">&gt;</span>
+<span class="w">        </span><span class="nx">Manually</span><span class="w"> </span><span class="nx">toggle</span><span class="w"> </span><span class="nx">LED</span><span class="w"> </span><span class="nx">state</span>
+<span class="w">      </span><span class="o">&lt;</span><span class="err">/Switch&gt;</span>
+<span class="w">    </span><span class="p">)</span><span class="o">:</span><span class="kc">null</span>
 <span class="p">}</span>
 </code></pre></div></div>
     <footer>
@@ -212,7 +212,7 @@
 </div>
 <footer role="contentinfo"><p>
 <!--      -->
-    Copyright &copy; Chandan Sinha  2016&ndash;2021  &mdash;
+    Copyright &copy; Chandan Sinha  2016&ndash;2023  &mdash;
   <span class="credit">Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> | </span>
   <span class= credit"> <a href="https://github.com/duilio/pelican-octopress-theme" target="_blank">Octopress</a> Theme </span>
 </p></footer>

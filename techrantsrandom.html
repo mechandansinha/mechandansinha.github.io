@@ -178,12 +178,12 @@
 <ul>
 <li>I had recently installed MATLAB 2018b on my system. It's been taking a lot of time to start (somewhere in the range of 8 to 10 minutes). I looked for the solution online multiple times but still couldn't resolve it, although I did identify that it had something to do with my license file. It would open instantly if I ran this command - </li>
 </ul>
-<div class="highlight"><pre><span></span><code>&gt;&gt; <span class="nb">cd</span> %path_to_MATLAB_directory%
-&gt;&gt; bin/matlab.exe -c licenses/license_standalone.lic
+<div class="highlight"><pre><span></span><code>&gt;&gt;<span class="w"> </span><span class="nb">cd</span><span class="w"> </span>%path_to_MATLAB_directory%
+&gt;&gt;<span class="w"> </span>bin/matlab.exe<span class="w"> </span>-c<span class="w"> </span>licenses/license_standalone.lic
 </code></pre></div>
 
 <p>After reading further today, I found out that I could measure the time taken by each process during initialization through the following command -</p>
-<div class="highlight"><pre><span></span><code>&gt;&gt; matlab -timing
+<div class="highlight"><pre><span></span><code>&gt;&gt;<span class="w"> </span>matlab<span class="w"> </span>-timing
 </code></pre></div>
 
 <p>Though, I could see that 'desktop init' took the most time, I couldn't find any viable solution related to it except disabling all other programs while starting MATLAB (which isn't necessarily a solution btw). Finally, I read that if I have multiple license files in my <code>licenses</code> folder, MATLAB might be getting confused. So, I removed the other two license files elsewhere and voila! it worked.</p>
@@ -200,11 +200,10 @@
 <h2>23/03/2019</h2>
 <ul>
 <li>
-<p>Though I wrote about <a href="https://mechandansinha.github.io/pelican-mathjax-issue.html#pelican-mathjax-issue">MathJax issue</a> previously on my blog, I didn't include any mathematical expression to validate. How silly! So here it is, a formula for measuring apparent magnitude of a star with respect to a reference - <div class="math">$$m_{1} - m_{ref} = -2.5log_{10}{\frac{I}{I_{ref}}}$$</div>
-</p>
+<p>Though I wrote about <a href="https://mechandansinha.github.io/pelican-mathjax-issue.html#pelican-mathjax-issue">MathJax issue</a> previously on my blog, I didn't include any mathematical expression to validate. How silly! So here it is, a formula for measuring apparent magnitude of a star with respect to a reference - $$m_{1} - m_{ref} = -2.5log_{10}{\frac{I}{I_{ref}}}$$</p>
 </li>
 <li>
-<p>Apparent magnitude (m) and absolute magnitude (M) are related as <div class="math">$$m - M = 5(log_{10}d-1)$$</div>
+<p>Apparent magnitude (m) and absolute magnitude (M) are related as $$m - M = 5(log_{10}d-1)$$
 where d = distance to the star measured in <em>parsecs</em></p>
 </li>
 </ul>
@@ -300,64 +299,7 @@ where d = distance to the star measured in <em>parsecs</em></p>
 In addition to the propellant turbopumps, staged combustion engines often require smaller boost pumps so to prevent both preburner backflow and turbopump cavitation. For example, the RD-180 and RS-25 use boost pumps driven by tap-off and expander cycles, as well as pressurized tanks, to incrementally increase propellant pressure prior to entering the preburner.</p>
 </li>
 </ul>
-<p>The ultimate performance of a rocket engine is primarily limited by the ability of the construction materials to withstand the extreme temperatures of rocket combustion processes, as a <em>higher temperature directly increases the local speed of sound that limits exhaust velocity</em> - Gas generator cycle</p>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script></div>
+<p>The ultimate performance of a rocket engine is primarily limited by the ability of the construction materials to withstand the extreme temperatures of rocket combustion processes, as a <em>higher temperature directly increases the local speed of sound that limits exhaust velocity</em> - Gas generator cycle</p></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
@@ -459,7 +401,7 @@ In addition to the propellant turbopumps, staged combustion engines often requir
 </div>
 <footer role="contentinfo"><p>
 <!--      -->
-    Copyright &copy; Chandan Sinha  2016&ndash;2021  &mdash;
+    Copyright &copy; Chandan Sinha  2016&ndash;2023  &mdash;
   <span class="credit">Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> | </span>
   <span class= credit"> <a href="https://github.com/duilio/pelican-octopress-theme" target="_blank">Octopress</a> Theme </span>
 </p></footer>

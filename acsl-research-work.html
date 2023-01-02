@@ -170,11 +170,11 @@
 <h3>Feedback</h3>
 <ul>
 <li><code>Robust Output Feedback Linearization</code> paper and code for DC motor sent by Julius</li>
-<li>Once done with the code validation, move on to computing <span class="math">\(\ddot{x}\)</span> and <span class="math">\(\dddot{x}\)</span> of the linearized states through the provided code (custom modifications required)</li>
+<li>Once done with the code validation, move on to computing $\ddot{x}$ and $\dddot{x}$ of the linearized states through the provided code (custom modifications required)</li>
 <li>Run UAV simulation and compare the two cases side by side - </li>
-<li>Estimated <span class="math">\(\ddot{x}\)</span> and <span class="math">\(\dddot{x}\)</span> </li>
-<li><span class="math">\(\ddot{x}\)</span> and <span class="math">\(\dddot{x}\)</span> obtained from code. Ideally, with the same aircraft and same reference trajectory, it should do the same thing when the same physical quantities are calculated by 2 different control methods.</li>
-<li>Linearized states = <span class="math">\(<div class="math">\begin{bmatrix} r \\ \dot{r} \\ \ddot{r} \\ \dddot{r} \\ \phi \\ \dot{\phi} \end{bmatrix}</div>\)</span></li>
+<li>Estimated $\ddot{x}$ and $\dddot{x}$ </li>
+<li>$\ddot{x}$ and $\dddot{x}$ obtained from code. Ideally, with the same aircraft and same reference trajectory, it should do the same thing when the same physical quantities are calculated by 2 different control methods.</li>
+<li>Linearized states = $\begin{bmatrix} r \ \dot{r} \ \ddot{r} \ \dddot{r} \ \phi \ \dot{\phi} \end{bmatrix}$</li>
 </ul>
 <h3>Miscellaneous (in response to Chris's work)</h3>
 <ul>
@@ -305,64 +305,7 @@
 <li>Remote debugging and upload via winSCP </li>
 <li>Couldn't fly the drone because of missing parameters</li>
 <li>Flight stack code debugging - syntax errors, function referencing, changing <code>double</code> to <code>float</code> </li>
-</ul>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script></div>
+</ul></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
@@ -464,7 +407,7 @@
 </div>
 <footer role="contentinfo"><p>
 <!--      -->
-    Copyright &copy; Chandan Sinha  2016&ndash;2021  &mdash;
+    Copyright &copy; Chandan Sinha  2016&ndash;2023  &mdash;
   <span class="credit">Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> | </span>
   <span class= credit"> <a href="https://github.com/duilio/pelican-octopress-theme" target="_blank">Octopress</a> Theme </span>
 </p></footer>

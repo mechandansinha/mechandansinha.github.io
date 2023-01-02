@@ -86,7 +86,7 @@
 <p>In the first few days, I talked to the fellow students (PhD, M.Tech and current project assistants) about the projects they were involved in. This gave me a fair idea about the research work going in this field. Since, I did not have an extensive background in Turbulent Combustion (or even combustion for that matter, coming from product design and mechatronics background in undergrad), I had to dug into the literature to understand the physics behind our experiment. Moreover, the computational work excited me more as I wanted to strengthen my analytical skills. </p>
 <p>After few days, I chose to work with one of the PhD students who was trying to understand the swirling turbulent flame interaction in land-based gas turbine engines through PIV (Particle Image Velocimetry) and PLIF (Planar Laser Induced Fluorescence) imaging techniques. Understanding the right dynamics behind flame interaction in multi-swirler setup is crucial in the sense that precautionary steps could be taken in advance to prevent blow off. This is one of the key problems that results in huge monetary losses to both the suppliers and the consumers. </p>
 <h2>Research Statement</h2>
-<p>Premixed or partially premixed swirling flames are used in gas turbine engines due to their compactness, high ignition efficiency and low <span class="math">\(NO_{x}\)</span> emissions. Operating in lean mode, the interaction between combustor pressure oscillations and reactants' supply rates produces equivalence ratio perturbations leading to combustion instabilities. We are trying to comprehend this phenomenon using a model combustor. We consider a small section of the annular arrangement from <a href="https://en.wikipedia.org/wiki/CFM_International_CFM56">CFM-56 Turbofan Engine</a> with three swirlers for studying the flame interaction. Moreover, the swirlers are arranged in a linear fashion for the experiment, considering the large radius of annular ring. This facilitates in emulating the actual environment in the lab. The fuel used is simply Methane (CH<sub>4</sub>) along with air for a lean premixed flow. </p>
+<p>Premixed or partially premixed swirling flames are used in gas turbine engines due to their compactness, high ignition efficiency and low $NO_{x}$ emissions. Operating in lean mode, the interaction between combustor pressure oscillations and reactants' supply rates produces equivalence ratio perturbations leading to combustion instabilities. We are trying to comprehend this phenomenon using a model combustor. We consider a small section of the annular arrangement from <a href="https://en.wikipedia.org/wiki/CFM_International_CFM56">CFM-56 Turbofan Engine</a> with three swirlers for studying the flame interaction. Moreover, the swirlers are arranged in a linear fashion for the experiment, considering the large radius of annular ring. This facilitates in emulating the actual environment in the lab. The fuel used is simply Methane (CH<sub>4</sub>) along with air for a lean premixed flow. </p>
 <h2>Objective</h2>
 <p>During the course of my Research Assistantship, I modified and used numerous MATLAB files which has to be used in sequence in order to extract useful information from the sPIV (Stereoscopic PIV) and PLIF flame images. While the former provided the velocity information in a flow field, the later gives an image file of the flame within definite user-defined bounds. The MATLAB codes took the .vc7 and .im7 files as inputs and we used PIVMat toolbox with ReadIMX package to work with these files.</p>
 <p>We needed to compute critical parameters (normal, curvature, strain rate, etc.) from the flame images taken for different swirler-configurations (varying swirler angles between 30 and 45 or blocking one/two of the swirlers altogether). We correlated these parameters to blowoff-phenomena through a Probability Distribution Function (PDF). <!-- I co-authored a research paper where we looked into the mechanism of quasi-periodic extinction-reignition and the final blowoff event.  --></p>
@@ -113,10 +113,10 @@
 <p>Save the edge data, within the desired bounds, of all the images into a 3-dimensional <code>image</code> matrix (.mat file). Similarly, save velocity information for each image from .vc7 file in <code>v</code> matrix and store the original .im7 images in <code>imm</code> matrix files.</p>
 </li>
 <li>
-<p>Calculate the normal using gradients from the edge data and curvature using the formulae : <span class="math">\(C = \frac{x'y'' - y'x''}{{(x'^{2} +y'^{2})}^{\frac{3}{2}}}\)</span></p>
+<p>Calculate the normal using gradients from the edge data and curvature using the formulae : $C = \frac{x'y'' - y'x''}{{(x'^{2} +y'^{2})}^{\frac{3}{2}}}$</p>
 </li>
 <li>
-<p>Calculate the 2D tangential strain rate using the formulae : <span class="math">\(K = (1-n_{x}^{2})\frac{\partial u}{\partial x} + (1-n_{y}^{2})\frac{\partial v}{\partial y} + n_{x}n_{y}(\frac{\partial u}{\partial y} + \frac{\partial v}{\partial x})\)</span></p>
+<p>Calculate the 2D tangential strain rate using the formulae : $K = (1-n_{x}^{2})\frac{\partial u}{\partial x} + (1-n_{y}^{2})\frac{\partial v}{\partial y} + n_{x}n_{y}(\frac{\partial u}{\partial y} + \frac{\partial v}{\partial x})$</p>
 </li>
 </ol>
 <p><img alt="Strain Rate Calculation" src="images/im20_strain_rate.jpg"></p>
@@ -126,77 +126,20 @@
 <li>Combine all the strain rates into a single matrix and plot the Probability Distribution Function (PDF)</li>
 </ol>
 <p><img alt="Probability Distribution Function Graph" src="images/pdfgraph.PNG"></p>
-<p>We did this for different swirler configurations in longitudinal (<span class="math">\(r-\theta\)</span> plane) and transverse (<span class="math">\(r-z\)</span> plane) for both normal and blowoff conditions. A few of these are shown in the screenshot below -</p>
+<p>We did this for different swirler configurations in longitudinal ($r-\theta$ plane) and transverse ($r-z$ plane) for both normal and blowoff conditions. A few of these are shown in the screenshot below -</p>
 <p><img alt="For different configurations" src="images/blowoff_different_configurations.PNG"></p>
 <h2>Validating MATLAB Code Analytically</h2>
 <p>One of the major challenge of image processing through MATLAB codes was to validate if the computation agreed with the analytical solution. The caveat of using in-built MATLAB functions is deviating from valid solutions because of their implicit nature. It becomes hard to catch the error the further one moves along the sequence described above. I tried several approaches (using the already available image file, creating my own data emulating an image file, and finally creating a sample flow field and running it through the algorithm since the Physics of the sample flow around certain geometries are well known). The final methodology is explained below.</p>
 <h3>Creating struct field</h3>
 <p>You can find all the files I used for analytical validation <a href="" target="_blank">here.</a></p>
 <p><strong>Step1</strong> - I used a uniform and doublet flow fields to create a source-sink pair to generate the velocity matrix and saved everything in a structured form. Similarly, imm and image (edge) matrices were generated by taking a rectangle in the flow field. After running the usual steps I had used for flame images, all the matrices were generated (normals, curvature, strain rate, etc.).</p>
-<p><strong>Step2</strong> - The analytical values for the tangential strain rate were taken to be <span class="math">\(\frac{du}{dx}\)</span> and <span class="math">\(\frac{dv}{dy}\)</span> along the horizontal and vertical line respectively. </p>
+<p><strong>Step2</strong> - The analytical values for the tangential strain rate were taken to be $\frac{du}{dx}$ and $\frac{dv}{dy}$ along the horizontal and vertical line respectively. </p>
 <p>When plotting the strain rate matrix obtained in step 1, I get two rectangles - outer and inner ones. I don't know why it is happening. While running the code for flame edges, it never happened. I will look into the reason. Anyway, I took both the outer and inner rectangles for comparison.</p>
 <p>For comparing the values, I excluded the corner values because they will be erratic due to the differences in du/dx and dv/dy values in those cells. Then I calculated the absolute differences between the corresponding cells and averaged them to find the average percentage error which comes out to be 2.75% and 4.24% for outer and inner rectangle respectively. </p>
 <p>All the matrices are there in the <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vTCiKCk90krbMyKQvFcFE-Bi7fR1ua_K1_u-8TmMZbj7cs-M6Ish7u9buJCix1KLQ/pubhtml"><code>vmatrix.xlsx</code></a> excel sheet. Everything has been color-coded in the final 'Difference' workbook, the meanings of which have been explained at the bottom.</p>
 <iframe src="https://docs.google.com/spreadsheets/d/e/2PACX-1vTCiKCk90krbMyKQvFcFE-Bi7fR1ua_K1_u-8TmMZbj7cs-M6Ish7u9buJCix1KLQ/pubhtml?widget=true&amp;headers=false" height="1000px" width="100%"></iframe>
 
-<p>The average difference of ~2-3% shows that our code gives almost correct values.</p>
-<script type="text/javascript">if (!document.getElementById('mathjaxscript_pelican_#%@#$@#')) {
-    var align = "center",
-        indent = "0em",
-        linebreak = "false";
-
-    if (false) {
-        align = (screen.width < 768) ? "left" : align;
-        indent = (screen.width < 768) ? "0em" : indent;
-        linebreak = (screen.width < 768) ? 'true' : linebreak;
-    }
-
-    var mathjaxscript = document.createElement('script');
-    var location_protocol = (false) ? 'https' : document.location.protocol;
-    if (location_protocol !== 'http' && location_protocol !== 'https') location_protocol = 'https:';
-    mathjaxscript.id = 'mathjaxscript_pelican_#%@#$@#';
-    mathjaxscript.type = 'text/javascript';
-    mathjaxscript.src = location_protocol + '//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML';
-    mathjaxscript[(window.opera ? "innerHTML" : "text")] =
-        "MathJax.Hub.Config({" +
-        "    config: ['MMLorHTML.js']," +
-        "    TeX: { extensions: ['AMSmath.js','AMSsymbols.js','noErrors.js','noUndefined.js'], equationNumbers: { autoNumber: 'AMS' } }," +
-        "    jax: ['input/TeX','input/MathML','output/HTML-CSS']," +
-        "    extensions: ['tex2jax.js','mml2jax.js','MathMenu.js','MathZoom.js']," +
-        "    displayAlign: '"+ align +"'," +
-        "    displayIndent: '"+ indent +"'," +
-        "    showMathMenu: true," +
-        "    messageStyle: 'normal'," +
-        "    tex2jax: { " +
-        "        inlineMath: [ ['\\\\(','\\\\)'] ], " +
-        "        displayMath: [ ['$$','$$'] ]," +
-        "        processEscapes: true," +
-        "        preview: 'TeX'," +
-        "    }, " +
-        "    'HTML-CSS': { " +
-        "        styles: { '.MathJax_Display, .MathJax .mo, .MathJax .mi, .MathJax .mn': {color: 'inherit ! important'} }," +
-        "        linebreaks: { automatic: "+ linebreak +", width: '90% container' }," +
-        "    }, " +
-        "}); " +
-        "if ('default' !== 'default') {" +
-            "MathJax.Hub.Register.StartupHook('HTML-CSS Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax['HTML-CSS'].FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-            "MathJax.Hub.Register.StartupHook('SVG Jax Ready',function () {" +
-                "var VARIANT = MathJax.OutputJax.SVG.FONTDATA.VARIANT;" +
-                "VARIANT['normal'].fonts.unshift('MathJax_default');" +
-                "VARIANT['bold'].fonts.unshift('MathJax_default-bold');" +
-                "VARIANT['italic'].fonts.unshift('MathJax_default-italic');" +
-                "VARIANT['-tex-mathit'].fonts.unshift('MathJax_default-italic');" +
-            "});" +
-        "}";
-    (document.body || document.getElementsByTagName('head')[0]).appendChild(mathjaxscript);
-}
-</script></div>
+<p>The average difference of ~2-3% shows that our code gives almost correct values.</p></div>
     <footer>
 <p class="meta">
   <span class="byline author vcard">
@@ -298,7 +241,7 @@
 </div>
 <footer role="contentinfo"><p>
 <!--      -->
-    Copyright &copy; Chandan Sinha  2016&ndash;2021  &mdash;
+    Copyright &copy; Chandan Sinha  2016&ndash;2023  &mdash;
   <span class="credit">Powered by <a href="http://getpelican.com" target="_blank">Pelican</a> | </span>
   <span class= credit"> <a href="https://github.com/duilio/pelican-octopress-theme" target="_blank">Octopress</a> Theme </span>
 </p></footer>
